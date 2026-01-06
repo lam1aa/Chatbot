@@ -6,7 +6,6 @@ class ChatbotApp {
         this.apiKey = null;
         this.conversationHistory = [];
         this.isProcessing = false;
-        this.knowledgeBase = [];
         this.urlMapping = {};
         this.backendAvailable = false;
         this.backendUrl = 'http://localhost:5000';
@@ -65,10 +64,16 @@ class ChatbotApp {
     
     async checkBackend() {
         try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 second timeout
+            
             const response = await fetch(`${this.backendUrl}/health`, {
                 method: 'GET',
-                signal: AbortSignal.timeout(2000) // 2 second timeout
+                signal: controller.signal
             });
+            
+            clearTimeout(timeoutId);
+            
             if (response.ok) {
                 const data = await response.json();
                 this.backendAvailable = data.status === 'ok' && data.knowledge_base_loaded;
@@ -287,35 +292,14 @@ When providing information, if you have specific knowledge from documents, menti
         }
         
         // Extract potential source references from the response
-        const sources = this.extractSources(assistantMessage);
+        // Note: Without backend RAG, we cannot reliably determine which sources
+        // were actually used. This is a placeholder for when backend is unavailable.
+        const sources = [];
         
         return {
             answer: assistantMessage,
             sources: sources
         };
-    }
-    
-    extractSources(text) {
-        // This is a simple heuristic - look for common document references
-        // In a full RAG implementation, this would come from the retrieval step
-        const sources = [];
-        const lowerText = text.toLowerCase();
-        
-        // Check if any of our knowledge base files are referenced
-        for (const [filename, url] of Object.entries(this.urlMapping)) {
-            // Create searchable terms from filename
-            const baseName = filename.replace('.txt', '').replace(/-/g, ' ');
-            
-            // If the response might reference this document, include it as a source
-            // This is a simplified approach - a real RAG system would track actual sources
-            if (lowerText.includes('student') || lowerText.includes('bafoeg') || 
-                lowerText.includes('funding') || lowerText.includes('education')) {
-                // For now, we'll include a few relevant sources
-                // In production, this would be based on actual vector similarity search
-            }
-        }
-        
-        return sources;
     }
     
     addMessage(text, type, sources = []) {

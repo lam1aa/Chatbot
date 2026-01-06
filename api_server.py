@@ -36,9 +36,6 @@ except Exception as e:
     print(f"Error loading knowledge base: {e}")
     vectorstore = None
 
-# Global chatbot instance (will be initialized per request with API key)
-chatbot = None
-
 
 @app.route('/health', methods=['GET'])
 def health():
@@ -113,7 +110,11 @@ def chat():
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
+    debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
+    
     print(f"\n🚀 Starting BAföG Chatbot API server on port {port}")
     print(f"   Health check: http://localhost:{port}/health")
     print(f"   Chat endpoint: http://localhost:{port}/chat")
-    app.run(host='0.0.0.0', port=port, debug=True)
+    print(f"   Debug mode: {debug_mode}")
+    
+    app.run(host='0.0.0.0', port=port, debug=debug_mode)
