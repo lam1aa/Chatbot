@@ -61,9 +61,15 @@ class KnowledgeBaseLoader:
         return chunks
     
     def create_vector_store(self, documents):
-        """Create or load vector store from documents"""
+        """Create or load vector store from documents
+        
+        Note: If vector store exists, it loads the existing one for efficiency.
+        To include new documents, delete the vector store directory first using:
+        python kb_manager.py rebuild
+        """
         if os.path.exists(self.persist_directory):
             print("Loading existing vector store...")
+            print("(To rebuild with new documents, run: python kb_manager.py rebuild)")
             vectorstore = Chroma(
                 persist_directory=self.persist_directory,
                 embedding_function=self.embeddings

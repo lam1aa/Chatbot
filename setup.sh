@@ -12,7 +12,7 @@ echo "✓ Python version: $python_version"
 # Install dependencies
 echo ""
 echo "Installing dependencies..."
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 # Create .env file if it doesn't exist
 if [ ! -f .env ]; then

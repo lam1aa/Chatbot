@@ -43,9 +43,10 @@ def scrape_from_urls():
     """Interactive scraping from URLs"""
     try:
         from scraper import WebScraper
-    except ImportError:
+    except ImportError as e:
         print("Error: Web scraping dependencies not installed.")
         print("Install them with: pip install beautifulsoup4 requests")
+        print(f"Details: {e}")
         return
     
     print("\n=== Web Scraping ===")
