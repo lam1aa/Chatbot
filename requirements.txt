@@ -6,3 +6,7 @@ openai==1.7.2
 python-dotenv==1.0.0
 sentence-transformers==2.3.1
 huggingface-hub==0.20.3
+
+# Web scraping dependencies (optional)
+beautifulsoup4==4.12.3
+requests==2.31.0

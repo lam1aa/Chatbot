@@ -42,7 +42,17 @@ def example_usage():
         print(f"Frage: {question}")
         result = chatbot.ask(question)
         print(f"Antwort: {result['answer']}\n")
-        print("-" * 80 + "\n")
+        
+        # Display sources
+        print("Quellen:")
+        for doc in result['sources']:
+            source = doc.metadata.get('source', 'Unbekannt')
+            url = doc.metadata.get('url', '')
+            print(f"  📄 {source}")
+            if url:
+                print(f"     🔗 {url}")
+        
+        print("\n" + "-" * 80 + "\n")
 
 
 if __name__ == "__main__":

@@ -3,6 +3,7 @@ Knowledge Base Loader
 Loads and processes BAföG text files into a vector database
 """
 import os
+import json
 from pathlib import Path
 from langchain_community.document_loaders import TextLoader, DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -17,7 +18,16 @@ class KnowledgeBaseLoader:
         self.embeddings = HuggingFaceEmbeddings(
             model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
-        
+        self.url_mapping = self._load_url_mapping()
+    
+    def _load_url_mapping(self):
+        """Load URL mapping from JSON file if exists"""
+        mapping_file = os.path.join(self.knowledge_base_path, "url_mapping.json")
+        if os.path.exists(mapping_file):
+            with open(mapping_file, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        return {}
+    
     def load_documents(self):
         """Load all text documents from knowledge base directory"""
         print(f"Loading documents from {self.knowledge_base_path}...")
@@ -29,14 +39,21 @@ class KnowledgeBaseLoader:
             loader_kwargs={'encoding': 'utf-8'}
         )
         documents = loader.load()
+        
+        # Add URL metadata from mapping
+        for doc in documents:
+            source_file = os.path.basename(doc.metadata.get('source', ''))
+            if source_file in self.url_mapping:
+                doc.metadata['url'] = self.url_mapping[source_file]
+        
         print(f"Loaded {len(documents)} documents")
         return documents
     
     def split_documents(self, documents):
         """Split documents into smaller chunks"""
         text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=500,
-            chunk_overlap=50,
+            chunk_size=1000,
+            chunk_overlap=100,
             length_function=len,
         )
         chunks = text_splitter.split_documents(documents)

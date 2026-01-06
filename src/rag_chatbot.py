@@ -67,6 +67,33 @@ Hilfreiche Antwort:"""
             "sources": result["source_documents"]
         }
     
+    def format_sources(self, sources):
+        """Format source documents for display"""
+        if not sources:
+            return "Keine Quellen gefunden."
+        
+        formatted = []
+        seen_sources = set()
+        
+        for doc in sources:
+            source = doc.metadata.get('source', 'Unbekannt')
+            # Get URL if available in metadata
+            url = doc.metadata.get('url', '')
+            
+            # Create unique identifier
+            source_id = f"{source}|{url}"
+            if source_id in seen_sources:
+                continue
+            seen_sources.add(source_id)
+            
+            # Format source display
+            if url:
+                formatted.append(f"📄 {source}\n   🔗 {url}")
+            else:
+                formatted.append(f"📄 {source}")
+        
+        return "\n".join(formatted)
+    
     def chat(self):
         """Interactive chat loop"""
         print("\n=== BAföG Chatbot ===")
@@ -85,5 +112,10 @@ Hilfreiche Antwort:"""
             try:
                 result = self.ask(question)
                 print(f"\nBot: {result['answer']}\n")
+                
+                # Display sources
+                sources_text = self.format_sources(result['sources'])
+                print(f"Quellen:\n{sources_text}\n")
+                
             except Exception as e:
                 print(f"Fehler: {str(e)}\n")

@@ -7,6 +7,9 @@ A minimal RAG (Retrieval-Augmented Generation) chatbot for answering BAföG-rela
 - 🤖 Uses OpenRouter API for LLM (free models available)
 - 📚 ChromaDB for vector storage (open-source)
 - 🔍 Semantic search over BAföG documentation
+- 🌐 Built-in web scraper for BAföG websites
+- 📎 Source attribution with URLs in responses
+- 🔄 Automatic knowledge base updates
 - 🚀 Simple and minimal codebase
 - 🇩🇪 German language support
 
@@ -75,8 +78,16 @@ Once running, you can ask questions in German:
 Du: Was ist BAföG?
 Bot: [Answer based on your knowledge base]
 
+Quellen:
+📄 knowledge_base/bafoeg_info.txt
+   🔗 https://www.bafög.de/bafoeg/de/home/home_node.html
+
 Du: Wie hoch ist die Förderung?
 Bot: [Answer based on your knowledge base]
+
+Quellen:
+📄 knowledge_base/bafoeg_info.txt
+   🔗 https://www.bafög.de/bafoeg/de/home/home_node.html
 
 Du: exit
 ```
@@ -99,26 +110,85 @@ chatbot = RAGChatbot(vectorstore)
 # Ask questions
 result = chatbot.ask("Was ist BAföG?")
 print(result["answer"])
+
+# Access sources
+for source in result["sources"]:
+    print(f"Source: {source.metadata['source']}")
+    if 'url' in source.metadata:
+        print(f"URL: {source.metadata['url']}")
 ```
 
 See `example_usage.py` for a complete example.
+
+## Managing Knowledge Base
+
+### Option 1: Use Pre-scraped Files with URL Mapping
+
+1. Add your `.txt` files to `knowledge_base/` directory
+2. Create/update `knowledge_base/url_mapping.json` to map files to source URLs:
+
+```json
+{
+  "bafoeg_info.txt": "https://www.bafög.de/bafoeg/de/home/home_node.html",
+  "antragstellung.txt": "https://www.bafög.de/bafoeg/de/antrag-stellen/antrag-stellen_node.html"
+}
+```
+
+3. Rebuild the vector database:
+
+```bash
+python kb_manager.py rebuild
+```
+
+### Option 2: Scrape Directly from URLs
+
+Use the built-in web scraper to fetch content from BAföG websites:
+
+```bash
+# Interactive mode
+python kb_manager.py scrape
+```
+
+Or edit `scraper.py` and add your URLs, then run:
+
+```bash
+python scraper.py
+```
+
+### Knowledge Base Commands
+
+```bash
+# List all knowledge base files
+python kb_manager.py list
+
+# Scrape content from URLs
+python kb_manager.py scrape
+
+# Rebuild vector database (after adding new files)
+python kb_manager.py rebuild
+```
+
+**Note:** After adding new files or scraping, always rebuild the vector database to include the new content.
 
 ## Project Structure
 
 ```
 .
-├── knowledge_base/          # Place your BAföG .txt files here
-│   ├── bafoeg_info.txt     # Sample: General BAföG information
-│   └── antragstellung.txt  # Sample: Application process info
+├── knowledge_base/              # Place your BAföG .txt files here
+│   ├── bafoeg_info.txt         # Sample: General BAföG information
+│   ├── antragstellung.txt      # Sample: Application process info
+│   └── url_mapping.json        # Maps filenames to source URLs
 ├── src/
 │   ├── knowledge_base_loader.py  # Loads and processes documents
 │   └── rag_chatbot.py           # RAG chatbot implementation
-├── main.py                  # Entry point - interactive chat
-├── example_usage.py        # Example of programmatic usage
-├── setup.sh                # Automated setup script
-├── requirements.txt        # Python dependencies
-├── .env.example           # Environment variables template
-└── README.md              # This file
+├── main.py                      # Entry point - interactive chat
+├── example_usage.py            # Example of programmatic usage
+├── scraper.py                  # Web scraper for BAföG websites
+├── kb_manager.py               # Knowledge base management tool
+├── setup.sh                    # Automated setup script
+├── requirements.txt            # Python dependencies
+├── .env.example               # Environment variables template
+└── README.md                  # This file
 ```
 
 ## Configuration
