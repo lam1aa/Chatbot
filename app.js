@@ -1,11 +1,14 @@
 // BAföG Chatbot Web Application
-// This runs entirely in the browser and makes direct API calls to OpenRouter
+// Client-side citations using keyword matching
 
 class ChatbotApp {
     constructor() {
         this.apiKey = null;
         this.conversationHistory = [];
         this.isProcessing = false;
+        this.knowledgeIndex = [];
+        this.backendAvailable = false;
+        this.backendUrl = 'http://localhost:5000';
         
         // UI Elements
         this.apiKeySection = document.getElementById('api-key-section');
@@ -21,7 +24,13 @@ class ChatbotApp {
         this.init();
     }
     
-    init() {
+    async init() {
+        // Load knowledge index for client-side citations
+        await this.loadKnowledgeIndex();
+        
+        // Check if backend API is available (optional)
+        await this.checkBackend();
+        
         // Check if API key is stored
         this.loadApiKey();
         
@@ -53,6 +62,133 @@ class ChatbotApp {
         });
     }
     
+    async checkBackend() {
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 second timeout
+            
+            const response = await fetch(`${this.backendUrl}/health`, {
+                method: 'GET',
+                signal: controller.signal
+            });
+            
+            clearTimeout(timeoutId);
+            
+            if (response.ok) {
+                const data = await response.json();
+                this.backendAvailable = data.status === 'ok' && data.knowledge_base_loaded;
+                console.log('Backend API available:', this.backendAvailable);
+            }
+        } catch (error) {
+            this.backendAvailable = false;
+            console.log('Backend API not available, using direct OpenRouter calls');
+        }
+    }
+    
+    async loadKnowledgeIndex() {
+        try {
+            const response = await fetch('knowledge_base/knowledge_index.json');
+            if (response.ok) {
+                this.knowledgeIndex = await response.json();
+                console.log('Knowledge index loaded:', this.knowledgeIndex.length, 'documents');
+            } else {
+                console.warn('Knowledge index not found, citations will not be available');
+            }
+        } catch (error) {
+            console.error('Failed to load knowledge index:', error);
+        }
+    }
+    
+    findRelevantSources(question) {
+        /**
+         * Find relevant sources based on keyword matching
+         * This provides citations without needing a backend server
+         */
+        if (!this.knowledgeIndex || this.knowledgeIndex.length === 0) {
+            return [];
+        }
+        
+        // Extract keywords from question
+        const questionLower = question.toLowerCase();
+        
+        // English to German term mappings for better matching
+        const termMappings = {
+            'study': 'studium',
+            'studies': 'studium',
+            'application': 'antrag',
+            'apply': 'antrag',
+            'money': 'förderung',
+            'funding': 'förderung',
+            'age': 'altersgrenze',
+            'limit': 'grenze',
+            'abroad': 'ausland',
+            'foreign': 'ausland',
+            'income': 'einkommen',
+            'parents': 'eltern',
+            'repayment': 'rückzahlung',
+            'amount': 'höhe',
+            'loan': 'darlehen',
+            'grant': 'zuschuss',
+            'bafoeg': 'bafög',
+            'bafög': 'bafög'
+        };
+        
+        const questionWords = questionLower
+            .replace(/[^a-zäöüß\s]/g, ' ')
+            .split(/\s+/)
+            .filter(word => word.length > 2);
+        
+        // Expand question words with German equivalents
+        const expandedWords = new Set(questionWords);
+        questionWords.forEach(word => {
+            if (termMappings[word]) {
+                expandedWords.add(termMappings[word]);
+            }
+        });
+        
+        // Score each document based on keyword matches
+        const scoredDocs = this.knowledgeIndex.map(doc => {
+            let score = 0;
+            
+            // Check each keyword in the document
+            doc.keywords.forEach(keyword => {
+                // Direct match with question words
+                expandedWords.forEach(qword => {
+                    if (keyword === qword) {
+                        score += 10; // Exact match
+                    } else if (keyword.includes(qword) && qword.length > 3) {
+                        score += 5; // Partial match
+                    } else if (qword.includes(keyword) && keyword.length > 3) {
+                        score += 3; // Word contains keyword
+                    }
+                });
+            });
+            
+            // Bonus for matching document name
+            const docNameLower = doc.name.toLowerCase();
+            expandedWords.forEach(qword => {
+                if (docNameLower.includes(qword) && qword.length > 3) {
+                    score += 15;
+                }
+            });
+            
+            return { ...doc, score };
+        });
+        
+        // Sort by score and return top 3 relevant sources
+        const relevantSources = scoredDocs
+            .filter(doc => doc.score > 0)
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 3)
+            .map(doc => ({
+                name: doc.name,
+                url: doc.url,
+                file: doc.file
+            }));
+        
+        return relevantSources;
+    }
+    
     loadApiKey() {
         const stored = localStorage.getItem('openrouter_api_key');
         if (stored) {
@@ -66,12 +202,12 @@ class ChatbotApp {
     saveApiKey() {
         const key = this.apiKeyInput.value.trim();
         if (!key) {
-            alert('Bitte gib einen API-Schlüssel ein.');
+            alert('Please enter an API key.');
             return;
         }
         
         if (!key.startsWith('sk-or-')) {
-            alert('Der API-Schlüssel sollte mit "sk-or-" beginnen. Bitte überprüfe deinen Schlüssel.');
+            alert('The API key should start with "sk-or-". Please check your key.');
             return;
         }
         
@@ -82,7 +218,7 @@ class ChatbotApp {
     }
     
     changeApiKey() {
-        if (confirm('Möchtest du wirklich den API-Schlüssel ändern? Der Chat wird zurückgesetzt.')) {
+        if (confirm('Do you really want to change the API key? The chat will be reset.')) {
             this.apiKey = null;
             localStorage.removeItem('openrouter_api_key');
             this.clearChat();
@@ -106,8 +242,8 @@ class ChatbotApp {
         this.messagesContainer.innerHTML = `
             <div class="message bot-message">
                 <div class="message-content">
-                    <strong>Willkommen!</strong> Ich bin dein BAföG-Assistent. 
-                    Stelle mir deine Fragen zu BAföG und ich helfe dir gerne weiter.
+                    <strong>Welcome!</strong> I'm your BAföG assistant. 
+                    Ask me your questions about BAföG and I'll be happy to help you.
                 </div>
             </div>
         `;
@@ -126,9 +262,35 @@ class ChatbotApp {
         this.setProcessing(true);
         
         try {
-            // Get response from OpenRouter API
-            const response = await this.callOpenRouter(message);
-            this.addMessage(response, 'bot');
+            let response;
+            // Try backend API first if available, otherwise use direct OpenRouter with client-side citations
+            if (this.backendAvailable) {
+                response = await this.callBackendAPI(message);
+            } else {
+                // Get response from OpenRouter
+                response = await this.callOpenRouter(message);
+                // Add client-side citations based on keyword matching
+                let sources = this.findRelevantSources(message);
+                
+                // If no specific sources found, provide general BAföG information sources
+                if (sources.length === 0 && this.knowledgeIndex.length > 0) {
+                    sources = this.knowledgeIndex
+                        .filter(doc => 
+                            doc.keywords.includes('bafög') ||
+                            doc.name.toLowerCase().includes('bafoeg') ||
+                            doc.name.toLowerCase().includes('bafög')
+                        )
+                        .slice(0, 2)
+                        .map(doc => ({
+                            name: doc.name,
+                            url: doc.url,
+                            file: doc.file
+                        }));
+                }
+                
+                response.sources = sources;
+            }
+            this.addMessage(response.answer, 'bot', response.sources);
         } catch (error) {
             console.error('Error:', error);
             this.addErrorMessage(error.message);
@@ -138,21 +300,56 @@ class ChatbotApp {
         }
     }
     
+    async callBackendAPI(userMessage) {
+        try {
+            const response = await fetch(`${this.backendUrl}/chat`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    question: userMessage,
+                    api_key: this.apiKey
+                })
+            });
+            
+            if (!response.ok) {
+                // If backend fails, fall back to direct OpenRouter
+                console.log('Backend API failed, falling back to direct OpenRouter');
+                this.backendAvailable = false;
+                return await this.callOpenRouter(userMessage);
+            }
+            
+            const data = await response.json();
+            return {
+                answer: data.answer,
+                sources: data.sources || []
+            };
+        } catch (error) {
+            // If backend is unreachable, fall back to direct OpenRouter
+            console.log('Backend API unreachable, falling back to direct OpenRouter');
+            this.backendAvailable = false;
+            return await this.callOpenRouter(userMessage);
+        }
+    }
+    
     async callOpenRouter(userMessage) {
         // Build the conversation with context
-        const systemPrompt = `Du bist ein hilfreicher Assistent für BAföG-Fragen. 
-Beantworte Fragen zu BAföG (Bundesausbildungsförderungsgesetz) in Deutschland auf Deutsch.
-Sei präzise, freundlich und hilfreich. Wenn du etwas nicht weißt, sage es ehrlich.
-Weise darauf hin, dass Beträge und Regelungen sich ändern können und aktuelle Informationen beim zuständigen BAföG-Amt eingeholt werden sollten.
+        const systemPrompt = `You are a helpful assistant for BAföG questions. 
+Answer questions about BAföG (Federal Training Assistance Act) in Germany.
+Be precise, friendly, and helpful. If you don't know something, say so honestly.
+Point out that amounts and regulations may change and current information should be obtained from the responsible BAföG office.
 
-Wichtige BAföG-Informationen:
-- BAföG ist eine staatliche Förderung für Studierende und Schüler in Deutschland
-- Die Höhe hängt vom Einkommen der Eltern und der eigenen Wohnsituation ab
-- Es gibt einen Höchstsatz für Studierende (variiert je nach Wohnsituation)
-- Die Förderung besteht zur Hälfte aus einem Zuschuss und zur Hälfte aus einem zinslosen Darlehen
-- Die Rückzahlung beginnt einige Jahre nach Ende der Förderungshöchstdauer
-- Es gibt eine Rückzahlungsobergrenze
-- Antragstellung erfolgt beim zuständigen Studierendenwerk oder BAföG-Amt`;
+Important BAföG information:
+- BAföG is a state funding for students and pupils in Germany
+- The amount depends on parental income and your living situation
+- There is a maximum rate for students (varies depending on living situation)
+- The funding consists half of a grant and half of an interest-free loan
+- Repayment begins several years after the end of the maximum funding period
+- There is a repayment cap
+- Application is made to the responsible student services or BAföG office
+
+When providing information, if you have specific knowledge from documents, mention that you found this information in specific resources.`;
 
         const messages = [
             { role: 'system', content: systemPrompt },
@@ -179,13 +376,13 @@ Wichtige BAföG-Informationen:
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
             if (response.status === 401) {
-                throw new Error('Ungültiger API-Schlüssel. Bitte überprüfe deinen OpenRouter API-Schlüssel.');
+                throw new Error('Invalid API key. Please check your OpenRouter API key.');
             } else if (response.status === 429) {
-                throw new Error('Zu viele Anfragen. Bitte warte einen Moment und versuche es erneut.');
+                throw new Error('Too many requests. Please wait a moment and try again.');
             } else if (response.status === 400 && errorData.error?.message?.includes('No endpoints found')) {
-                throw new Error('Das ausgewählte Modell ist nicht verfügbar. Bitte versuche ein anderes Modell oder überprüfe die verfügbaren Modelle auf openrouter.ai/models');
+                throw new Error('The selected model is not available. Please try another model or check available models at openrouter.ai/models');
             } else {
-                throw new Error(errorData.error?.message || `API-Fehler: ${response.status}`);
+                throw new Error(errorData.error?.message || `API error: ${response.status}`);
             }
         }
         
@@ -193,7 +390,7 @@ Wichtige BAföG-Informationen:
         const assistantMessage = data.choices[0]?.message?.content;
         
         if (!assistantMessage) {
-            throw new Error('Keine Antwort vom Server erhalten.');
+            throw new Error('No response received from server.');
         }
         
         // Update conversation history (keep last 10 messages to avoid token limits)
@@ -207,10 +404,14 @@ Wichtige BAföG-Informationen:
             this.conversationHistory = this.conversationHistory.slice(-10);
         }
         
-        return assistantMessage;
+        // Return answer (sources will be added by sendMessage using client-side matching)
+        return {
+            answer: assistantMessage,
+            sources: [] // Will be populated by findRelevantSources in sendMessage
+        };
     }
     
-    addMessage(text, type) {
+    addMessage(text, type, sources = []) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${type}-message`;
         
@@ -219,6 +420,26 @@ Wichtige BAföG-Informationen:
         contentDiv.textContent = text;
         
         messageDiv.appendChild(contentDiv);
+        
+        // Add sources if available (for bot messages)
+        if (type === 'bot' && sources && sources.length > 0) {
+            const sourcesDiv = document.createElement('div');
+            sourcesDiv.className = 'sources';
+            sourcesDiv.innerHTML = '<strong>📚 Sources:</strong><br>';
+            
+            sources.forEach(source => {
+                const sourceLink = document.createElement('a');
+                sourceLink.href = source.url;
+                sourceLink.target = '_blank';
+                sourceLink.textContent = source.name;
+                sourceLink.style.display = 'block';
+                sourceLink.style.marginTop = '4px';
+                sourcesDiv.appendChild(sourceLink);
+            });
+            
+            messageDiv.appendChild(sourcesDiv);
+        }
+        
         this.messagesContainer.appendChild(messageDiv);
         
         // Scroll to bottom
@@ -231,7 +452,7 @@ Wichtige BAföG-Informationen:
         
         const contentDiv = document.createElement('div');
         contentDiv.className = 'message-content';
-        contentDiv.innerHTML = `<strong>⚠️ Fehler:</strong> ${errorText}`;
+        contentDiv.innerHTML = `<strong>⚠️ Error:</strong> ${errorText}`;
         
         messageDiv.appendChild(contentDiv);
         this.messagesContainer.appendChild(messageDiv);

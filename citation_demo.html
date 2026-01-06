@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citation Demo - BAföG Chatbot</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f8fafc;
+        }
+        h1 {
+            color: #2563eb;
+        }
+        .demo-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .question {
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 10px;
+        }
+        .sources {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+        .sources strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+        .sources a {
+            display: block;
+            color: #2563eb;
+            text-decoration: none;
+            padding: 4px 0;
+        }
+        .sources a:hover {
+            text-decoration: underline;
+        }
+        .info {
+            background: #dbeafe;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎓 BAföG Chatbot - Citation Demo</h1>
+    
+    <div class="info">
+        <strong>✅ Citations Now Work Without Backend!</strong>
+        <p>The chatbot now automatically shows relevant source citations for every response, directly in the browser. No need to start a backend server!</p>
+    </div>
+
+    <h2>How It Works</h2>
+    <ol>
+        <li>Knowledge index is loaded on page load (26 documents)</li>
+        <li>When you ask a question, keywords are extracted</li>
+        <li>Relevant sources are matched based on keyword similarity</li>
+        <li>Citations are displayed with clickable URLs</li>
+    </ol>
+
+    <h2>Example Citations</h2>
+    
+    <div class="demo-box">
+        <div class="question">Q: How do I apply for BAföG?</div>
+        <p>Expected Citations:</p>
+        <div class="sources">
+            <strong>📚 Sources:</strong>
+            <a href="https://www.xn--bafg-7qa.de/bafoeg/de/antrag-stellen/alle-antragsformulare/alle-antragsformulare_node.html" target="_blank">
+                Antragsformulare (Application Forms)
+            </a>
+            <a href="https://www.xn--bafg-7qa.de/bafoeg/de/das-bafoeg-alle-infos-auf-einen-blick/fragen-und-antworten/fragen-und-antworten_node.html" target="_blank">
+                Fragen Und Antworten (Questions and Answers)
+            </a>
+        </div>
+    </div>
+
+    <div class="demo-box">
+        <div class="question">Q: What is the age limit for BAföG?</div>
+        <p>Expected Citations:</p>
+        <div class="sources">
+            <strong>📚 Sources:</strong>
+            <a href="https://www.xn--bafg-7qa.de/bafoeg/de/das-bafoeg-alle-infos-auf-einen-blick/einzelfragen-der-foerderung/gibt-es-eine-altersgrenze/gibt-es-eine-altersgrenze.html" target="_blank">
+                Gibt Es Eine Altersgrenze (Is There an Age Limit)
+            </a>
+        </div>
+    </div>
+
+    <div class="demo-box">
+        <div class="question">Q: Can I get BAföG if I study abroad?</div>
+        <p>Expected Citations:</p>
+        <div class="sources">
+            <strong>📚 Sources:</strong>
+            <a href="https://www.xn--bafg-7qa.de/bafoeg/de/das-bafoeg-alle-infos-auf-einen-blick/einzelfragen-der-foerderung/gibt-es-bafoeg-auch-im-ausland/gibt-es-bafoeg-auch-im-ausland.html" target="_blank">
+                Gibt Es Bafoeg Auch Im Ausland (BAföG Abroad)
+            </a>
+        </div>
+    </div>
+
+    <h2>Technical Details</h2>
+    <ul>
+        <li><strong>Knowledge Index:</strong> <code>knowledge_base/knowledge_index.json</code></li>
+        <li><strong>Documents Indexed:</strong> 26 TXT files</li>
+        <li><strong>Keywords per Document:</strong> ~15-20 (German and English)</li>
+        <li><strong>Matching Algorithm:</strong> Keyword-based scoring with English-German mappings</li>
+        <li><strong>Fallback:</strong> General BAföG sources if no specific match found</li>
+    </ul>
+
+    <h2>Key Features</h2>
+    <ul>
+        <li>✅ Works entirely in browser - no backend needed</li>
+        <li>✅ Automatic citation matching for every question</li>
+        <li>✅ Clickable URLs to original source documents</li>
+        <li>✅ English-German keyword mapping for international users</li>
+        <li>✅ Fallback to general sources for broad questions</li>
+        <li>✅ Fast and responsive (no API calls for citations)</li>
+    </ul>
+
+    <div class="info">
+        <strong>📝 Note:</strong> The backend API (<code>api_server.py</code>) is still available for advanced users who want more accurate RAG-based citations, but it's now completely optional!
+    </div>
+
+    <p style="text-align: center; margin-top: 40px;">
+        <a href="index.html" style="color: #2563eb; text-decoration: none; font-weight: 600;">
+            ← Back to Chatbot
+        </a>
+    </p>
+</body>
+</html>
