@@ -20,6 +20,7 @@ class RAGChatbot:
             raise ValueError("OpenRouter API key not found. Please set OPENROUTER_API_KEY in .env file")
         
         # Initialize LLM with OpenRouter
+        # Note: Using OpenAI-compatible API with OpenRouter's endpoint
         self.llm = OpenAI(
             api_key=self.api_key,
             base_url="https://openrouter.ai/api/v1",

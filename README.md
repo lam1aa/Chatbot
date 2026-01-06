@@ -221,7 +221,7 @@ Edit `src/rag_chatbot.py` to adjust:
 
 - The vector database is created on first run and persisted in `chroma_db/`
 - All components are open-source except the OpenRouter API (which provides free tier)
-- Documents are split into 500-character chunks with 50-character overlap
+- Documents are split into 1000-character chunks with 100-character overlap for better context
 
 ## License
 
