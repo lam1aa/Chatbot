@@ -236,7 +236,7 @@ python kb_manager.py rebuild
 You can change the model in `.env`:
 
 ```
-OPENROUTER_MODEL=meta-llama/llama-3.1-8b-instruct:free
+OPENROUTER_MODEL=meta-llama/llama-3.2-3b-instruct:free
 ```
 
 See available models at: https://openrouter.ai/models

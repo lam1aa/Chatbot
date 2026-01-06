@@ -64,7 +64,7 @@ const systemPrompt = `Your custom instructions here...`;
 In `app.js`, find this line:
 
 ```javascript
-model: 'meta-llama/llama-3.1-8b-instruct:free',
+model: 'meta-llama/llama-3.2-3b-instruct:free',
 ```
 
 You can change it to any model available on OpenRouter. See [OpenRouter Models](https://openrouter.ai/models) for options.

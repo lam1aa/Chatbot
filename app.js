@@ -169,7 +169,7 @@ Wichtige BAföG-Informationen:
                 'X-Title': 'BAföG Chatbot'
             },
             body: JSON.stringify({
-                model: 'meta-llama/llama-3.1-8b-instruct:free',
+                model: 'meta-llama/llama-3.2-3b-instruct:free',
                 messages: messages,
                 temperature: 0.7,
                 max_tokens: 1000
@@ -182,6 +182,8 @@ Wichtige BAföG-Informationen:
                 throw new Error('Ungültiger API-Schlüssel. Bitte überprüfe deinen OpenRouter API-Schlüssel.');
             } else if (response.status === 429) {
                 throw new Error('Zu viele Anfragen. Bitte warte einen Moment und versuche es erneut.');
+            } else if (response.status === 400 && errorData.error?.message?.includes('No endpoints found')) {
+                throw new Error('Das ausgewählte Modell ist nicht verfügbar. Bitte versuche ein anderes Modell oder überprüfe die verfügbaren Modelle auf openrouter.ai/models');
             } else {
                 throw new Error(errorData.error?.message || `API-Fehler: ${response.status}`);
             }
