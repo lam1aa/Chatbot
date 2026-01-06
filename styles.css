@@ -257,12 +257,22 @@ header h1 {
 
 .bot-message {
     justify-content: flex-start;
+    flex-direction: column;
 }
 
 .bot-message .message-content {
     background: var(--bot-message-bg);
     color: var(--bot-message-text);
     border-bottom-left-radius: 4px;
+}
+
+.bot-message .sources {
+    max-width: 80%;
+    background: var(--surface);
+    padding: 10px 16px;
+    border-radius: 8px;
+    margin-top: 8px;
+    border: 1px solid var(--border);
 }
 
 .error-message {
@@ -277,11 +287,26 @@ header h1 {
 }
 
 .sources {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
+}
+
+.sources strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.sources a {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: block;
+    margin-top: 4px;
+    padding: 4px 0;
+}
+
+.sources a:hover {
+    text-decoration: underline;
 }
 
 .sources-title {

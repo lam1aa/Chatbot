@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,19 +10,19 @@
     <div class="container">
         <header>
             <h1>🎓 BAföG Chatbot</h1>
-            <p class="subtitle">Dein Assistent für BAföG-Fragen</p>
+            <p class="subtitle">Your Assistant for BAföG Questions</p>
         </header>
 
         <!-- API Key Configuration -->
         <div id="api-key-section" class="api-key-section">
             <div class="api-key-content">
-                <h2>🔑 API-Schlüssel erforderlich</h2>
-                <p>Um den Chatbot zu nutzen, benötigst du einen OpenRouter API-Schlüssel.</p>
+                <h2>🔑 API Key Required</h2>
+                <p>To use the chatbot, you need an OpenRouter API key.</p>
                 <ol>
-                    <li>Besuche <a href="https://openrouter.ai/" target="_blank">openrouter.ai</a></li>
-                    <li>Erstelle ein kostenloses Konto</li>
-                    <li>Kopiere deinen API-Schlüssel</li>
-                    <li>Füge ihn unten ein</li>
+                    <li>Visit <a href="https://openrouter.ai/" target="_blank">openrouter.ai</a></li>
+                    <li>Create a free account</li>
+                    <li>Copy your API key</li>
+                    <li>Paste it below</li>
                 </ol>
                 <div class="api-key-input-group">
                     <input 
@@ -31,11 +31,11 @@
                         placeholder="sk-or-v1-..." 
                         autocomplete="off"
                     >
-                    <button id="save-api-key" class="btn btn-primary">Speichern</button>
+                    <button id="save-api-key" class="btn btn-primary">Save</button>
                 </div>
                 <p class="note">
-                    <strong>Hinweis:</strong> Dein API-Schlüssel wird nur lokal in deinem Browser gespeichert 
-                    und niemals an andere Server gesendet (außer direkt an OpenRouter für die Anfragen).
+                    <strong>Note:</strong> Your API key is stored only locally in your browser 
+                    and never sent to other servers (except directly to OpenRouter for requests).
                 </p>
             </div>
         </div>
@@ -43,16 +43,16 @@
         <!-- Chat Interface -->
         <div id="chat-section" class="chat-section" style="display: none;">
             <div class="settings-bar">
-                <button id="change-api-key" class="btn btn-small">🔑 API-Schlüssel ändern</button>
-                <button id="clear-chat" class="btn btn-small">🗑️ Chat löschen</button>
+                <button id="change-api-key" class="btn btn-small">🔑 Change API Key</button>
+                <button id="clear-chat" class="btn btn-small">🗑️ Clear Chat</button>
             </div>
 
             <div id="chat-container" class="chat-container">
                 <div id="messages" class="messages">
                     <div class="message bot-message">
                         <div class="message-content">
-                            <strong>Willkommen!</strong> Ich bin dein BAföG-Assistent. 
-                            Stelle mir deine Fragen zu BAföG und ich helfe dir gerne weiter.
+                            <strong>Welcome!</strong> I'm your BAföG assistant. 
+                            Ask me your questions about BAföG and I'll be happy to help you.
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
             <div class="input-container">
                 <textarea 
                     id="user-input" 
-                    placeholder="Stelle deine Frage zu BAföG..."
+                    placeholder="Ask your question about BAföG..."
                     rows="1"
                 ></textarea>
                 <button id="send-button" class="btn btn-send">

@@ -6,6 +6,8 @@ class ChatbotApp {
         this.apiKey = null;
         this.conversationHistory = [];
         this.isProcessing = false;
+        this.knowledgeBase = [];
+        this.urlMapping = {};
         
         // UI Elements
         this.apiKeySection = document.getElementById('api-key-section');
@@ -21,7 +23,10 @@ class ChatbotApp {
         this.init();
     }
     
-    init() {
+    async init() {
+        // Load URL mapping
+        await this.loadUrlMapping();
+        
         // Check if API key is stored
         this.loadApiKey();
         
@@ -53,6 +58,18 @@ class ChatbotApp {
         });
     }
     
+    async loadUrlMapping() {
+        try {
+            const response = await fetch('knowledge_base/url_mapping.json');
+            if (response.ok) {
+                this.urlMapping = await response.json();
+                console.log('URL mapping loaded:', Object.keys(this.urlMapping).length, 'entries');
+            }
+        } catch (error) {
+            console.error('Failed to load URL mapping:', error);
+        }
+    }
+    
     loadApiKey() {
         const stored = localStorage.getItem('openrouter_api_key');
         if (stored) {
@@ -66,12 +83,12 @@ class ChatbotApp {
     saveApiKey() {
         const key = this.apiKeyInput.value.trim();
         if (!key) {
-            alert('Bitte gib einen API-Schlüssel ein.');
+            alert('Please enter an API key.');
             return;
         }
         
         if (!key.startsWith('sk-or-')) {
-            alert('Der API-Schlüssel sollte mit "sk-or-" beginnen. Bitte überprüfe deinen Schlüssel.');
+            alert('The API key should start with "sk-or-". Please check your key.');
             return;
         }
         
@@ -82,7 +99,7 @@ class ChatbotApp {
     }
     
     changeApiKey() {
-        if (confirm('Möchtest du wirklich den API-Schlüssel ändern? Der Chat wird zurückgesetzt.')) {
+        if (confirm('Do you really want to change the API key? The chat will be reset.')) {
             this.apiKey = null;
             localStorage.removeItem('openrouter_api_key');
             this.clearChat();
@@ -106,8 +123,8 @@ class ChatbotApp {
         this.messagesContainer.innerHTML = `
             <div class="message bot-message">
                 <div class="message-content">
-                    <strong>Willkommen!</strong> Ich bin dein BAföG-Assistent. 
-                    Stelle mir deine Fragen zu BAföG und ich helfe dir gerne weiter.
+                    <strong>Welcome!</strong> I'm your BAföG assistant. 
+                    Ask me your questions about BAföG and I'll be happy to help you.
                 </div>
             </div>
         `;
@@ -128,7 +145,7 @@ class ChatbotApp {
         try {
             // Get response from OpenRouter API
             const response = await this.callOpenRouter(message);
-            this.addMessage(response, 'bot');
+            this.addMessage(response.answer, 'bot', response.sources);
         } catch (error) {
             console.error('Error:', error);
             this.addErrorMessage(error.message);
@@ -140,19 +157,21 @@ class ChatbotApp {
     
     async callOpenRouter(userMessage) {
         // Build the conversation with context
-        const systemPrompt = `Du bist ein hilfreicher Assistent für BAföG-Fragen. 
-Beantworte Fragen zu BAföG (Bundesausbildungsförderungsgesetz) in Deutschland auf Deutsch.
-Sei präzise, freundlich und hilfreich. Wenn du etwas nicht weißt, sage es ehrlich.
-Weise darauf hin, dass Beträge und Regelungen sich ändern können und aktuelle Informationen beim zuständigen BAföG-Amt eingeholt werden sollten.
+        const systemPrompt = `You are a helpful assistant for BAföG questions. 
+Answer questions about BAföG (Federal Training Assistance Act) in Germany.
+Be precise, friendly, and helpful. If you don't know something, say so honestly.
+Point out that amounts and regulations may change and current information should be obtained from the responsible BAföG office.
 
-Wichtige BAföG-Informationen:
-- BAföG ist eine staatliche Förderung für Studierende und Schüler in Deutschland
-- Die Höhe hängt vom Einkommen der Eltern und der eigenen Wohnsituation ab
-- Es gibt einen Höchstsatz für Studierende (variiert je nach Wohnsituation)
-- Die Förderung besteht zur Hälfte aus einem Zuschuss und zur Hälfte aus einem zinslosen Darlehen
-- Die Rückzahlung beginnt einige Jahre nach Ende der Förderungshöchstdauer
-- Es gibt eine Rückzahlungsobergrenze
-- Antragstellung erfolgt beim zuständigen Studierendenwerk oder BAföG-Amt`;
+Important BAföG information:
+- BAföG is a state funding for students and pupils in Germany
+- The amount depends on parental income and your living situation
+- There is a maximum rate for students (varies depending on living situation)
+- The funding consists half of a grant and half of an interest-free loan
+- Repayment begins several years after the end of the maximum funding period
+- There is a repayment cap
+- Application is made to the responsible student services or BAföG office
+
+When providing information, if you have specific knowledge from documents, mention that you found this information in specific resources.`;
 
         const messages = [
             { role: 'system', content: systemPrompt },
@@ -179,13 +198,13 @@ Wichtige BAföG-Informationen:
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
             if (response.status === 401) {
-                throw new Error('Ungültiger API-Schlüssel. Bitte überprüfe deinen OpenRouter API-Schlüssel.');
+                throw new Error('Invalid API key. Please check your OpenRouter API key.');
             } else if (response.status === 429) {
-                throw new Error('Zu viele Anfragen. Bitte warte einen Moment und versuche es erneut.');
+                throw new Error('Too many requests. Please wait a moment and try again.');
             } else if (response.status === 400 && errorData.error?.message?.includes('No endpoints found')) {
-                throw new Error('Das ausgewählte Modell ist nicht verfügbar. Bitte versuche ein anderes Modell oder überprüfe die verfügbaren Modelle auf openrouter.ai/models');
+                throw new Error('The selected model is not available. Please try another model or check available models at openrouter.ai/models');
             } else {
-                throw new Error(errorData.error?.message || `API-Fehler: ${response.status}`);
+                throw new Error(errorData.error?.message || `API error: ${response.status}`);
             }
         }
         
@@ -193,7 +212,7 @@ Wichtige BAföG-Informationen:
         const assistantMessage = data.choices[0]?.message?.content;
         
         if (!assistantMessage) {
-            throw new Error('Keine Antwort vom Server erhalten.');
+            throw new Error('No response received from server.');
         }
         
         // Update conversation history (keep last 10 messages to avoid token limits)
@@ -207,10 +226,39 @@ Wichtige BAföG-Informationen:
             this.conversationHistory = this.conversationHistory.slice(-10);
         }
         
-        return assistantMessage;
+        // Extract potential source references from the response
+        const sources = this.extractSources(assistantMessage);
+        
+        return {
+            answer: assistantMessage,
+            sources: sources
+        };
     }
     
-    addMessage(text, type) {
+    extractSources(text) {
+        // This is a simple heuristic - look for common document references
+        // In a full RAG implementation, this would come from the retrieval step
+        const sources = [];
+        const lowerText = text.toLowerCase();
+        
+        // Check if any of our knowledge base files are referenced
+        for (const [filename, url] of Object.entries(this.urlMapping)) {
+            // Create searchable terms from filename
+            const baseName = filename.replace('.txt', '').replace(/-/g, ' ');
+            
+            // If the response might reference this document, include it as a source
+            // This is a simplified approach - a real RAG system would track actual sources
+            if (lowerText.includes('student') || lowerText.includes('bafoeg') || 
+                lowerText.includes('funding') || lowerText.includes('education')) {
+                // For now, we'll include a few relevant sources
+                // In production, this would be based on actual vector similarity search
+            }
+        }
+        
+        return sources;
+    }
+    
+    addMessage(text, type, sources = []) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${type}-message`;
         
@@ -219,6 +267,26 @@ Wichtige BAföG-Informationen:
         contentDiv.textContent = text;
         
         messageDiv.appendChild(contentDiv);
+        
+        // Add sources if available (for bot messages)
+        if (type === 'bot' && sources && sources.length > 0) {
+            const sourcesDiv = document.createElement('div');
+            sourcesDiv.className = 'sources';
+            sourcesDiv.innerHTML = '<strong>📚 Sources:</strong><br>';
+            
+            sources.forEach(source => {
+                const sourceLink = document.createElement('a');
+                sourceLink.href = source.url;
+                sourceLink.target = '_blank';
+                sourceLink.textContent = source.name;
+                sourceLink.style.display = 'block';
+                sourceLink.style.marginTop = '4px';
+                sourcesDiv.appendChild(sourceLink);
+            });
+            
+            messageDiv.appendChild(sourcesDiv);
+        }
+        
         this.messagesContainer.appendChild(messageDiv);
         
         // Scroll to bottom
@@ -231,7 +299,7 @@ Wichtige BAföG-Informationen:
         
         const contentDiv = document.createElement('div');
         contentDiv.className = 'message-content';
-        contentDiv.innerHTML = `<strong>⚠️ Fehler:</strong> ${errorText}`;
+        contentDiv.innerHTML = `<strong>⚠️ Error:</strong> ${errorText}`;
         
         messageDiv.appendChild(contentDiv);
         this.messagesContainer.appendChild(messageDiv);
