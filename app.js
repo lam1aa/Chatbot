@@ -1,12 +1,12 @@
 // BAföG Chatbot Web Application
-// Supports both backend API (with RAG) and direct OpenRouter calls
+// Client-side citations using keyword matching
 
 class ChatbotApp {
     constructor() {
         this.apiKey = null;
         this.conversationHistory = [];
         this.isProcessing = false;
-        this.urlMapping = {};
+        this.knowledgeIndex = [];
         this.backendAvailable = false;
         this.backendUrl = 'http://localhost:5000';
         
@@ -25,11 +25,11 @@ class ChatbotApp {
     }
     
     async init() {
-        // Check if backend API is available
-        await this.checkBackend();
+        // Load knowledge index for client-side citations
+        await this.loadKnowledgeIndex();
         
-        // Load URL mapping
-        await this.loadUrlMapping();
+        // Check if backend API is available (optional)
+        await this.checkBackend();
         
         // Check if API key is stored
         this.loadApiKey();
@@ -85,16 +85,109 @@ class ChatbotApp {
         }
     }
     
-    async loadUrlMapping() {
+    async loadKnowledgeIndex() {
         try {
-            const response = await fetch('knowledge_base/url_mapping.json');
+            const response = await fetch('knowledge_base/knowledge_index.json');
             if (response.ok) {
-                this.urlMapping = await response.json();
-                console.log('URL mapping loaded:', Object.keys(this.urlMapping).length, 'entries');
+                this.knowledgeIndex = await response.json();
+                console.log('Knowledge index loaded:', this.knowledgeIndex.length, 'documents');
+            } else {
+                console.warn('Knowledge index not found, citations will not be available');
             }
         } catch (error) {
-            console.error('Failed to load URL mapping:', error);
+            console.error('Failed to load knowledge index:', error);
         }
+    }
+    
+    findRelevantSources(question) {
+        /**
+         * Find relevant sources based on keyword matching
+         * This provides citations without needing a backend server
+         */
+        if (!this.knowledgeIndex || this.knowledgeIndex.length === 0) {
+            return [];
+        }
+        
+        // Extract keywords from question
+        const questionLower = question.toLowerCase();
+        
+        // English to German term mappings for better matching
+        const termMappings = {
+            'student': 'student',
+            'study': 'studium',
+            'studies': 'studium',
+            'application': 'antrag',
+            'apply': 'antrag',
+            'money': 'förderung',
+            'funding': 'förderung',
+            'age': 'altersgrenze',
+            'limit': 'grenze',
+            'abroad': 'ausland',
+            'foreign': 'ausland',
+            'income': 'einkommen',
+            'parents': 'eltern',
+            'repayment': 'rückzahlung',
+            'amount': 'höhe',
+            'loan': 'darlehen',
+            'grant': 'zuschuss',
+            'bafoeg': 'bafög',
+            'bafög': 'bafög'
+        };
+        
+        const questionWords = questionLower
+            .replace(/[^a-zäöüß\s]/g, ' ')
+            .split(/\s+/)
+            .filter(word => word.length > 2);
+        
+        // Expand question words with German equivalents
+        const expandedWords = new Set(questionWords);
+        questionWords.forEach(word => {
+            if (termMappings[word]) {
+                expandedWords.add(termMappings[word]);
+            }
+        });
+        
+        // Score each document based on keyword matches
+        const scoredDocs = this.knowledgeIndex.map(doc => {
+            let score = 0;
+            
+            // Check each keyword in the document
+            doc.keywords.forEach(keyword => {
+                // Direct match with question words
+                expandedWords.forEach(qword => {
+                    if (keyword === qword) {
+                        score += 10; // Exact match
+                    } else if (keyword.includes(qword) && qword.length > 3) {
+                        score += 5; // Partial match
+                    } else if (qword.includes(keyword) && keyword.length > 3) {
+                        score += 3; // Word contains keyword
+                    }
+                });
+            });
+            
+            // Bonus for matching document name
+            const docNameLower = doc.name.toLowerCase();
+            expandedWords.forEach(qword => {
+                if (docNameLower.includes(qword) && qword.length > 3) {
+                    score += 15;
+                }
+            });
+            
+            return { ...doc, score };
+        });
+        
+        // Sort by score and return top 3 relevant sources
+        const relevantSources = scoredDocs
+            .filter(doc => doc.score > 0)
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 3)
+            .map(doc => ({
+                name: doc.name,
+                url: doc.url,
+                file: doc.file
+            }));
+        
+        return relevantSources;
     }
     
     loadApiKey() {
@@ -171,11 +264,32 @@ class ChatbotApp {
         
         try {
             let response;
-            // Try backend API first if available, otherwise use direct OpenRouter
+            // Try backend API first if available, otherwise use direct OpenRouter with client-side citations
             if (this.backendAvailable) {
                 response = await this.callBackendAPI(message);
             } else {
+                // Get response from OpenRouter
                 response = await this.callOpenRouter(message);
+                // Add client-side citations based on keyword matching
+                let sources = this.findRelevantSources(message);
+                
+                // If no specific sources found, provide general BAföG information sources
+                if (sources.length === 0 && this.knowledgeIndex.length > 0) {
+                    sources = this.knowledgeIndex
+                        .filter(doc => 
+                            doc.keywords.includes('bafög') ||
+                            doc.name.toLowerCase().includes('bafoeg') ||
+                            doc.name.toLowerCase().includes('bafög')
+                        )
+                        .slice(0, 2)
+                        .map(doc => ({
+                            name: doc.name,
+                            url: doc.url,
+                            file: doc.file
+                        }));
+                }
+                
+                response.sources = sources;
             }
             this.addMessage(response.answer, 'bot', response.sources);
         } catch (error) {
@@ -291,14 +405,10 @@ When providing information, if you have specific knowledge from documents, menti
             this.conversationHistory = this.conversationHistory.slice(-10);
         }
         
-        // Extract potential source references from the response
-        // Note: Without backend RAG, we cannot reliably determine which sources
-        // were actually used. This is a placeholder for when backend is unavailable.
-        const sources = [];
-        
+        // Return answer (sources will be added by sendMessage using client-side matching)
         return {
             answer: assistantMessage,
-            sources: sources
+            sources: [] // Will be populated by findRelevantSources in sendMessage
         };
     }
     

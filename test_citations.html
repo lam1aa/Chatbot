@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Citations</title>
+</head>
+<body>
+    <h1>Testing Client-Side Citations</h1>
+    <div id="results"></div>
+    
+    <script>
+    async function testCitations() {
+        const response = await fetch('http://127.0.0.1:8080/knowledge_base/knowledge_index.json');
+        const knowledgeIndex = await response.json();
+        
+        console.log('Loaded', knowledgeIndex.length, 'documents');
+        
+        // Test function
+        function findRelevantSources(question) {
+            const questionLower = question.toLowerCase();
+            const questionWords = questionLower
+                .replace(/[^a-zäöüß\s]/g, ' ')
+                .split(/\s+/)
+                .filter(word => word.length > 3);
+            
+            const scoredDocs = knowledgeIndex.map(doc => {
+                let score = 0;
+                doc.keywords.forEach(keyword => {
+                    if (questionWords.includes(keyword)) {
+                        score += 10;
+                    }
+                    else if (questionLower.includes(keyword)) {
+                        score += 5;
+                    }
+                    questionWords.forEach(qword => {
+                        if (keyword.includes(qword)) {
+                            score += 3;
+                        }
+                    });
+                });
+                return { ...doc, score };
+            });
+            
+            return scoredDocs
+                .filter(doc => doc.score > 0)
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 3);
+        }
+        
+        // Test cases
+        const testQuestions = [
+            "What is BAföG?",
+            "How do I apply for BAföG?",
+            "What is the age limit for BAföG?",
+            "Can I get BAföG if I study abroad?",
+            "How much money will I get from BAföG?"
+        ];
+        
+        const results = document.getElementById('results');
+        testQuestions.forEach(question => {
+            const sources = findRelevantSources(question);
+            results.innerHTML += `<h3>Q: ${question}</h3>`;
+            results.innerHTML += `<p>Found ${sources.length} relevant sources:</p>`;
+            sources.forEach(s => {
+                results.innerHTML += `<li>${s.name} (score: ${s.score}) - <a href="${s.url}" target="_blank">Link</a></li>`;
+            });
+            results.innerHTML += '<hr>';
+        });
+    }
+    
+    testCitations();
+    </script>
+</body>
+</html>
