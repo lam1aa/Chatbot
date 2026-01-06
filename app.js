@@ -113,7 +113,6 @@ class ChatbotApp {
         
         // English to German term mappings for better matching
         const termMappings = {
-            'student': 'student',
             'study': 'studium',
             'studies': 'studium',
             'application': 'antrag',
