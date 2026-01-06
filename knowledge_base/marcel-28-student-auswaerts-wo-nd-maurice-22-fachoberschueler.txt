@@ -1,0 +1,143 @@
+Marcel (28), Student, auswärts wohnend mit Nebenjob, und Maurice (22), Fachoberschüler
+
+Marcel (28) studiert Maschinenbau im 6. Semester an einer Technischen Hochschule und wohnt in einer WG. Er verdient als studentische Hilfskraft monatlich 538 Euro (brutto) und führt eine „Riester-Rente“ fort, in die er zuvor bereits während seiner betrieblichen Berufsausbildung eingezahlt hat. Marcel ist selbst beitragspflichtig kranken- und pflegeversichert.
+
+Marcels Bruder Maurice (22) hat eine Berufsausbildung abgeschlossen und besucht jetzt die Fachoberschule.Er wohnt bei seinen Eltern und ist beitragsfrei bei ihnen in der Kranken- und Pflegeversicherung mitversichert.Der Vater ist Arbeitnehmer, hatte vor 2 Jahren ein Bruttojahreseinkommen von 42.000 Euro. Er zahlt, ebenso wie die Mutter, in eine „Riester-Rente“ ein. Die Kinderzulage ist auf den Vater übertragen.Die Mutter der beiden hatte vor zwei Jahren als Vollzeitbeschäftigte ein Bruttojahreseinkommen von 30.000 Euro.Seit letztem Jahr hat sich ihr Bruttojahreseinkommen wegen Reduzierung ihrer Arbeitszeit auf 18.000 Euro verringert.Sie stellt aufgrund der Veränderung ihrer Einkommensverhältnisse beim Amt für Ausbildungsförderung einenAntrag auf Aktualisierung ihres Einkommens.
+
+Berechnung der BAföG-Förderung
+
+Info: Gilt für neue Bewilligungszeiträume ab 01.08.2024, für laufende Bewilligungszeiträume ab 01.10.2024!
+
+[Tabelle: Tabelle mit 2 Spalten  (Rechnungsposten, Betrag) und 15 Datenzeilen.daten: 
+Zeile 1: Bruttoeinkommen aus nichtselbständiger Arbeit (1/12 des Jahreseinkommens des aktuellen Kalenderjahres 2024) | 538,00 €. 
+
+Zeile 2: abzüglich | . 
+
+Zeile 3: Werbungskosten (mindestens 1/12 des Werbungskostenpauschbetrages des aktuellen Kalenderjahrs 2024 von 1.230 Euro) | 102,50 €. 
+
+Zeile 4: abzüglich | . 
+
+Zeile 5: Sozialpauschale 22,3 %, Höchstbetrag 1.433,33 Euro monatlich | 97,12 €. 
+
+Zeile 6: "Riester-Rente" | 6,94 €. 
+
+Zeile 7: tatsächlich geleistete Steuern (Lohnsteuertabelle 2024, Steuerklasse I) | . 
+
+Zeile 8: - Einkommensteuer / Lohnsteuer | 0,00 €. 
+
+Zeile 9: - Kirchensteuer | 0,00 €. 
+
+Zeile 10: - Solidaritätszuschlag | 0,00 €. 
+
+Zeile 11: Einkommen von Marcel (im Sinne des BAföG) | 331,45 €. 
+
+Zeile 12: abzüglich | . 
+
+Zeile 13: Grundfreibetrag | 353,00 €. 
+
+Zeile 14: Einkommen von Marcel (im Sinne des BAföG) abzüglich des Grundfreibetrages | -21,55 €. 
+
+Zeile 15: anzurechnendes Einkommen von Marcel | 0,00 €. 
+]
+
+anzurechnendes Einkommen von Marcel
+
+[Tabelle: Tabelle mit 2 Spalten  (Rechnungsposten, Betrag) und 18 Datenzeilen.daten: 
+Zeile 1: Einkommen des Vaters | . 
+
+Zeile 2: Bruttoeinkommen aus nichtselbständiger Arbeit (1/12 des Jahreseinkommens des vorletzten Kalenderjahres 2022) | 3.500,00 €. 
+
+Zeile 3: abzüglich | . 
+
+Zeile 4: Werbungskosten(mindestens 1/12 des jährlichen Werbungskostenpauschbetrages des vorletzten Kalenderjahres 2022 von 1.200 Euro) | 100,00 €. 
+
+Zeile 5: abzüglich | . 
+
+Zeile 6: Sozialpauschale 22,3 %, Höchstbetrag 1.433,33 Euro monatlich | 758,20 €. 
+
+Zeile 7: "Riester-Rente" | 110,00 €. 
+
+Zeile 8:  | . 
+
+Zeile 9: Einkommen der Mutter | . 
+
+Zeile 10: Bruttoeinkommen der Mutter aus nichtselbständiger Arbeit (1/12 des Jahreseinkommens des aktuellen Kalenderjahres 2024) | 1.500,00 €. 
+
+Zeile 11: abzüglich | . 
+
+Zeile 12: Werbungskosten (mindestens 1/12 des Werbungskostenpauschbetrages des aktuellen Kalenderjahres 2024 von 1.230 Euro) | 102,50 €. 
+
+Zeile 13: abzüglich | . 
+
+Zeile 14: Sozialpauschale 22.3 %, Höchstbetrag 1.433.33 Euro monatlich | 311,64 €. 
+
+Zeile 15: "Riester-Rente" | 45,42 €. 
+
+Zeile 16:  | . 
+
+Zeile 17: tatsächlich geleistete Steuern (Einkommen-, Kirchensteuer und Solidaritätszuschlag 2022) | 390,86 €. 
+
+Zeile 18: Einkommensteuer der Eltern (im Sinne des BAföG) | 3.181,38 €. 
+]
+
+[Tabelle: Tabelle mit 2 Spalten  (Rechnungsposten, Betrag) und 7 Datenzeilen.daten: 
+Zeile 1: Einkommen der Eltern (im Sinne des BAföG) | 3.181,38 €. 
+
+Zeile 2: abzüglich | . 
+
+Zeile 3: Grundfreibetrag für die Eltern: | 2.540,00 €. 
+
+Zeile 4: Einkommen der Eltern (im Sinne des BAföG) abzüglich der Grundfreibeträge | 641,39 €. 
+
+Zeile 5: Kein Freibetrag für Marcel und Maurice, da beide in einer nach dem BAföG förderungsfähigen Ausbildung stehen | . 
+
+Zeile 6: Zusatzfreibetrag: 50% für die Eltern selbst | 320,69 €. 
+
+Zeile 7: Anrechnungsbetrag vom Elterneinkommen | 320,69 €. 
+]
+
+Anrechnungsbetrag vom Elterneinkommen
+
+[Tabelle: Tabelle mit 2 Spalten  (Bedarfssatz Marcel:, ) und 10 Datenzeilen.daten: 
+Zeile 1: Bedarfssatz Marcel: | . 
+
+Zeile 2: Grundbedarf Student/in | 475,00 €. 
+
+Zeile 3: auswärts wohnend | 380,00 €. 
+
+Zeile 4: Erhöhungsbetrag eigene Krankenversicherung | 102,00 €. 
+
+Zeile 5: Erhöhungsbetrag eigene Pflegeversicherung | 35,00 €. 
+
+Zeile 6:  | 992,00 €. 
+
+Zeile 7: abzüglich | . 
+
+Zeile 8: 1/2 des anzurechnenden Elterneinkommens | 160,35 €. 
+
+Zeile 9: Förderungsbetrag | 831,65 €. 
+
+Zeile 10: Förderungsbetrag (gerundet) | 832,00 €. 
+]
+
+Förderungsbetrag (gerundet)
+
+Marcel erhält Förderungsleistungen in Höhe von monatlich 832 Euro, davon 416 Euro als Zuschuss und 416 Euro als zinsloses Darlehen.
+
+[Tabelle: Tabelle mit 2 Spalten  (Bedarfssatz Maurice:, ) und 6 Datenzeilen.daten: 
+Zeile 1: Bedarfssatz Maurice: | . 
+
+Zeile 2: Grundbedarf Fachoberschüler | 498,00 €. 
+
+Zeile 3: abzüglich | . 
+
+Zeile 4: 1/2 des anzurechnenden Elterneinkommens | 160,35 €. 
+
+Zeile 5: Förderungsbetrag | 337,65 €. 
+
+Zeile 6: Förderungsbetrag (gerundet) | 338,00 €. 
+]
+
+Förderungsbetrag (gerundet)
+
+Maurice erhält Förderungsleistungen in Höhe von monatlich 338,00 Euro als Zuschuss.

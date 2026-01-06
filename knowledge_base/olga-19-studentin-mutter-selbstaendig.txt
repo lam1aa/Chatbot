@@ -1,0 +1,113 @@
+Olga (19), Studentin, Mutter selbständig
+
+Olga (19) studiert im ersten Semester Physik und wohnt bei ihren Eltern. Sie ist bei ihren Eltern beitragsfrei in der Kranken- und Pflegeversicherung mitversichert. Der Vater hatte vor 2 Jahren ein Bruttojahreseinkommen in Höhe von 27.500 Euro. Die Mutter hatte Einkünfte als selbständig Gewerbetreibende in Höhe von 29.000 Euro. Die Mutter ist freiwillig kranken- und pflegeversichert. Die Eltern haben keinen "Riester-Renten"-Vertrag abgeschlossen. Sie lassen sich steuerlich getrennt veranlagen. Olga verfügt über einen eigenen Pkw mit einem Zeitwert von 5.000 Euro und über ein Sparbuch mit einer Einlage in Höhe von 4.000 Euro.
+
+Berechnung der BAföG-Förderung
+
+Info: Gilt für neue Bewilligungszeiträume ab 01.08.2024, für laufende Bewilligungszeiträume ab 01.10.2024!
+
+[Tabelle: Tabelle mit 2 Spalten  (Rechnungsposten, Betrag) und 7 Datenzeilen.daten: 
+Zeile 1: Zeitwert PKW | 5.000,00 €. 
+
+Zeile 2: Sparbuch | 4.000,00 €. 
+
+Zeile 3: Vermögen gesamt | 9.000,00 €. 
+
+Zeile 4: abzüglich | . 
+
+Zeile 5: Vermögensfreibetrag | 15.000,00 €. 
+
+Zeile 6: anzurechnendes Vermögen (i.S.d. BAföG) | 0,00 €. 
+
+Zeile 7: Anrechnungsbetrag Vermögen (1/12) | 0,00 €. 
+]
+
+Anrechnungsbetrag Vermögen (1/12)
+
+[Tabelle: Tabelle mit 2 Spalten  (Rechnungsposten, Betrag) und 11 Datenzeilen.daten: 
+Zeile 1: Bruttoeinkommen aus nichtselbständiger Arbeit (1/12 des Jahreseinkommens des vorletzten Kalenderjahres 2022) | 2.291,67 €. 
+
+Zeile 2: abzüglich | . 
+
+Zeile 3: Werbungskosten(mindestens 1/12 des jährlichen Werbungskostenpauschbetrages des vorletzten Kalenderjahres 2022 von 1.200 Euro) | 100,00 €. 
+
+Zeile 4: abzüglich | . 
+
+Zeile 5: Sozialpauschale 22,3%, Höchstbetrag 1.433,33 Euro monatlich | 488,74 €. 
+
+Zeile 6: „Riester-Rente“ | 0,00 €. 
+
+Zeile 7: tatsächlich geleistete Steuern(Lohnsteuertabelle 2022, Steuerklasse IV) | . 
+
+Zeile 8: - Einkommensteuer / Lohnsteuer | 210,92 €. 
+
+Zeile 9: - Kirchensteuer | 10,87 €. 
+
+Zeile 10: - Solidaritätszuschlag | 0,000 €. 
+
+Zeile 11: Einkommen des Vaters (im Sinne des BAföG) | 1481,14 €. 
+]
+
+[Tabelle: Tabelle mit 2 Spalten  (Rechnungsposten, Betrag) und 9 Datenzeilen.daten: 
+Zeile 1: Einkünfte aus selbständiger Arbeit (1/12 des Jahreseinkommens des vorletzten Kalenderjahres 2022) | 2.416,67 €. 
+
+Zeile 2: abzüglich | . 
+
+Zeile 3: Sozialpauschale 38,8 %, Höchstbetrag 2.458,33 Euro monatlich | 937,67 €. 
+
+Zeile 4: „Riester-Rente“ | 0,00 €. 
+
+Zeile 5: tatsächlich geleistete Steuern(Lohnsteuertabelle 2022, Steuerklasse IV) | . 
+
+Zeile 6: - Einkommensteuer / Lohnsteuer | 256,08 €. 
+
+Zeile 7: - Kirchensteuer | 14,67 €. 
+
+Zeile 8: - Solidaritätszuschlag | 0,00 €. 
+
+Zeile 9: Einkommen der Mutter (im Sinne des BAföG) | 1.208,25 €. 
+]
+
+[Tabelle: Tabelle mit 2 Spalten  (Rechnungsposten, Betrag) und 8 Datenzeilen.daten: 
+Zeile 1: Vater | 1.481,14 €. 
+
+Zeile 2: Mutter | 1.208,25 €. 
+
+Zeile 3: Einkommen der Eltern (im Sinne des BAföG) | 2.689,39 €. 
+
+Zeile 4: abzüglich | . 
+
+Zeile 5: Grundfreibetrag für die Eltern: | 2.540,00 €. 
+
+Zeile 6: Einkommen der Eltern (im Sinne des BAföG) abzüglich der Grundfreibeträge | 149,39 €. 
+
+Zeile 7: Zusatzfreibetrag: 50% für die Eltern | 74,70 €. 
+
+Zeile 8: Anrechnungsbetrag vom Elterneinkommen | 74,70 €. 
+]
+
+Anrechnungsbetrag vom Elterneinkommen
+
+[Tabelle: Tabelle mit 2 Spalten  (Bedarfssatz Olga:, ) und 9 Datenzeilen.daten: 
+Zeile 1: Bedarfssatz Olga: | . 
+
+Zeile 2: Grundbedarf Studentin | 475,00 €. 
+
+Zeile 3: nicht auswärts wohnend | 59,00 €. 
+
+Zeile 4:  | 534,00 €. 
+
+Zeile 5: abzüglich | . 
+
+Zeile 6: Anrechnungsbetrag aus eigenem Vermögen | 0,00 €. 
+
+Zeile 7: Anrechnungsbetrag vom Elterneinkommen | 74,70 €. 
+
+Zeile 8: Förderungsbetrag | 459,31 €. 
+
+Zeile 9: Förderungsbetrag (gerundet) | 459,00 €. 
+]
+
+Förderungsbetrag (gerundet)
+
+Olga erhält Förderungsleistungen in Höhe von monatlich 459 Euro, davon 229,5 Euro als Zuschuss und 229,5 Euro als zinsloses Darlehen.

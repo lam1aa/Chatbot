@@ -1,0 +1,25 @@
+Wie wird die Höhe des BAföG berechnet?
+
+Als Faustregel gilt: Passenden Bedarfssatz auswählen und davon anrechenbares Einkommen und Vermögen abziehen. Das Ergebnis ist der Förderungsbetrag nach dem BAföG.
+
+In der Tabelle für Bedarfssätze finden Schülerinnen, Schüler und Studierende je nach Ausbildungsstätte und Lebenssituation den für sie geltenden Bedarfssatz.
+
+Hiervon werden nun verschiedene Posten abgezogen:
+
+das eigene anzurechnende Einkommen und Vermögendas anzurechnende Einkommen von Ehegatten oder eingetragenen Lebenspartnerndas Einkommen der Eltern
+
+Für alle Abzüge gibt es Freibeträge, die die jeweiligen abzuziehenden Beträge senken. Weitere Informationen finden Sie im Artikel „Welches Einkommen wird angerechnet?“.
+
+Warum wird Einkommen und Vermögen angerechnet?
+
+Der Gesetzgeber geht davon aus, dass Schülerinnen, Schüler und Studierende und diejenigen, die nach bürgerlichem Recht zu ihrem Unterhalt verpflichtet sind, für den Lebensunterhalt und die Ausbildung aufkommen. Das BAföG hilft also erst dann weiter, wenn eigenes Einkommen und Vermögen sowie die finanzielle Unterstützung der Familie nicht zur Finanzierung der Ausbildung ausreichen. In bestimmten Fällen kommt eine vom Elterneinkommen unabhängige Förderung in Betracht. Weitere Informationen finden Siehier.
+
+[Tabelle: Tabelle mit 2 Spalten  (Bedarf nach dem BAföG, ) und 4 Datenzeilen.daten: 
+Zeile 1: Bedarf nach dem BAföG | . 
+
+Zeile 2: abzüglich | anrechenbares Einkommen und Vermögen der Studierenden, Schülerinnen und Schüler. 
+
+Zeile 3: abzüglich | anrechenbares Einkommen der Ehegatten bzw. eingetragenen Lebenspartner und der Eltern. 
+
+Zeile 4: = | Förderungsbetrag nach dem BAföG. 
+]

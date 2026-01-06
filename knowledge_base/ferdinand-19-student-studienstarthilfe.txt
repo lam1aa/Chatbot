@@ -1,0 +1,113 @@
+Ferdinand (19), Studienanfänger, zuhause wohnend, Eltern Wohngeld, Studienstarthilfe
+
+Ferdinand (19) studiert im ersten Semester Biologie. Er ist bei seinen Eltern beitragsfrei kranken- und pflegeversichert und zieht für das Studium aus. Vor seinem Studienanfang hatte Ferdinand einen Ferienjob auf Minijobbasis, den er zum Studium fortführt. Seine Schwester besucht die 5. Klasse. Seine Mutter ist Arbeitnehmerin und hatte vor 2 Jahren ein Bruttojahreseinkommen von 20.400 Euro. Sein Vater arbeitet Teilzeit und hatte vor 2 Jahren ein Bruttojahreseinkomme von 12.100 Euro. Ferdinands Eltern erhalten derzeit Wohngeld. Da Ferdinand im Monat vor beginn des Studium bei seinen Eltern wohnt und diese Wohngeld erhalten, beantragt er Studienstarthilfe und erhält 1.000 Euro. Diese müssen nicht zurückgezahlt werden.
+
+Berechnung der BAföG-Förderung
+
+Info: Gilt für Studienanfänger ab Wintersemester 2024/2025!
+
+[Tabelle: Tabelle mit 2 Spalten  (Rechnungsposten, Betrag) und 14 Datenzeilen.daten: 
+Zeile 1: Bruttoeinkommen aus nichtselbständiger Arbeit (1/12 des Jahreseinkommens des aktuellen Kalenderjahres 2024) | 538,00 €. 
+
+Zeile 2: abzüglich | . 
+
+Zeile 3: Werbungskosten(mindestens 1/12 des jährlichen Werbungskostenpauschbetrages des aktuellen Kalenderjahrs 2024 von 1.230 Euro) | 102,50 €. 
+
+Zeile 4: abzüglich | . 
+
+Zeile 5: Sozialpauschale 22,3 %, Höchstbetrag 1.433,33 Euro monatlich | 97,12 €. 
+
+Zeile 6: "Riester-Rente" | 0,00 €. 
+
+Zeile 7: tatsächlich geleistete Steuern | . 
+
+Zeile 8: - Einkommensteuer / Lohnsteuer | 0,00 €. 
+
+Zeile 9: - Kirchensteuer | 0,00 €. 
+
+Zeile 10: - Solidaritätszuschlag | 0,00 €. 
+
+Zeile 11: Einkommen von Ferdinand (im Sinne des BAföG) | 338,38 €. 
+
+Zeile 12: Grundfreibetrag | 353,00 €. 
+
+Zeile 13: Einkommen von Ferdinand (im Sinne des BAföG) abzüglich des Grundfreibetrages | -14,62 €. 
+
+Zeile 14: anzurechnendes Einkommen von Ferdinand | 0,00 €. 
+]
+
+[Tabelle: Tabelle mit 2 Spalten  (Rechnungsposten, Betrag) und 18 Datenzeilen.daten: 
+Zeile 1: Einkommen des Vaters | . 
+
+Zeile 2: Bruttoeinkommen aus nichtselbständiger Arbeit (1/12 des Jahreseinkommens des vorletzten Kalenderjahres 2022) | 1.008,33 €. 
+
+Zeile 3: abzüglich | . 
+
+Zeile 4: Werbungskosten(mindestens 1/12 des jährlichen Werbungskostenpauschbetrages des vorletzten Kalenderjahres 2022 von 1.200 Euro) | 100,00 €. 
+
+Zeile 5: abzüglich | . 
+
+Zeile 6: Sozialpauschale 22,3 %, Höchstbetrag 1.433,33 Euro monatlich | 202,56 €. 
+
+Zeile 7: "Riester-Rente" | 0,00 €. 
+
+Zeile 8:  | . 
+
+Zeile 9: Einkommen der Mutter | . 
+
+Zeile 10: Bruttoeinkommen aus nichtselbständiger Arbeit (1/12 des Jahreseinkommens des vorletzten Kalenderjahres 2022) | 1.500,00 €. 
+
+Zeile 11: abzüglich | . 
+
+Zeile 12: Werbungskosten (mindestens 1/12 des Werbungskostenpauschbetrages des vorletzten Kalenderjahrs 2022 von 1.200 Euro) | 100,00€. 
+
+Zeile 13: abzüglich | . 
+
+Zeile 14: Sozialpauschale 22.3 %, Höchstbetrag 1.433.33 Euro monatlich | 312,20 €. 
+
+Zeile 15: "Riester-Rente" | 0,00 €. 
+
+Zeile 16:  | . 
+
+Zeile 17: tatsächlich geleistete Steuern (Einkommen-, Kirchensteuer und Solidaritätszuschlag 2022) | 107,00 €. 
+
+Zeile 18: Einkommen der Eltern (im Sinne des BAföG) | 1.686,57 €. 
+]
+
+[Tabelle: Tabelle mit 2 Spalten  (Rechnungsposten, Betrag) und 7 Datenzeilen.daten: 
+Zeile 1: Einkommen der Eltern (im Sinne des BAföG) | 1.686,57 €. 
+
+Zeile 2: abzüglich | . 
+
+Zeile 3: Grundfreibetrag für die Eltern: | 2.540,00 €. 
+
+Zeile 4: Grundfreibetrag für Schwester: | 770,00 €. 
+
+Zeile 5: Einkommen der Eltern (im Sinne des BAföG) abzüglich der Grundfreibeträge | -1.623,43 €. 
+
+Zeile 6: Zusatzfreibetrag: 60% (50% für die Eltern und 10% für Geschwister) | 0,00 €. 
+
+Zeile 7: Anrechnungsbetrag vom Elterneinkommen | 0,00 €. 
+]
+
+Anrechnungsbetrag vom Elterneinkommen
+
+[Tabelle: Tabelle mit 2 Spalten  (Grundbedarf Student, 475,00 €) und 8 Datenzeilen.daten: 
+Zeile 1: Grundbedarf Student | 475,00 €. 
+
+Zeile 2: auswärts wohnend | 380,00 €. 
+
+Zeile 3:  | 855,00 €. 
+
+Zeile 4: abzüglich | . 
+
+Zeile 5: Anrechnungsbetrag von Ferdinands Einkommen | 0,00 €. 
+
+Zeile 6: Anrechnungsbetrag vom Elterneinkommen | 0,00 €. 
+
+Zeile 7: Förderungsbetrag | 855,00 €. 
+
+Zeile 8: Förderungsbetrag (gerundet) | 855,00 €. 
+]
+
+Ferdinand erhält Förderungsleistungen in Höhe von monatlich 855 Euro, davon 427,50 Euro als Zuschuss und 427,50 Euro als zinsloses Darlehen.Er erhält einmalig die Studienstarthilfe in Höhe von 1.000 Euro als Vollzuschuss.

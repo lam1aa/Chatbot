@@ -1,0 +1,93 @@
+Hanna (24), Studentin, auswärts wohnend
+
+Hanna (24) studiert Medizin und wohnt in einem Studentenwohnheim. Sie ist bei ihren Eltern beitragsfrei in der Kranken- und Pflegeversicherung mitversichert. Ihr Bruder Alexander (18) wohnt bei den Eltern und absolviert eine Ausbildung zum Bankkaufmann. Dafür erhält er eine monatliche Ausbildungsvergütung von 868 Euro. Der Vater ist Hausmann. Die Mutter ist Arbeitnehmerin und hatte vor 2 Jahren ein Bruttojahreseinkommen von 51.500 Euro. Sie zahlt in eine „Riester-Rente“ ein.
+
+Berechnung der BAföG-Förderung
+
+Info: Gilt für neue Bewilligungszeiträume ab 01.08.2024, für laufende Bewilligungszeiträume ab 01.10.2024!
+
+[Tabelle: Tabelle mit 2 Spalten  (Rechnungsposten, Betrag) und 30 Datenzeilen.daten: 
+Zeile 1: Bruttoeinkommen aus nichtselbständiger Arbeit (1/12 des Jahreseinkommens des vorletzten Kalenderjahres 2022) | 4.291,67 €. 
+
+Zeile 2: abzüglich | . 
+
+Zeile 3: Werbungskosten(mindestens 1/12 des jährlichen Werbungskostenpauschbetrages des vorletzten Kalenderjahrs 2022 von 1.200 Euro) | 100,00  €. 
+
+Zeile 4: abzüglich | . 
+
+Zeile 5: Sozialpauschale 22,3 %, Höchstbetrag 1.433,33 Euro monatlich | 934,74 €. 
+
+Zeile 6: „Riester-Rente“ | 126,25 €. 
+
+Zeile 7: tatsächlich geleistete Steuern (Lohnsteuertabelle 2022 Steuerklasse III) | . 
+
+Zeile 8: - Einkommensteuer / Lohnsteuer | 385,33 €. 
+
+Zeile 9: - Kirchensteuer | 4,65 €. 
+
+Zeile 10: - Solidaritätszuschlag | 0,00 €. 
+
+Zeile 11: Einkommen der Mutter (im Sinne des BAföG) | 2.740,69 €. 
+
+Zeile 12: Hannas Vater hat kein Einkommen | . 
+
+Zeile 13: Berechnung des Einkommens von Alexander (im Sinne des BAföG): | . 
+
+Zeile 14: Ausbildungsvergütung von Alexander (1/12) | 868,00 €. 
+
+Zeile 15: abzüglich | . 
+
+Zeile 16: Pauschalbetrag nach Tz 21.1.32 BAföG VwV | 190,00 €. 
+
+Zeile 17: Alexanders Einkommen (im Sinne des BAföG) abzüglich des Pauschalbetrages | 678,00 €. 
+
+Zeile 18: anzurechnendes Einkommen von Alexander | 678,00 €. 
+
+Zeile 19: Einkommen der Eltern (im Sinne des BAföG) | 2.740,69 €. 
+
+Zeile 20: abzüglich | . 
+
+Zeile 21: Grundfreibetrag: | . 
+
+Zeile 22: - für die Eltern | 2.540,00 €. 
+
+Zeile 23: - für Alexander | . 
+
+Zeile 24: - Grundfreibetrag | 770,00 €. 
+
+Zeile 25: - abzüglich des anrechenbaren Einkommens von Alexander | 678,00 €. 
+
+Zeile 26: - verbleibender Grundfreibetrag | 92,00 €. 
+
+Zeile 27: Einkommen der Eltern (im Sinne des BAföG) abzüglich der Grundfreibeträge | 108,69 €. 
+
+Zeile 28: Kein Grundfreibetrag für Hanna, da sie in einer nach dem BAföG förderungsfähigen Ausbildung steht | . 
+
+Zeile 29: Zusatzfreibetrag: 50% (für die Eltern selbst) | 54,35 €. 
+
+Zeile 30: Anrechnungsbetrag vom Elterneinkommen | 54,35 €. 
+]
+
+Anrechnungsbetrag vom Elterneinkommen
+
+[Tabelle: Tabelle mit 2 Spalten  (Bedarfssatz Hanna:, ) und 8 Datenzeilen.daten: 
+Zeile 1: Bedarfssatz Hanna: | . 
+
+Zeile 2: Grundbedarf Student/in | 475,00 €. 
+
+Zeile 3: auswärts wohnend | 380,00 €. 
+
+Zeile 4:  | 855,00 €. 
+
+Zeile 5: abzüglich | . 
+
+Zeile 6: Anrechnungsbetrag vom Elterneinkommen | 54,35 €. 
+
+Zeile 7: Förderungsbetrag | 800,66 €. 
+
+Zeile 8: Förderungsbetrag (gerundet) | 801,00 €. 
+]
+
+Förderungsbetrag (gerundet)
+
+Hanna erhält Förderungsleistungen in Höhe von monatlich 801 Euro, davon 400,50 Euro als Zuschuss und 400,50 Euro als zinsloses Darlehen.

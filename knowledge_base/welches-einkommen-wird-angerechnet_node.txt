@@ -1,0 +1,21 @@
+Welches Einkommen wird angerechnet?
+
+Was gilt als Einkommen und ist nach dem BAföG auf den Bedarf anzurechnen? Das ist genau geregelt. Einzelheiten werden hier erläutert.
+
+Grundlage für die Einkommensberechnung ist immer die Summe der positiven Einkünfte im Sinne des Einkommensteuergesetzes (§ 2 EStG). Dazu zählen übrigens auch Einnahmen, die ausländischem Steuerrecht unterliegen; das ist in § 21 Abs. 2a BAföG geregelt.
+
+Abgezogen werden die Einkommen- und die Kirchensteuer, pauschal festgesetzte Beträge für die soziale Sicherung (also insbesondere Kranken-, Arbeitslosen- und Rentenversicherung) sowie der Altersentlastungsbetrag. Werden Beiträge zur Altersvorsorge nach § 82 EstG (die sogenannte Riester-Rente) geleistet, können diese auch vom Einkommen abgezogen werden, soweit sie den Mindesteigenbeitrag nach § 86 EStG nicht überschreiten.
+
+Der sich daraus ergebende Betrag ist das Einkommen im Sinne des BAföG.
+
+Rechtliche Grundlagen für die Einkommensberechnung sind § 21, § 22 und § 24 BAföG.
+
+Welcher Einkommenszeitraum ist relevant?
+
+Beim Einkommen der Auszubildenden ist das aktuelle, das heißt das im Bewilligungszeitraum erzielte Einkommen maßgebend. Bei ihren Ehegatten, eingetragenen Lebenspartnern und Eltern allerdings zählt das Einkommen aus dem vorletzten Kalenderjahr vor Beginn des Bewilligungszeitraums. Hintergrund dafür ist, dass das BAföG bei diesen Personen von gleichbleibenden Einkommensverhältnissen ausgeht und es den Ämtern für Ausbildungsförderung deshalb ermöglichen will, bei der Berechnung des Einkommens an die Steuerbescheide anzuknüpfen.
+
+Wann ein Aktualisierungsantrag sinnvoll ist
+
+Ist das aktuelle Einkommen der Ehegatten, eingetragenen Lebenspartner oder Eltern inzwischen wesentlich niedriger, etwa wegen Arbeitslosigkeit oder Eintritt in den Ruhestand, kann auf Antrag das aktuelle Einkommen angerechnet werden. Dazu muss ein sogenannter Aktualisierungsantrag vom Auszubildenden gestellt werden; das sieht § 24 Abs. 3 BAföG vor.
+
+In einem solchen Fall wird BAföG unter dem Vorbehalt der Rückforderung gezahlt, da die endgültige Berechnung des Förderungsanspruchs erst dann erfolgen kann, wenn sich das tatsächlich erzielte Einkommen endgültig feststellen lässt.
