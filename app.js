@@ -169,7 +169,7 @@ Wichtige BAföG-Informationen:
                 'X-Title': 'BAföG Chatbot'
             },
             body: JSON.stringify({
-                model: 'meta-llama/llama-3.2-3b-instruct:free',
+                model: 'meta-llama/llama-3.1-8b-instruct',
                 messages: messages,
                 temperature: 0.7,
                 max_tokens: 1000

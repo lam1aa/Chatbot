@@ -64,10 +64,12 @@ const systemPrompt = `Your custom instructions here...`;
 In `app.js`, find this line:
 
 ```javascript
-model: 'meta-llama/llama-3.2-3b-instruct:free',
+model: 'meta-llama/llama-3.1-8b-instruct',
 ```
 
 You can change it to any model available on OpenRouter. See [OpenRouter Models](https://openrouter.ai/models) for options.
+
+**Note:** If you encounter "No endpoints found" errors, try removing the `:free` suffix from the model name or select a different model from the available options.
 
 #### Customize Styling
 
