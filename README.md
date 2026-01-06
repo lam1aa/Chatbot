@@ -2,19 +2,33 @@
 
 A minimal RAG (Retrieval-Augmented Generation) chatbot for answering BAföG-related questions using open-source technologies.
 
+## 🌐 Try it Online
+
+**[Try the Web Version](https://lam1aa.github.io/Chatbot/)** - No installation required!
+
+The chatbot is available as both a web application (browser-based) and a command-line tool (Python).
+
 ## Features
 
 - 🤖 Uses OpenRouter API for LLM (free models available)
-- 📚 ChromaDB for vector storage (open-source)
-- 🔍 Semantic search over BAföG documentation
+- 🌐 **Web interface** - Share via GitHub Pages link
+- 📚 ChromaDB for vector storage (open-source, for Python version)
+- 🔍 Semantic search over BAföG documentation (Python version)
 - 🌐 Built-in web scraper for BAföG websites
 - 📎 Source attribution with URLs in responses
 - 🔄 Automatic knowledge base updates
 - 🚀 Simple and minimal codebase
 - 🇩🇪 German language support
+- 📱 Responsive design (mobile & desktop)
 
 ## Architecture
 
+### Web Version
+- **Frontend**: HTML, CSS, JavaScript (static files)
+- **LLM**: Direct API calls to OpenRouter from browser
+- **Deployment**: GitHub Pages (free hosting)
+
+### Python Version
 - **LLM**: OpenRouter API (supports various open-source models)
 - **Embeddings**: HuggingFace sentence-transformers (all-MiniLM-L6-v2)
 - **Vector Database**: ChromaDB (open-source, local storage)
@@ -22,7 +36,22 @@ A minimal RAG (Retrieval-Augmented Generation) chatbot for answering BAföG-rela
 
 ## Quick Start
 
-### Automated Setup (Recommended)
+### 🌐 Web Version (Recommended for Sharing)
+
+The easiest way to use and share the chatbot:
+
+1. Visit **[https://lam1aa.github.io/Chatbot/](https://lam1aa.github.io/Chatbot/)**
+2. Get a free API key from [OpenRouter.ai](https://openrouter.ai/)
+3. Enter your API key in the web interface
+4. Start chatting!
+
+**Want to deploy your own?** See [WEB_DEPLOYMENT.md](WEB_DEPLOYMENT.md) for detailed instructions.
+
+### 🖥️ Python CLI Version (Advanced)
+
+For local development with RAG capabilities and custom knowledge base:
+
+#### Automated Setup (Recommended)
 
 ```bash
 bash setup.sh
@@ -34,7 +63,7 @@ Then edit `.env` to add your OpenRouter API key and run:
 python main.py
 ```
 
-### Manual Setup
+#### Manual Setup
 
 #### 1. Install Dependencies
 
@@ -176,6 +205,13 @@ python kb_manager.py rebuild
 
 ```
 .
+├── # Web Interface Files (for GitHub Pages)
+├── index.html                   # Main web interface
+├── styles.css                   # Web UI styling
+├── app.js                       # Web application logic
+├── WEB_DEPLOYMENT.md           # Web deployment guide
+│
+├── # Python CLI Files
 ├── knowledge_base/              # Place your BAföG .txt files here
 │   ├── bafoeg_info.txt         # Sample: General BAföG information
 │   ├── antragstellung.txt      # Sample: Application process info
@@ -217,11 +253,37 @@ Edit `src/rag_chatbot.py` to adjust:
 2. Delete `chroma_db/` directory (if exists)
 3. Run `python main.py` to rebuild the vector database
 
+## 🚀 Deployment
+
+### GitHub Pages (Web Version)
+
+Deploy the web interface to GitHub Pages for free hosting:
+
+1. Push your changes to GitHub
+2. Go to **Settings** → **Pages**
+3. Select **Branch: main** and **Folder: / (root)**
+4. Click **Save**
+5. Your chatbot will be available at `https://<username>.github.io/Chatbot/`
+
+See [WEB_DEPLOYMENT.md](WEB_DEPLOYMENT.md) for detailed deployment instructions.
+
+### Differences Between Versions
+
+| Feature | Web Version | Python CLI Version |
+|---------|-------------|-------------------|
+| **Accessibility** | Browser-based, shareable link | Local installation required |
+| **Knowledge Base** | General BAföG knowledge | Custom documents via ChromaDB |
+| **RAG Search** | ❌ (Direct LLM) | ✅ (Vector search) |
+| **Setup** | Just API key | Python environment + dependencies |
+| **Sharing** | Easy (just share link) | Requires users to install |
+| **Customization** | Edit prompt in app.js | Full control over RAG pipeline |
+
 ## Notes
 
-- The vector database is created on first run and persisted in `chroma_db/`
+- **Web Version**: Uses direct API calls from browser to OpenRouter. No server required.
+- **Python Version**: The vector database is created on first run and persisted in `chroma_db/`
 - All components are open-source except the OpenRouter API (which provides free tier)
-- Documents are split into 1000-character chunks with 100-character overlap for better context
+- Documents are split into 1000-character chunks with 100-character overlap for better context (Python version)
 
 ## License
 
