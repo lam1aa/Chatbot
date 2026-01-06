@@ -236,10 +236,12 @@ python kb_manager.py rebuild
 You can change the model in `.env`:
 
 ```
-OPENROUTER_MODEL=meta-llama/llama-3.1-8b-instruct:free
+OPENROUTER_MODEL=meta-llama/llama-3.1-8b-instruct
 ```
 
 See available models at: https://openrouter.ai/models
+
+**Note:** If you encounter "No endpoints found" errors, try removing the `:free` suffix from the model name or select a different model from the OpenRouter models page.
 
 ### Retrieval Settings
 
