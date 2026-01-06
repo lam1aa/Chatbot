@@ -193,6 +193,7 @@ header h1 {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    /* 100vh minus header (110px), margins (60px), footer (60px), container padding (40px), spacing (10px) = 280px */
     height: calc(100vh - 280px);
     min-height: 400px;
 }
@@ -381,6 +382,7 @@ footer a:hover {
     }
 
     .chat-section {
+        /* Adjusted for mobile: less header padding and margins = 240px total */
         height: calc(100vh - 240px);
     }
 
