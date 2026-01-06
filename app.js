@@ -1,5 +1,5 @@
 // BAföG Chatbot Web Application
-// This runs entirely in the browser and makes direct API calls to OpenRouter
+// Supports both backend API (with RAG) and direct OpenRouter calls
 
 class ChatbotApp {
     constructor() {
@@ -8,6 +8,8 @@ class ChatbotApp {
         this.isProcessing = false;
         this.knowledgeBase = [];
         this.urlMapping = {};
+        this.backendAvailable = false;
+        this.backendUrl = 'http://localhost:5000';
         
         // UI Elements
         this.apiKeySection = document.getElementById('api-key-section');
@@ -24,6 +26,9 @@ class ChatbotApp {
     }
     
     async init() {
+        // Check if backend API is available
+        await this.checkBackend();
+        
         // Load URL mapping
         await this.loadUrlMapping();
         
@@ -56,6 +61,23 @@ class ChatbotApp {
                 this.saveApiKey();
             }
         });
+    }
+    
+    async checkBackend() {
+        try {
+            const response = await fetch(`${this.backendUrl}/health`, {
+                method: 'GET',
+                signal: AbortSignal.timeout(2000) // 2 second timeout
+            });
+            if (response.ok) {
+                const data = await response.json();
+                this.backendAvailable = data.status === 'ok' && data.knowledge_base_loaded;
+                console.log('Backend API available:', this.backendAvailable);
+            }
+        } catch (error) {
+            this.backendAvailable = false;
+            console.log('Backend API not available, using direct OpenRouter calls');
+        }
     }
     
     async loadUrlMapping() {
@@ -143,8 +165,13 @@ class ChatbotApp {
         this.setProcessing(true);
         
         try {
-            // Get response from OpenRouter API
-            const response = await this.callOpenRouter(message);
+            let response;
+            // Try backend API first if available, otherwise use direct OpenRouter
+            if (this.backendAvailable) {
+                response = await this.callBackendAPI(message);
+            } else {
+                response = await this.callOpenRouter(message);
+            }
             this.addMessage(response.answer, 'bot', response.sources);
         } catch (error) {
             console.error('Error:', error);
@@ -152,6 +179,39 @@ class ChatbotApp {
         } finally {
             this.setProcessing(false);
             this.userInput.focus();
+        }
+    }
+    
+    async callBackendAPI(userMessage) {
+        try {
+            const response = await fetch(`${this.backendUrl}/chat`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    question: userMessage,
+                    api_key: this.apiKey
+                })
+            });
+            
+            if (!response.ok) {
+                // If backend fails, fall back to direct OpenRouter
+                console.log('Backend API failed, falling back to direct OpenRouter');
+                this.backendAvailable = false;
+                return await this.callOpenRouter(userMessage);
+            }
+            
+            const data = await response.json();
+            return {
+                answer: data.answer,
+                sources: data.sources || []
+            };
+        } catch (error) {
+            // If backend is unreachable, fall back to direct OpenRouter
+            console.log('Backend API unreachable, falling back to direct OpenRouter');
+            this.backendAvailable = false;
+            return await this.callOpenRouter(userMessage);
         }
     }
     

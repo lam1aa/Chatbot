@@ -45,7 +45,29 @@ The easiest way to use and share the chatbot:
 3. Enter your API key in the web interface
 4. Start chatting!
 
+**For RAG with source citations**: Run the backend API server (see below) alongside the web interface.
+
 **Want to deploy your own?** See [WEB_DEPLOYMENT.md](WEB_DEPLOYMENT.md) for detailed instructions.
+
+### 🔌 Web + Backend API (RAG with Citations)
+
+For the full experience with source citations from the knowledge base:
+
+1. Start the backend API server:
+
+```bash
+python api_server.py
+```
+
+2. Open `index.html` in your browser or visit the deployed web version
+3. The web interface will automatically detect and use the backend API
+4. You'll get responses with source citations and URLs!
+
+The backend provides:
+- ✅ RAG-based responses from knowledge base
+- ✅ Source citations with URLs
+- ✅ Semantic search over documents
+- ✅ Fallback to direct OpenRouter if backend unavailable
 
 ### 🖥️ Python CLI Version (Advanced)
 
@@ -208,14 +230,16 @@ python kb_manager.py rebuild
 ├── # Web Interface Files (for GitHub Pages)
 ├── index.html                   # Main web interface
 ├── styles.css                   # Web UI styling
-├── app.js                       # Web application logic
+├── app.js                       # Web application logic (supports backend API)
+├── api_server.py               # Backend API server for RAG with citations
 ├── WEB_DEPLOYMENT.md           # Web deployment guide
 │
 ├── # Python CLI Files
 ├── knowledge_base/              # Place your BAföG .txt files here
 │   ├── bafoeg_info.txt         # Sample: General BAföG information
 │   ├── antragstellung.txt      # Sample: Application process info
-│   └── url_mapping.json        # Maps filenames to source URLs
+│   ├── URLs.csv                # CSV file mapping filenames to URLs
+│   └── url_mapping.json        # Generated JSON mapping of files to URLs
 ├── src/
 │   ├── knowledge_base_loader.py  # Loads and processes documents
 │   └── rag_chatbot.py           # RAG chatbot implementation
@@ -223,6 +247,7 @@ python kb_manager.py rebuild
 ├── example_usage.py            # Example of programmatic usage
 ├── scraper.py                  # Web scraper for BAföG websites
 ├── kb_manager.py               # Knowledge base management tool
+├── generate_url_mapping.py     # Generate url_mapping.json from URLs.csv
 ├── setup.sh                    # Automated setup script
 ├── requirements.txt            # Python dependencies
 ├── .env.example               # Environment variables template
@@ -271,14 +296,15 @@ See [WEB_DEPLOYMENT.md](WEB_DEPLOYMENT.md) for detailed deployment instructions.
 
 ### Differences Between Versions
 
-| Feature | Web Version | Python CLI Version |
-|---------|-------------|-------------------|
-| **Accessibility** | Browser-based, shareable link | Local installation required |
-| **Knowledge Base** | General BAföG knowledge | Custom documents via ChromaDB |
-| **RAG Search** | ❌ (Direct LLM) | ✅ (Vector search) |
-| **Setup** | Just API key | Python environment + dependencies |
-| **Sharing** | Easy (just share link) | Requires users to install |
-| **Customization** | Edit prompt in app.js | Full control over RAG pipeline |
+| Feature | Web Version (No Backend) | Web + Backend API | Python CLI Version |
+|---------|-------------|-------------------|-------------------|
+| **Accessibility** | Browser-based, shareable link | Browser + local server | Local installation required |
+| **Knowledge Base** | General BAföG knowledge | Custom documents via ChromaDB | Custom documents via ChromaDB |
+| **RAG Search** | ❌ (Direct LLM) | ✅ (Vector search) | ✅ (Vector search) |
+| **Source Citations** | ❌ | ✅ With URLs | ✅ With URLs |
+| **Setup** | Just API key | API key + Python server | Python environment + dependencies |
+| **Sharing** | Easy (just share link) | Requires backend server | Requires users to install |
+| **Customization** | Edit prompt in app.js | Full control over RAG pipeline | Full control over RAG pipeline |
 
 ## Notes
 

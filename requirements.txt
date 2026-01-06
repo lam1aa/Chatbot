@@ -10,3 +10,7 @@ huggingface-hub==0.20.3
 # Web scraping dependencies (optional)
 beautifulsoup4==4.12.3
 requests==2.31.0
+
+# Web API dependencies
+flask==3.0.0
+flask-cors==4.0.0
