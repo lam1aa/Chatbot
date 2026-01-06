@@ -8,6 +8,17 @@ A minimal RAG (Retrieval-Augmented Generation) chatbot for answering BAföG-rela
 
 The chatbot is available as both a web application (browser-based) and a command-line tool (Python).
 
+## ✨ New: Citations Without Backend!
+
+**The chatbot now shows source citations automatically - no backend server needed!**
+
+- ✅ Citations appear with every response
+- ✅ Works entirely in your browser
+- ✅ Clickable URLs to original sources
+- ✅ No setup or installation required
+
+See [citation_demo.html](citation_demo.html) for examples of how citations work.
+
 ## Features
 
 - 🤖 Uses OpenRouter API for LLM (free models available)
