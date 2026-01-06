@@ -155,6 +155,8 @@ Or edit `scraper.py` and add your URLs, then run:
 python scraper.py
 ```
 
+**See [SCRAPING_GUIDE.md](SCRAPING_GUIDE.md) for detailed scraping instructions and example URLs.**
+
 ### Knowledge Base Commands
 
 ```bash

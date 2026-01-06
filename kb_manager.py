@@ -6,7 +6,6 @@ Helper script to manage the knowledge base
 import os
 import sys
 import shutil
-from scraper import WebScraper
 
 
 def rebuild_vector_db():
@@ -42,6 +41,13 @@ def list_knowledge_files():
 
 def scrape_from_urls():
     """Interactive scraping from URLs"""
+    try:
+        from scraper import WebScraper
+    except ImportError:
+        print("Error: Web scraping dependencies not installed.")
+        print("Install them with: pip install beautifulsoup4 requests")
+        return
+    
     print("\n=== Web Scraping ===")
     print("Enter URLs to scrape (one per line).")
     print("Press Enter twice when done.\n")
