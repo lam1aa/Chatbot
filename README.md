@@ -17,19 +17,33 @@ A minimal RAG (Retrieval-Augmented Generation) chatbot for answering BAföG-rela
 - **Vector Database**: ChromaDB (open-source, local storage)
 - **Framework**: LangChain
 
-## Setup
+## Quick Start
 
-### 1. Install Dependencies
+### Automated Setup (Recommended)
+
+```bash
+bash setup.sh
+```
+
+Then edit `.env` to add your OpenRouter API key and run:
+
+```bash
+python main.py
+```
+
+### Manual Setup
+
+#### 1. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Add Knowledge Base
+#### 2. Add Knowledge Base
 
-Place your scraped BAföG `.txt` files in the `knowledge_base/` directory. A sample file is already included.
+Place your scraped BAföG `.txt` files in the `knowledge_base/` directory. Two sample files are already included.
 
-### 3. Configure API Key
+#### 3. Configure API Key
 
 Create a `.env` file from the example:
 
@@ -45,13 +59,15 @@ OPENROUTER_API_KEY=your_api_key_here
 
 **Get a free API key at**: https://openrouter.ai/
 
-### 4. Run the Chatbot
+#### 4. Run the Chatbot
 
 ```bash
 python main.py
 ```
 
 ## Usage
+
+### Interactive Mode
 
 Once running, you can ask questions in German:
 
@@ -65,19 +81,44 @@ Bot: [Answer based on your knowledge base]
 Du: exit
 ```
 
+### Programmatic Usage
+
+You can also use the chatbot in your own Python scripts:
+
+```python
+from src.knowledge_base_loader import KnowledgeBaseLoader
+from src.rag_chatbot import RAGChatbot
+
+# Load knowledge base
+kb_loader = KnowledgeBaseLoader()
+vectorstore = kb_loader.setup()
+
+# Initialize chatbot
+chatbot = RAGChatbot(vectorstore)
+
+# Ask questions
+result = chatbot.ask("Was ist BAföG?")
+print(result["answer"])
+```
+
+See `example_usage.py` for a complete example.
+
 ## Project Structure
 
 ```
 .
 ├── knowledge_base/          # Place your BAföG .txt files here
-│   └── bafoeg_info.txt     # Sample knowledge base
+│   ├── bafoeg_info.txt     # Sample: General BAföG information
+│   └── antragstellung.txt  # Sample: Application process info
 ├── src/
 │   ├── knowledge_base_loader.py  # Loads and processes documents
 │   └── rag_chatbot.py           # RAG chatbot implementation
-├── main.py                  # Entry point
-├── requirements.txt         # Python dependencies
-├── .env.example            # Environment variables template
-└── README.md               # This file
+├── main.py                  # Entry point - interactive chat
+├── example_usage.py        # Example of programmatic usage
+├── setup.sh                # Automated setup script
+├── requirements.txt        # Python dependencies
+├── .env.example           # Environment variables template
+└── README.md              # This file
 ```
 
 ## Configuration
