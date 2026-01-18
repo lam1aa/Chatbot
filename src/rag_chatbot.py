@@ -133,7 +133,7 @@ Hilfreiche Antwort:"""
         Detect if the response is a rejection message for non-BAföG questions
         Returns True if the answer indicates the question is not BAföG-related
         
-        Note: These phrases match the rejection message in the prompt template (lines 42).
+        Note: These phrases match the rejection message in the prompt template (line 42).
         A similar check exists in app.js for the web interface.
         """
         answer_lower = answer.lower()

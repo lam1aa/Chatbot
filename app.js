@@ -254,7 +254,7 @@ class ChatbotApp {
          * Detect if the response is a rejection message for non-BAföG questions
          * Returns true if the answer indicates the question is not BAföG-related
          * 
-         * Note: These phrases match the rejection message in the system prompt (line 343).
+         * Note: These phrases match the rejection message in the system prompt (line 374).
          * A similar check exists in src/rag_chatbot.py for the Python backend.
          * This includes both English and German since the web interface supports both.
          */
