@@ -5,15 +5,15 @@
 }
 
 :root {
-    --primary-color: #2563eb;
-    --primary-hover: #1d4ed8;
+    --primary-color: #5f316e;
+    --primary-hover: #4a2556;
     --secondary-color: #64748b;
     --background: #f8fafc;
     --surface: #ffffff;
     --text-primary: #0f172a;
     --text-secondary: #475569;
     --border: #e2e8f0;
-    --user-message-bg: #2563eb;
+    --user-message-bg: #5f316e;
     --user-message-text: #ffffff;
     --bot-message-bg: #f1f5f9;
     --bot-message-text: #0f172a;
@@ -42,7 +42,7 @@ body {
 header {
     text-align: center;
     padding: 30px 20px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #4a2556 100%);
     color: white;
     border-radius: 16px;
     margin-bottom: 30px;
