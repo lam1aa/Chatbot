@@ -9,6 +9,241 @@ The chatbot has two modes of operation:
 1. **Web Version** (Primary) - Browser-based with client-side citations
 2. **Python CLI Version** (Advanced) - Local RAG system with ChromaDB
 
+## System Architecture Flowchart
+
+### High-Level System Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                         BAföG Chatbot System                        │
+│                                                                       │
+│  ┌──────────────────────┐              ┌──────────────────────┐    │
+│  │   Web Version        │              │  Python CLI Version  │    │
+│  │  (Browser-based)     │              │   (Local RAG)        │    │
+│  └──────────────────────┘              └──────────────────────┘    │
+│           │                                       │                  │
+│           ├───────────────┬───────────────────────┤                 │
+│           │               │                       │                  │
+│           ▼               ▼                       ▼                  │
+│  ┌─────────────┐  ┌─────────────┐      ┌─────────────────┐        │
+│  │ Knowledge   │  │  OpenRouter │      │   ChromaDB      │        │
+│  │ Index JSON  │  │  LLM API    │      │  Vector Store   │        │
+│  └─────────────┘  └─────────────┘      └─────────────────┘        │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Knowledge Base Construction Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│              Knowledge Base Construction Process                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+Step 1: Data Collection
+┌────────────────────┐
+│  Source Content    │
+│  - Web Scraping    │──────┐
+│  - Manual Docs     │      │
+│  - BAföG Website   │      │
+└────────────────────┘      │
+                            ▼
+                   ┌────────────────────┐
+                   │  .txt Files        │
+                   │  (knowledge_base/) │
+                   │  - 27+ documents   │
+                   └────────────────────┘
+                            │
+          ┌─────────────────┼─────────────────┐
+          │                 │                 │
+          ▼                 ▼                 ▼
+Step 2: Artefact Creation
+
+┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+│ URL Mapping     │  │ Knowledge Index │  │ Vector Database │
+│ (url_mapping.   │  │ (knowledge_     │  │ (ChromaDB)      │
+│  json)          │  │  index.json)    │  │                 │
+│                 │  │                 │  │                 │
+│ Purpose:        │  │ Purpose:        │  │ Purpose:        │
+│ - Map files to  │  │ - Keyword-based │  │ - Semantic      │
+│   source URLs   │  │   matching      │  │   search        │
+│ - Citation      │  │ - Client-side   │  │ - Embeddings    │
+│   links         │  │   citations     │  │ - Python CLI    │
+│                 │  │ - Web version   │  │                 │
+│ Used by:        │  │                 │  │ Used by:        │
+│ - Web + CLI     │  │ Used by:        │  │ - CLI only      │
+│                 │  │ - Web only      │  │ - Optional API  │
+└─────────────────┘  └─────────────────┘  └─────────────────┘
+```
+
+### Web Version User Interaction Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    Web Version User Flow                             │
+└─────────────────────────────────────────────────────────────────────┘
+
+1. Page Load
+   │
+   ├──▶ Load knowledge_index.json (26+ documents)
+   │
+   └──▶ Check for backend API (optional)
+
+2. User Input
+   │
+   └──▶ User enters question
+        │
+        ▼
+3. Keyword Extraction
+   │
+   ├──▶ Extract keywords from question
+   │
+   ├──▶ Apply English-German mapping
+   │
+   └──▶ Score documents by keyword match
+        │
+        ▼
+4. LLM Processing
+   │
+   ├──▶ Build conversation history
+   │
+   ├──▶ Add system prompt (simplified language)
+   │
+   └──▶ Call OpenRouter API
+        │
+        ▼
+5. Response Generation
+   │
+   ├──▶ Receive answer from LLM
+   │
+   ├──▶ Match top 3 relevant sources
+   │
+   └──▶ Display answer + citations with URLs
+        │
+        ▼
+6. Display to User
+   │
+   └──▶ Show response in chat interface
+```
+
+### Python CLI Version RAG Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                   Python CLI RAG Pipeline                            │
+└─────────────────────────────────────────────────────────────────────┘
+
+1. Initialization
+   │
+   ├──▶ Load .txt files from knowledge_base/
+   │
+   ├──▶ Load url_mapping.json
+   │
+   └──▶ Check for existing ChromaDB
+        │
+        ▼
+2. Document Processing (if rebuilding)
+   │
+   ├──▶ Split documents into chunks
+   │    (1000 chars, 100 overlap)
+   │
+   ├──▶ Generate embeddings
+   │    (all-MiniLM-L6-v2)
+   │
+   └──▶ Store in ChromaDB with metadata
+        │
+        ▼
+3. User Query
+   │
+   └──▶ User enters question
+        │
+        ▼
+4. Retrieval
+   │
+   ├──▶ Embed question
+   │
+   ├──▶ Semantic search in ChromaDB
+   │
+   └──▶ Retrieve top 3 similar chunks
+        │
+        ▼
+5. Generation
+   │
+   ├──▶ Build prompt with context
+   │
+   ├──▶ Add simplified language instruction
+   │
+   └──▶ Call OpenRouter API via LangChain
+        │
+        ▼
+6. Response
+   │
+   ├──▶ Generate answer
+   │
+   ├──▶ Extract source documents
+   │
+   ├──▶ Add URL citations
+   │
+   └──▶ Display to user
+```
+
+### Artefact Design Details
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                         Artefact Design                              │
+└─────────────────────────────────────────────────────────────────────┘
+
+1. url_mapping.json
+   ┌────────────────────────────────────────┐
+   │ {                                      │
+   │   "filename.txt": "https://url.de",   │
+   │   ...                                  │
+   │ }                                      │
+   └────────────────────────────────────────┘
+   Purpose: Link documents to original sources
+   Generation: generate_url_mapping.py
+   Used by: Both Web and CLI versions
+
+2. knowledge_index.json
+   ┌────────────────────────────────────────┐
+   │ [                                      │
+   │   {                                    │
+   │     "name": "Document Name",           │
+   │     "file": "path/to/file.txt",        │
+   │     "url": "https://source.url",       │
+   │     "keywords": ["keyword1", ...]      │
+   │   }                                    │
+   │ ]                                      │
+   └────────────────────────────────────────┘
+   Purpose: Enable client-side citations
+   Generation: create_knowledge_index.py
+   Used by: Web version only
+
+3. ChromaDB Vector Store
+   ┌────────────────────────────────────────┐
+   │ Document Chunks + Embeddings           │
+   │ - Text content                         │
+   │ - Vector embeddings (384 dimensions)   │
+   │ - Metadata (source, url)               │
+   └────────────────────────────────────────┘
+   Purpose: Semantic search and retrieval
+   Generation: knowledge_base_loader.py
+   Used by: CLI and optional backend API
+
+4. Language Simplification Feature
+   ┌────────────────────────────────────────┐
+   │ System Prompt Instructions:            │
+   │ - Use simple language                  │
+   │ - Explain complex terms                │
+   │ - Avoid jargon                         │
+   │ - Short, clear sentences               │
+   └────────────────────────────────────────┘
+   Implementation: 
+   - src/rag_chatbot.py (Python)
+   - app.js (Web)
+```
+
 ## Web Version Implementation
 
 ### How Citations Work Without Backend
