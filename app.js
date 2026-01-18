@@ -249,6 +249,32 @@ class ChatbotApp {
         `;
     }
     
+    isNonBafogResponse(answer) {
+        /**
+         * Detect if the response is a rejection message for non-BAföG questions
+         * Returns true if the answer indicates the question is not BAföG-related
+         * 
+         * Note: These phrases match the rejection message in the system prompt (line 374).
+         * A similar check exists in src/rag_chatbot.py for the Python backend.
+         * This includes both English and German since the web interface supports both.
+         */
+        const lowerAnswer = answer.toLowerCase();
+        
+        // Check for common rejection phrases in both German and English
+        // These correspond to the rejection messages in the system prompts
+        const rejectionPhrases = [
+            'can only help with bafög',
+            'can only assist with bafög',
+            'only answer questions related to bafög',
+            'kann nur bei bafög',
+            'kann nur fragen zu bafög',
+            'ausschließlich für bafög',
+            'nur bafög-fragen'
+        ];
+        
+        return rejectionPhrases.some(phrase => lowerAnswer.includes(phrase));
+    }
+    
     async sendMessage() {
         const message = this.userInput.value.trim();
         if (!message || this.isProcessing) return;
@@ -290,7 +316,12 @@ class ChatbotApp {
                 
                 response.sources = sources;
             }
-            this.addMessage(response.answer, 'bot', response.sources);
+            
+            // Check if this is a non-BAföG question response (don't show sources)
+            const isNonBafogResponse = this.isNonBafogResponse(response.answer);
+            const sourcesToShow = isNonBafogResponse ? [] : response.sources;
+            
+            this.addMessage(response.answer, 'bot', sourcesToShow);
         } catch (error) {
             console.error('Error:', error);
             this.addErrorMessage(error.message);

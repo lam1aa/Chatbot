@@ -120,9 +120,31 @@ Hilfreiche Antwort:"""
                 result = self.ask(question)
                 print(f"\nBot: {result['answer']}\n")
                 
-                # Display sources
-                sources_text = self.format_sources(result['sources'])
-                print(f"Quellen:\n{sources_text}\n")
+                # Only display sources if this is a BAföG-related question
+                if not self._is_non_bafog_response(result['answer']):
+                    sources_text = self.format_sources(result['sources'])
+                    print(f"Quellen:\n{sources_text}\n")
                 
             except Exception as e:
                 print(f"Fehler: {str(e)}\n")
+    
+    def _is_non_bafog_response(self, answer):
+        """
+        Detect if the response is a rejection message for non-BAföG questions
+        Returns True if the answer indicates the question is not BAföG-related
+        
+        Note: These phrases match the rejection message in the prompt template (line 42).
+        A similar check exists in app.js for the web interface.
+        """
+        answer_lower = answer.lower()
+        
+        # Check for the rejection phrases in German
+        # These correspond to the rejection message in the prompt template
+        rejection_phrases = [
+            'kann nur bei bafög',
+            'kann nur fragen zu bafög',
+            'ausschließlich für bafög',
+            'nur bafög-fragen'
+        ]
+        
+        return any(phrase in answer_lower for phrase in rejection_phrases)
