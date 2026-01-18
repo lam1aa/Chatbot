@@ -1,168 +1,186 @@
 # Implementation Details
 
-This document describes how the three requirements from the problem statement have been implemented.
+This document describes the current implementation of the BAföG Chatbot.
 
-## Requirements Summary
+## Overview
 
-1. **Use English language for the Chatbot UI**
-2. **Check URLs.csv and create URL mapping for TXT files**
-3. **Provide citation of info sources through URL mapping**
+The chatbot has two modes of operation:
 
-## Implementation
+1. **Web Version** (Primary) - Browser-based with client-side citations
+2. **Python CLI Version** (Advanced) - Local RAG system with ChromaDB
 
-### 1. English Language UI ✅
+## Web Version Implementation
 
-**Changes Made:**
-- `index.html`: Translated all German text to English
-  - "Dein Assistent für BAföG-Fragen" → "Your Assistant for BAföG Questions"
-  - "API-Schlüssel erforderlich" → "API Key Required"
-  - "Speichern" → "Save"
-  - "Chat löschen" → "Clear Chat"
-  - "Stelle deine Frage" → "Ask your question"
-  - "Open Source auf GitHub" → "Open Source on GitHub"
-  
-- `app.js`: Translated all UI messages to English
-  - Alert messages
-  - Error messages
-  - Welcome message
-  - Confirmation dialogs
-  - System prompts (now in English)
+### How Citations Work Without Backend
 
-**Files Modified:**
-- `index.html`
-- `app.js`
+The web version provides source citations using client-side keyword matching:
 
-### 2. URL Mapping from URLs.csv ✅
+**Files Involved:**
+- `index.html` - Web interface
+- `app.js` - Application logic and citation system
+- `knowledge_base/knowledge_index.json` - Pre-built index of documents with keywords
+- `knowledge_base/url_mapping.json` - Maps files to source URLs
 
-**Implementation:**
-- Created `generate_url_mapping.py` script that:
-  - Reads `knowledge_base/URLs.csv`
-  - Parses CSV entries with columns: file_name, url, doc_type
-  - Filters only TXT file entries (doc_type == 'TXT')
-  - Generates `knowledge_base/url_mapping.json` with filename → URL mappings
+**Citation Flow:**
+1. On page load, `app.js` fetches `knowledge_index.json`
+2. When user asks a question, keywords are extracted
+3. Documents are scored based on keyword matches (with English-German mappings)
+4. Top 3 relevant sources are selected
+5. Sources displayed with clickable URLs
 
-**Generated Mapping:**
-- 27 TXT files mapped to their source URLs
-- JSON format for easy consumption by both Python and JavaScript
-- Example mapping:
-  ```json
-  {
-    "Antragsformulare.txt": "https://www.xn--bafg-7qa.de/...",
-    "Fragen_und_Antworten.txt": "https://www.xn--bafg-7qa.de/...",
-    ...
-  }
-  ```
+**Keyword Matching:**
+- Extracts keywords from user question
+- Maps English terms to German equivalents (e.g., "study" → "studium")
+- Scores documents based on exact and partial matches
+- Prioritizes matches in document names
 
-**Files Created:**
-- `generate_url_mapping.py` - Script to generate mappings
-- `knowledge_base/url_mapping.json` - Generated mapping file (27 entries)
+**Benefits:**
+- ✅ No backend server needed
+- ✅ Fast response times
+- ✅ Works on GitHub Pages
+- ✅ Easy to deploy and share
 
-### 3. Source Citations with URLs ✅
+### URL Mapping Generation
 
-**Implementation Approach:**
-We implemented a two-tier system to support citations:
+**Files:**
+- `knowledge_base/URLs.csv` - Source data with file names and URLs
+- `generate_url_mapping.py` - Generates JSON mapping
+- `knowledge_base/url_mapping.json` - Generated mapping (27 files)
 
-#### Option A: Backend API with Full RAG (Recommended)
-- Created `api_server.py` - Flask-based API server
-- Uses existing RAG chatbot (`src/rag_chatbot.py`) to retrieve relevant documents
-- Returns responses with actual source citations based on vector similarity
-- Citations include:
-  - Document name (formatted)
-  - Source URL from url_mapping.json
-  - Original filename
-
-**How it works:**
-1. Backend loads knowledge base and URL mapping
-2. User asks question via web interface
-3. Backend performs RAG retrieval to find relevant documents
-4. Returns answer with sources that actually contributed to the response
-5. Web UI displays sources with clickable URLs
-
-**Files Created:**
-- `api_server.py` - Backend API server
-- Updated `app.js` to support backend API calls
-- Updated `requirements.txt` to include Flask dependencies
-
-#### Option B: Direct OpenRouter (Fallback)
-- When backend is not running, web app makes direct API calls to OpenRouter
-- No source citations (as no RAG retrieval happens)
-- Provides basic chatbot functionality
-
-**Files Modified:**
-- `app.js` - Added backend detection and dual-mode support
-- `styles.css` - Added styling for source citations
-
-### Architecture
-
-```
-┌─────────────────┐
-│   Web Browser   │
-│   (index.html)  │
-└────────┬────────┘
-         │
-         ├─── Option A (with backend) ───┐
-         │                               │
-         │                      ┌────────▼─────────┐
-         │                      │   api_server.py  │
-         │                      │   (Flask API)    │
-         │                      └────────┬─────────┘
-         │                               │
-         │                      ┌────────▼─────────┐
-         │                      │  RAG Chatbot     │
-         │                      │  + ChromaDB      │
-         │                      │  + URL Mapping   │
-         │                      └──────────────────┘
-         │
-         └─── Option B (no backend) ──────────────┐
-                                                   │
-                                          ┌────────▼────────┐
-                                          │   OpenRouter    │
-                                          │   (Direct API)  │
-                                          └─────────────────┘
+**Process:**
+```bash
+python generate_url_mapping.py
 ```
 
-### How to Use
+Reads URLs.csv and creates url_mapping.json with filename → URL mappings.
 
-#### With Source Citations (Full Implementation):
-1. Run: `python generate_url_mapping.py` (already done, url_mapping.json exists)
-2. Run: `python api_server.py` (starts backend on port 5000)
-3. Open `index.html` in browser
-4. Enter OpenRouter API key
-5. Ask questions and get responses with source citations!
+### Knowledge Index Generation
 
-#### Without Backend (Basic Mode):
-1. Open `index.html` in browser (or visit GitHub Pages)
-2. Enter OpenRouter API key
-3. Ask questions (no source citations, but functional)
+The `knowledge_index.json` file is pre-generated with:
+- Document name (formatted)
+- File path
+- Source URL
+- Keywords (extracted from filename and content)
 
-### Files Summary
+This allows the web version to match questions to relevant sources without requiring a vector database.
 
-**New Files:**
-- `generate_url_mapping.py` - Generates URL mapping from CSV
-- `api_server.py` - Backend API for RAG with citations
-- `IMPLEMENTATION_DETAILS.md` - This document
+## Python CLI Implementation
 
-**Modified Files:**
-- `index.html` - English UI
-- `app.js` - English messages + backend support + citation display
-- `styles.css` - Citation styling
-- `requirements.txt` - Added Flask dependencies
-- `README.md` - Updated documentation
-- `knowledge_base/url_mapping.json` - Generated from URLs.csv (27 entries)
+### RAG Pipeline
 
-### Testing
+**Components:**
+- **Document Loader**: `src/knowledge_base_loader.py`
+  - Loads .txt files from knowledge_base/
+  - Splits into 1000-char chunks with 100-char overlap
+  - Creates embeddings using sentence-transformers
+  - Stores in ChromaDB
 
-All three requirements have been verified:
-1. ✅ UI is fully in English (screenshot available)
-2. ✅ URL mapping generated with 27 TXT file mappings
-3. ✅ Backend API supports source citations with URLs
-4. ✅ Web UI displays citations when backend is available
-5. ✅ Graceful fallback when backend is unavailable
+- **Chatbot**: `src/rag_chatbot.py`
+  - Retrieves top 3 relevant chunks
+  - Generates responses with LangChain
+  - Provides source attribution with URLs
 
-### Future Enhancements
+**Features:**
+- Semantic search (not just keyword matching)
+- More accurate retrieval
+- Supports custom knowledge bases
+- Full control over RAG parameters
 
-If desired, the implementation could be further enhanced by:
-- Adding caching for backend responses
-- Implementing user feedback on source relevance
-- Adding more detailed citation information (page numbers, sections)
-- Supporting multiple languages dynamically
+### Knowledge Base Management
+
+**Tool**: `kb_manager.py`
+
+Commands:
+```bash
+python kb_manager.py list      # List documents
+python kb_manager.py scrape    # Scrape websites
+python kb_manager.py rebuild   # Rebuild vector DB
+```
+
+### Web Scraper
+
+**Tool**: `scraper.py`
+
+- Fetches content from URLs
+- Cleans HTML (removes scripts, navigation)
+- Saves as .txt files
+- Updates url_mapping.json
+- Respectful scraping with delays
+
+## Optional Backend API
+
+**File**: `api_server.py`
+
+Provides a Flask API endpoint for the web version to use RAG-based retrieval instead of keyword matching.
+
+**Endpoints:**
+- `GET /health` - Health check
+- `POST /chat` - Chat with RAG retrieval
+
+**Usage:**
+```bash
+python api_server.py
+```
+
+The web interface automatically detects and uses the backend if available, providing more accurate citations through vector search.
+
+## Technology Stack
+
+### Web Version
+- HTML/CSS/JavaScript (vanilla)
+- OpenRouter API for LLM
+- Client-side keyword matching
+- GitHub Pages hosting
+
+### Python CLI
+- **LLM**: OpenRouter API
+- **Embeddings**: sentence-transformers/all-MiniLM-L6-v2
+- **Vector DB**: ChromaDB (persistent local storage)
+- **Framework**: LangChain
+- **Web Scraping**: BeautifulSoup4, Requests
+
+### Backend API (Optional)
+- **Framework**: Flask
+- **CORS**: flask-cors
+- **RAG**: Same as Python CLI (ChromaDB + LangChain)
+
+## File Structure
+
+```
+├── index.html                    # Web UI
+├── app.js                        # Web app + citations
+├── styles.css                    # Styling
+├── knowledge_base/
+│   ├── *.txt                    # Documents
+│   ├── knowledge_index.json     # Web citation index
+│   ├── url_mapping.json         # URL mappings
+│   └── URLs.csv                 # Source data
+├── src/
+│   ├── knowledge_base_loader.py # Document processing
+│   └── rag_chatbot.py           # RAG implementation
+├── main.py                      # CLI entry point
+├── api_server.py                # Optional backend
+├── kb_manager.py                # KB management
+├── scraper.py                   # Web scraper
+└── generate_url_mapping.py      # Generate mappings
+```
+
+## Key Differences: Web vs Python CLI
+
+| Aspect | Web Version | Python CLI |
+|--------|-------------|------------|
+| **Citation Method** | Keyword matching | Vector similarity |
+| **Accuracy** | Good for specific topics | Better for complex queries |
+| **Setup** | Just API key | Python environment |
+| **Deployment** | Static hosting | Local only |
+| **Speed** | Fast (client-side) | Depends on DB size |
+| **Customization** | Limited to prompt | Full RAG control |
+
+## Future Enhancements
+
+Potential improvements:
+- Hybrid search (keywords + embeddings in web version)
+- Multi-language support beyond German
+- User feedback on citation relevance
+- Improved keyword extraction algorithms
+- Caching for backend API responses
