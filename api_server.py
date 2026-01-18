@@ -75,26 +75,30 @@ def chat():
         # Get answer with sources
         result = chatbot.ask(question)
         
-        # Format sources for response
-        sources = []
-        seen_sources = set()
+        # Check if this is a non-BAföG question response
+        is_non_bafog = chatbot._is_non_bafog_response(result['answer'])
         
-        for doc in result['sources']:
-            source_file = os.path.basename(doc.metadata.get('source', 'Unknown'))
-            url = doc.metadata.get('url', '')
+        # Format sources for response (only if BAföG-related)
+        sources = []
+        if not is_non_bafog:
+            seen_sources = set()
             
-            # Create unique identifier
-            source_id = f"{source_file}|{url}"
-            if source_id in seen_sources:
-                continue
-            seen_sources.add(source_id)
-            
-            if url:
-                sources.append({
-                    'name': source_file.replace('.txt', '').replace('-', ' ').title(),
-                    'url': url,
-                    'file': source_file
-                })
+            for doc in result['sources']:
+                source_file = os.path.basename(doc.metadata.get('source', 'Unknown'))
+                url = doc.metadata.get('url', '')
+                
+                # Create unique identifier
+                source_id = f"{source_file}|{url}"
+                if source_id in seen_sources:
+                    continue
+                seen_sources.add(source_id)
+                
+                if url:
+                    sources.append({
+                        'name': source_file.replace('.txt', '').replace('-', ' ').title(),
+                        'url': url,
+                        'file': source_file
+                    })
         
         return jsonify({
             'answer': result['answer'],
