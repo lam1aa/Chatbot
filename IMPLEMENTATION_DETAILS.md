@@ -275,6 +275,65 @@ The web version provides source citations using client-side keyword matching:
 - ✅ Works on GitHub Pages
 - ✅ Easy to deploy and share
 
+### Why the Website Cannot Use Vector Database Directly
+
+The web version uses keyword matching instead of a vector database for several technical reasons:
+
+**1. Browser Limitations:**
+- Vector databases like ChromaDB require Python runtime and cannot run in browsers
+- Browsers only support JavaScript, HTML, and CSS
+- No access to file system or persistent database storage
+- Cannot install Python packages or run native code
+
+**2. Embedding Model Size:**
+- The embedding model (all-MiniLM-L6-v2) is ~80-90 MB
+- Would need to download and run in browser using TensorFlow.js or ONNX
+- Slow initial load time and high memory usage
+- Not practical for mobile devices with limited resources
+
+**3. Vector Store Size:**
+- ChromaDB vector store contains embeddings for all document chunks
+- Would be several megabytes of data to download
+- Requires computational resources to perform similarity search
+- Not efficient for static website hosting
+
+**4. Deployment Constraints:**
+- GitHub Pages only supports static files (HTML, CSS, JS, JSON)
+- Cannot run server-side code or databases
+- No Python runtime available
+- Maximum simplicity and accessibility is the goal
+
+**Alternative Solutions:**
+
+The chatbot provides two options to work around these limitations:
+
+**Option 1: Client-Side Keyword Matching (Default)**
+- Lightweight JSON index (~50 KB)
+- Fast keyword-based document matching
+- Works entirely in browser
+- Good enough for most BAföG queries
+- ✅ Currently implemented
+
+**Option 2: Optional Backend API Server**
+- Run `api_server.py` on a separate server
+- Provides full RAG with vector search
+- Web interface auto-detects and uses if available
+- More accurate but requires server infrastructure
+- ⚠️ Optional, not required for basic functionality
+
+**Future Possibilities:**
+- **WebAssembly (WASM)**: Could potentially run embedding models in browser, but still large download
+- **Serverless Functions**: Deploy vector search as cloud function (AWS Lambda, Vercel, etc.)
+- **Hybrid Approach**: Combine keyword matching with cloud-based semantic search
+- **Browser-Native Embeddings**: Wait for browser APIs to support ML models natively
+
+**Current Design Decision:**
+The website prioritizes **accessibility and ease of deployment** over perfect accuracy. Keyword matching provides good-enough results for most questions while enabling:
+- Zero server costs
+- Instant deployment via GitHub Pages  
+- Works on any device with a browser
+- No maintenance or infrastructure required
+
 ### URL Mapping Generation
 
 **Files:**
@@ -410,6 +469,26 @@ The web interface automatically detects and uses the backend if available, provi
 | **Deployment** | Static hosting | Local only |
 | **Speed** | Fast (client-side) | Depends on DB size |
 | **Customization** | Limited to prompt | Full RAG control |
+| **Vector Database** | ❌ Not possible (browser limitation) | ✅ Yes (ChromaDB) |
+| **Embedding Model** | ❌ Too large for browser (~90 MB) | ✅ Yes (all-MiniLM-L6-v2) |
+| **Runtime** | JavaScript in browser | Python on local machine |
+| **Knowledge Base** | JSON index (~50 KB) | Vector embeddings (several MB) |
+| **Server Required** | ❌ No (works on GitHub Pages) | N/A (runs locally) |
+| **Hosting Cost** | Free | N/A |
+
+**Why These Differences Exist:**
+
+The web version is designed to be **statically hosted** (no server), which means:
+- Cannot run Python code or databases
+- Cannot use vector embeddings (too large and computationally intensive)
+- Must rely on lightweight JavaScript-based keyword matching
+- Prioritizes accessibility over perfect accuracy
+
+The Python CLI version has **full system access**, which enables:
+- Running ChromaDB vector database
+- Loading and using embedding models
+- Performing semantic similarity search
+- More accurate retrieval at the cost of requiring local installation
 
 ## Future Enhancements
 
