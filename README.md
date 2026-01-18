@@ -1,102 +1,59 @@
 # BAföG RAG Chatbot
 
-A minimal RAG (Retrieval-Augmented Generation) chatbot for answering BAföG-related questions using open-source technologies.
+A minimal RAG (Retrieval-Augmented Generation) chatbot for answering BAföG-related questions.
 
 ## 🌐 Try it Online
 
 **[Try the Web Version](https://lam1aa.github.io/Chatbot/)** - No installation required!
 
-The chatbot is available as both a web application (browser-based) and a command-line tool (Python).
-
-## ✨ New: Citations Without Backend!
-
-**The chatbot now shows source citations automatically - no backend server needed!**
-
-- ✅ Citations appear with every response
 - ✅ Works entirely in your browser
-- ✅ Clickable URLs to original sources
-- ✅ No setup or installation required
+- ✅ Automatic source citations with clickable URLs
+- ✅ Just needs an OpenRouter API key (free tier available)
+- ✅ No backend server needed
 
-See [citation_demo.html](citation_demo.html) for examples of how citations work.
+See [citation_demo.html](citation_demo.html) for citation examples.
 
 ## Features
 
-- 🤖 Uses OpenRouter API for LLM (free models available)
-- 🌐 **Web interface** - Share via GitHub Pages link
-- 📚 ChromaDB for vector storage (open-source, for Python version)
-- 🔍 Semantic search over BAföG documentation (Python version)
-- 🌐 Built-in web scraper for BAföG websites
-- 📎 Source attribution with URLs in responses
-- 🔄 Automatic knowledge base updates
-- 🚀 Simple and minimal codebase
-- 🇩🇪 German language support
+**Web Version (Recommended for most users):**
+- 🌐 Browser-based - works on any device
+- 📎 Client-side source citations with URLs
+- 🔑 Just needs an OpenRouter API key
 - 📱 Responsive design (mobile & desktop)
+- 🇩🇪 German language support
 
-## Architecture
-
-### Web Version
-- **Frontend**: HTML, CSS, JavaScript (static files)
-- **LLM**: Direct API calls to OpenRouter from browser
-- **Deployment**: GitHub Pages (free hosting)
-
-### Python Version
-- **LLM**: OpenRouter API (supports various open-source models)
-- **Embeddings**: HuggingFace sentence-transformers (all-MiniLM-L6-v2)
-- **Vector Database**: ChromaDB (open-source, local storage)
-- **Framework**: LangChain
+**Python CLI Version (For advanced users):**
+- 📚 ChromaDB for vector storage
+- 🔍 Semantic search over custom documents
+- 🌐 Built-in web scraper for BAföG websites
+- 🔄 Knowledge base management tools
 
 ## Quick Start
 
-### 🌐 Web Version (Recommended for Sharing)
-
-The easiest way to use and share the chatbot:
+### 🌐 Web Version (Easiest)
 
 1. Visit **[https://lam1aa.github.io/Chatbot/](https://lam1aa.github.io/Chatbot/)**
 2. Get a free API key from [OpenRouter.ai](https://openrouter.ai/)
-3. Enter your API key in the web interface
-4. Start chatting!
+3. Enter your API key
+4. Start chatting - citations included automatically!
 
-**For RAG with source citations**: Run the backend API server (see below) alongside the web interface.
+Want to deploy your own? See [WEB_DEPLOYMENT.md](WEB_DEPLOYMENT.md).
 
-**Want to deploy your own?** See [WEB_DEPLOYMENT.md](WEB_DEPLOYMENT.md) for detailed instructions.
+### 🖥️ Python CLI Version
 
-### 🔌 Web + Backend API (RAG with Citations)
-
-For the full experience with source citations from the knowledge base:
-
-1. Start the backend API server:
+For local development with custom knowledge base:
 
 ```bash
-python api_server.py
-```
-
-2. Open `index.html` in your browser or visit the deployed web version
-3. The web interface will automatically detect and use the backend API
-4. You'll get responses with source citations and URLs!
-
-The backend provides:
-- ✅ RAG-based responses from knowledge base
-- ✅ Source citations with URLs
-- ✅ Semantic search over documents
-- ✅ Fallback to direct OpenRouter if backend unavailable
-
-### 🖥️ Python CLI Version (Advanced)
-
-For local development with RAG capabilities and custom knowledge base:
-
-#### Automated Setup (Recommended)
-
-```bash
+# Automated setup
 bash setup.sh
-```
 
-Then edit `.env` to add your OpenRouter API key and run:
-
-```bash
+# Edit .env to add your OpenRouter API key, then:
 python main.py
 ```
 
-#### Manual Setup
+See sections below for manual setup and advanced options.
+
+## Python CLI Setup (Advanced)
 
 #### 1. Install Dependencies
 
@@ -106,23 +63,17 @@ pip install -r requirements.txt
 
 #### 2. Add Knowledge Base
 
-Place your scraped BAföG `.txt` files in the `knowledge_base/` directory. Two sample files are already included.
+Place your BAföG `.txt` files in the `knowledge_base/` directory. Sample files are included.
 
 #### 3. Configure API Key
 
-Create a `.env` file from the example:
+Create a `.env` file:
 
 ```bash
 cp .env.example .env
 ```
 
-Edit `.env` and add your OpenRouter API key:
-
-```
-OPENROUTER_API_KEY=your_api_key_here
-```
-
-**Get a free API key at**: https://openrouter.ai/
+Edit `.env` and add your OpenRouter API key from https://openrouter.ai/
 
 #### 4. Run the Chatbot
 
@@ -130,33 +81,18 @@ OPENROUTER_API_KEY=your_api_key_here
 python main.py
 ```
 
-## Usage
+## Usage Examples
 
-### Interactive Mode
+### Web Interface
 
-Once running, you can ask questions in German:
+Just visit the web version and ask questions like:
+- "Was ist BAföG?"
+- "Wie stelle ich einen Antrag?"
+- "Gibt es eine Altersgrenze?"
 
-```
-Du: Was ist BAföG?
-Bot: [Answer based on your knowledge base]
+Citations appear automatically with clickable source URLs.
 
-Quellen:
-📄 knowledge_base/bafoeg_info.txt
-   🔗 https://www.bafög.de/bafoeg/de/home/home_node.html
-
-Du: Wie hoch ist die Förderung?
-Bot: [Answer based on your knowledge base]
-
-Quellen:
-📄 knowledge_base/bafoeg_info.txt
-   🔗 https://www.bafög.de/bafoeg/de/home/home_node.html
-
-Du: exit
-```
-
-### Programmatic Usage
-
-You can also use the chatbot in your own Python scripts:
+### Python CLI
 
 ```python
 from src.knowledge_base_loader import KnowledgeBaseLoader
@@ -172,157 +108,125 @@ chatbot = RAGChatbot(vectorstore)
 # Ask questions
 result = chatbot.ask("Was ist BAföG?")
 print(result["answer"])
-
-# Access sources
-for source in result["sources"]:
-    print(f"Source: {source.metadata['source']}")
-    if 'url' in source.metadata:
-        print(f"URL: {source.metadata['url']}")
 ```
 
-See `example_usage.py` for a complete example.
+See `example_usage.py` for more details.
 
-## Managing Knowledge Base
+## Managing Knowledge Base (Python CLI)
 
-### Option 1: Use Pre-scraped Files with URL Mapping
+### Add New Documents
 
-1. Add your `.txt` files to `knowledge_base/` directory
-2. Create/update `knowledge_base/url_mapping.json` to map files to source URLs:
+1. Add `.txt` files to `knowledge_base/` directory
+2. Update `knowledge_base/url_mapping.json` (optional, for source URLs):
+   ```json
+   {
+     "your_file.txt": "https://source-url.de"
+   }
+   ```
+3. Rebuild vector database:
+   ```bash
+   python kb_manager.py rebuild
+   ```
 
-```json
-{
-  "bafoeg_info.txt": "https://www.bafög.de/bafoeg/de/home/home_node.html",
-  "antragstellung.txt": "https://www.bafög.de/bafoeg/de/antrag-stellen/antrag-stellen_node.html"
-}
-```
-
-3. Rebuild the vector database:
-
-```bash
-python kb_manager.py rebuild
-```
-
-### Option 2: Scrape Directly from URLs
-
-Use the built-in web scraper to fetch content from BAföG websites:
+### Scrape Content from Web
 
 ```bash
 # Interactive mode
 python kb_manager.py scrape
-```
 
-Or edit `scraper.py` and add your URLs, then run:
-
-```bash
-python scraper.py
-```
-
-**See [SCRAPING_GUIDE.md](SCRAPING_GUIDE.md) for detailed scraping instructions and example URLs.**
-
-### Knowledge Base Commands
-
-```bash
-# List all knowledge base files
+# List files
 python kb_manager.py list
-
-# Scrape content from URLs
-python kb_manager.py scrape
-
-# Rebuild vector database (after adding new files)
-python kb_manager.py rebuild
 ```
 
-**Note:** After adding new files or scraping, always rebuild the vector database to include the new content.
+See [SCRAPING_GUIDE.md](SCRAPING_GUIDE.md) for details.
 
 ## Project Structure
 
 ```
-.
-├── # Web Interface Files (for GitHub Pages)
-├── index.html                   # Main web interface
-├── styles.css                   # Web UI styling
-├── app.js                       # Web application logic (supports backend API)
-├── api_server.py               # Backend API server for RAG with citations
-├── WEB_DEPLOYMENT.md           # Web deployment guide
+├── # Web Interface (GitHub Pages)
+├── index.html              # Main web UI
+├── styles.css              # Styling
+├── app.js                  # Web app logic + client-side citations
+├── citation_demo.html      # Citation examples
+├── knowledge_base/
+│   ├── *.txt              # BAföG documents
+│   ├── knowledge_index.json  # Index for web citations
+│   └── url_mapping.json   # File-to-URL mapping
 │
-├── # Python CLI Files
-├── knowledge_base/              # Place your BAföG .txt files here
-│   ├── bafoeg_info.txt         # Sample: General BAföG information
-│   ├── antragstellung.txt      # Sample: Application process info
-│   ├── URLs.csv                # CSV file mapping filenames to URLs
-│   └── url_mapping.json        # Generated JSON mapping of files to URLs
+├── # Python CLI
 ├── src/
-│   ├── knowledge_base_loader.py  # Loads and processes documents
-│   └── rag_chatbot.py           # RAG chatbot implementation
-├── main.py                      # Entry point - interactive chat
-├── example_usage.py            # Example of programmatic usage
-├── scraper.py                  # Web scraper for BAföG websites
-├── kb_manager.py               # Knowledge base management tool
-├── generate_url_mapping.py     # Generate url_mapping.json from URLs.csv
-├── setup.sh                    # Automated setup script
-├── requirements.txt            # Python dependencies
-├── .env.example               # Environment variables template
-└── README.md                  # This file
+│   ├── knowledge_base_loader.py
+│   └── rag_chatbot.py
+├── main.py                # CLI entry point
+├── kb_manager.py          # Knowledge base tools
+├── api_server.py          # Optional backend API
+└── requirements.txt
 ```
 
 ## Configuration
 
-### LLM Model
+### Web Version
+Edit `app.js` to customize:
+- LLM model (line ~270): `model: 'meta-llama/llama-3.1-8b-instruct'`
+- System prompt for chatbot behavior
 
-You can change the model in `.env`:
-
+### Python CLI
+Edit `.env` for LLM model:
 ```
 OPENROUTER_MODEL=meta-llama/llama-3.1-8b-instruct
 ```
 
 See available models at: https://openrouter.ai/models
 
-**Note:** If you encounter "No endpoints found" errors, try removing the `:free` suffix from the model name or select a different model from the OpenRouter models page.
+## Deployment
 
-### Retrieval Settings
+### GitHub Pages (Recommended)
 
-Edit `src/rag_chatbot.py` to adjust:
-- `search_kwargs={"k": 3}` - Number of documents to retrieve
-- `temperature=0.7` - LLM creativity (0.0-1.0)
+The web version can be deployed for free:
 
-## Adding More Documents
-
-1. Place `.txt` files in `knowledge_base/` directory
-2. Delete `chroma_db/` directory (if exists)
-3. Run `python main.py` to rebuild the vector database
-
-## 🚀 Deployment
-
-### GitHub Pages (Web Version)
-
-Deploy the web interface to GitHub Pages for free hosting:
-
-1. Push your changes to GitHub
+1. Push to GitHub
 2. Go to **Settings** → **Pages**
 3. Select **Branch: main** and **Folder: / (root)**
-4. Click **Save**
-5. Your chatbot will be available at `https://<username>.github.io/Chatbot/`
+4. Save - your chatbot will be at `https://<username>.github.io/Chatbot/`
 
-See [WEB_DEPLOYMENT.md](WEB_DEPLOYMENT.md) for detailed deployment instructions.
+See [WEB_DEPLOYMENT.md](WEB_DEPLOYMENT.md) for details.
 
-### Differences Between Versions
+## Architecture
 
-| Feature | Web Version (No Backend) | Web + Backend API | Python CLI Version |
-|---------|-------------|-------------------|-------------------|
-| **Accessibility** | Browser-based, shareable link | Browser + local server | Local installation required |
-| **Knowledge Base** | General BAföG knowledge | Custom documents via ChromaDB | Custom documents via ChromaDB |
-| **RAG Search** | ❌ (Direct LLM) | ✅ (Vector search) | ✅ (Vector search) |
-| **Source Citations** | ❌ | ✅ With URLs | ✅ With URLs |
-| **Setup** | Just API key | API key + Python server | Python environment + dependencies |
-| **Sharing** | Easy (just share link) | Requires backend server | Requires users to install |
-| **Customization** | Edit prompt in app.js | Full control over RAG pipeline | Full control over RAG pipeline |
+### Web Version
+- **Frontend**: Static HTML/CSS/JavaScript
+- **Citations**: Client-side keyword matching with knowledge_index.json
+- **LLM**: Direct OpenRouter API calls from browser
+- **Hosting**: GitHub Pages or any static host
 
-## Notes
+### Python CLI Version
+- **LLM**: OpenRouter API
+- **Embeddings**: HuggingFace sentence-transformers (all-MiniLM-L6-v2)
+- **Vector DB**: ChromaDB (local)
+- **Framework**: LangChain
 
-- **Web Version**: Uses direct API calls from browser to OpenRouter. No server required.
-- **Python Version**: The vector database is created on first run and persisted in `chroma_db/`
-- All components are open-source except the OpenRouter API (which provides free tier)
-- Documents are split into 1000-character chunks with 100-character overlap for better context (Python version)
+### Optional Backend API
+For advanced RAG with semantic search:
+```bash
+python api_server.py
+```
+Provides vector-based retrieval instead of keyword matching.
+
+## How It Works
+
+**Web Version:**
+1. Loads knowledge_index.json on page load (26+ documents)
+2. User asks a question
+3. Keywords extracted and matched against document index
+4. LLM generates response via OpenRouter
+5. Relevant sources displayed with URLs
+
+**Python CLI:**
+1. Documents split into chunks and embedded
+2. User question embedded
+3. Similar chunks retrieved from ChromaDB
+4. LLM generates answer using retrieved context
+5. Sources displayed with URLs
 
 ## License
 

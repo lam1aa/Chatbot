@@ -1,68 +1,116 @@
-# Quick Testing Guide
+# Testing Guide
 
-This guide shows how to test the implemented features.
+Quick guide to test the BAföG Chatbot implementation.
 
 ## Prerequisites
 
+For Python CLI testing:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Test 1: Verify URL Mapping Generation
+## Test 1: Web Version (Recommended)
 
-```bash
-python generate_url_mapping.py
-```
-
-**Expected Output:**
-```
-✓ Generated ./knowledge_base/url_mapping.json
-  Mapped 27 TXT files to URLs
-
-Examples:
-  Antragsformulare.txt -> https://www.xn--bafg-7qa.de/...
-  Fragen_und_Antworten.txt -> https://www.xn--bafg-7qa.de/...
-  gibt-es-bafoeg-auch-im-ausland.txt -> https://www.xn--bafg-7qa.de/...
-  ... and 24 more
-```
-
-## Test 2: Verify English UI
+### Test in Browser
 
 1. Open `index.html` in a web browser
-2. Check that all text is in English:
+2. Verify the interface is in English:
    - ✓ "Your Assistant for BAföG Questions"
    - ✓ "API Key Required"
    - ✓ "Save" button
-   - ✓ "Open Source on GitHub" (not "auf")
+   - ✓ "Open Source on GitHub"
 
-## Test 3: Test Backend API with Citations
+3. Enter an OpenRouter API key
+4. Ask a question (e.g., "What is BAföG?")
+5. Verify response appears with citations
+6. Check that source URLs are clickable
 
-### Step 1: Start Backend Server
+### Test Citations
+
+1. Ask: "How do I apply for BAföG?"
+2. Expected: Response with citations showing relevant documents
+3. Click a source URL to verify it opens the correct page
+
+### Test Online Version
+
+Visit: https://lam1aa.github.io/Chatbot/
+
+Verify same functionality works on deployed version.
+
+## Test 2: Python CLI Version
+
+### Test Basic Setup
+
+```bash
+# Run the chatbot
+python main.py
+```
+
+Expected output:
+```
+Loading documents from ./knowledge_base...
+Loaded X documents
+Creating embeddings...
+[Chat interface starts]
+```
+
+### Test Knowledge Base Management
+
+```bash
+# List files
+python kb_manager.py list
+```
+
+Expected: List of all .txt files in knowledge_base/
+
+```bash
+# Rebuild vector database
+python kb_manager.py rebuild
+```
+
+Expected: Success message about rebuilding ChromaDB
+
+## Test 3: URL Mapping
+
+### Verify URL Mapping Exists
+
+```bash
+ls -l knowledge_base/url_mapping.json
+```
+
+Expected: File exists with recent timestamp
+
+### Check Mapping Content
+
+```bash
+python -c "import json; data=json.load(open('knowledge_base/url_mapping.json')); print(f'{len(data)} files mapped'); print(list(data.items())[:3])"
+```
+
+Expected: Shows number of mapped files and sample entries
+
+## Test 4: Optional Backend API
+
+### Start Backend
 
 ```bash
 python api_server.py
 ```
 
-**Expected Output:**
+Expected output:
 ```
 Initializing knowledge base...
-Loading documents from ./knowledge_base...
-Loaded X documents
-...
+Knowledge base loaded successfully!
 🚀 Starting BAföG Chatbot API server on port 5000
-   Health check: http://localhost:5000/health
-   Chat endpoint: http://localhost:5000/chat
-   Debug mode: False
 ```
 
-### Step 2: Test Health Endpoint
+### Test Health Endpoint
 
 In another terminal:
 ```bash
 curl http://localhost:5000/health
 ```
 
-**Expected Output:**
+Expected response:
 ```json
 {
   "knowledge_base_loaded": true,
@@ -70,80 +118,82 @@ curl http://localhost:5000/health
 }
 ```
 
-### Step 3: Test Chat with Citations
+### Test Chat Endpoint
 
 ```bash
 curl -X POST http://localhost:5000/chat \
   -H "Content-Type: application/json" \
-  -d '{
-    "question": "What is BAföG?",
-    "api_key": "your-openrouter-api-key-here"
-  }'
+  -d '{"question": "Was ist BAföG?", "api_key": "YOUR_API_KEY"}'
 ```
 
-**Expected Output:**
-```json
-{
-  "answer": "BAföG is...",
-  "sources": [
-    {
-      "name": "Bafoeg Info",
-      "url": "https://www.bafög.de/...",
-      "file": "bafoeg_info.txt"
-    }
-  ]
-}
+Expected: JSON response with answer and sources
+
+### Test Web UI with Backend
+
+1. Keep backend running
+2. Open index.html
+3. Open browser console (F12)
+4. Look for: "Backend API available: true"
+5. Ask a question
+6. Verify citations appear from backend
+
+## Test 5: Web Scraper
+
+### Test Scraping (Optional)
+
+```bash
+python kb_manager.py scrape
 ```
 
-### Step 4: Test Web UI with Backend
+Enter a test URL when prompted, e.g.:
+```
+https://www.bafög.de/bafoeg/de/home/home_node.html
+```
 
-1. Open `index.html` in browser
-2. Open browser console (F12)
-3. Look for: "Backend API available: true"
-4. Enter your OpenRouter API key
-5. Ask a question about BAföG
-6. Response should include sources with clickable URLs!
-
-## Test 4: Test Web UI Without Backend (Fallback)
-
-1. Make sure backend is NOT running (stop api_server.py)
-2. Refresh `index.html`
-3. Open browser console
-4. Look for: "Backend API not available, using direct OpenRouter calls"
-5. Enter your OpenRouter API key
-6. Ask a question
-7. Response works but NO sources shown (as expected)
+Expected:
+- File saved in knowledge_base/
+- URL added to url_mapping.json
 
 ## Verification Checklist
 
-- [x] ✅ URL mapping generated with 27 entries
-- [x] ✅ All UI text is in English
-- [x] ✅ Backend API server starts successfully
-- [x] ✅ Health endpoint returns OK
-- [x] ✅ Chat endpoint returns responses with sources
-- [x] ✅ Web UI detects backend automatically
-- [x] ✅ Web UI displays sources with clickable URLs
-- [x] ✅ Web UI falls back gracefully when backend unavailable
+After running tests, verify:
+
+- [ ] ✅ Web UI displays in English
+- [ ] ✅ Web UI shows citations with URLs
+- [ ] ✅ Python CLI starts without errors
+- [ ] ✅ Knowledge base loads successfully
+- [ ] ✅ url_mapping.json exists with entries
+- [ ] ✅ Backend API (if tested) starts and responds
+- [ ] ✅ Health endpoint returns OK
+- [ ] ✅ Chat endpoint returns responses with sources
+- [ ] ✅ Web UI detects backend when available
 
 ## Troubleshooting
 
+**Web UI not showing citations:**
+- Check browser console for errors
+- Verify knowledge_base/knowledge_index.json exists
+- Try hard refresh (Ctrl+Shift+R)
+
+**Python CLI errors:**
+- Verify all dependencies installed: `pip install -r requirements.txt`
+- Check .env file has OPENROUTER_API_KEY set
+- Ensure knowledge_base/ directory has .txt files
+
 **Backend won't start:**
-- Check Python dependencies: `pip install -r requirements.txt`
-- Verify .env file has OPENROUTER_API_KEY set
+- Check port 5000 is not in use
+- Verify Flask is installed: `pip install flask flask-cors`
+- Check knowledge_base files exist
 
-**No sources in responses:**
-- Make sure backend API is running
-- Check browser console for "Backend API available: true"
-- Verify knowledge base files are in knowledge_base/ directory
-
-**CORS errors:**
-- Backend includes CORS support, should work from file:// and http://
-- If issues persist, serve HTML via `python -m http.server 8080`
+**CORS errors with backend:**
+- Backend includes CORS support
+- If issues persist, serve HTML via: `python -m http.server 8080`
 
 ## Success Criteria
 
-All three requirements are met when:
-1. UI displays entirely in English ✅
-2. url_mapping.json exists with 27 TXT file mappings ✅
-3. Backend returns responses with source URLs ✅
-4. Web UI shows citations when backend is running ✅
+All tests pass when:
+1. ✅ Web version works standalone with citations
+2. ✅ Python CLI can answer questions with sources
+3. ✅ URL mapping contains file-to-URL mappings
+4. ✅ Backend API (optional) provides enhanced RAG responses
+5. ✅ All documentation matches actual behavior
