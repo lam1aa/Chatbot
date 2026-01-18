@@ -35,9 +35,15 @@ class RAGChatbot:
         )
         
         # Create custom prompt template
-        template = """Du bist ein hilfreicher Assistent für BAföG-Fragen. 
-Benutze die folgenden Kontextinformationen, um die Frage zu beantworten.
-Wenn du die Antwort nicht weißt, sage einfach, dass du es nicht weißt. Erfinde keine Antwort.
+        template = """Du bist ein hilfreicher Assistent AUSSCHLIESSLICH für BAföG-Fragen. 
+
+WICHTIGE REGEL: Du kannst NUR Fragen zu BAföG beantworten.
+Falls der Benutzer nach etwas anderem fragt (Wetter, Sport, Programmierung, andere Themen usw.), antworte höflich:
+"Ich kann nur bei BAföG-bezogenen Fragen helfen. Bitte stellen Sie mir eine Frage zu BAföG und ich helfe Ihnen gerne weiter."
+
+Für BAföG-bezogene Fragen:
+- Benutze die folgenden Kontextinformationen, um die Frage zu beantworten
+- Wenn du die Antwort nicht weißt, sage einfach, dass du es nicht weißt. Erfinde keine Antwort.
 
 Kontext:
 {context}
