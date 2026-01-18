@@ -253,10 +253,15 @@ class ChatbotApp {
         /**
          * Detect if the response is a rejection message for non-BAföG questions
          * Returns true if the answer indicates the question is not BAföG-related
+         * 
+         * Note: These phrases match the rejection message in the system prompt (line 343).
+         * A similar check exists in src/rag_chatbot.py for the Python backend.
+         * This includes both English and German since the web interface supports both.
          */
         const lowerAnswer = answer.toLowerCase();
         
         // Check for common rejection phrases in both German and English
+        // These correspond to the rejection messages in the system prompts
         const rejectionPhrases = [
             'can only help with bafög',
             'can only assist with bafög',
