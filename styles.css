@@ -90,7 +90,7 @@ header h1 {
 }
 
 .api-key-content a {
-    color: var(--primary-color);
+    color: #60a5fa;
     text-decoration: none;
 }
 
@@ -304,7 +304,7 @@ header h1 {
 }
 
 .sources a {
-    color: var(--primary-color);
+    color: #60a5fa;
     text-decoration: none;
     display: block;
     margin-top: 4px;
@@ -327,7 +327,7 @@ header h1 {
 }
 
 .source-link {
-    color: var(--primary-color);
+    color: #60a5fa;
     text-decoration: none;
     margin-left: 5px;
 }
@@ -389,7 +389,7 @@ footer {
 }
 
 footer a {
-    color: var(--primary-color);
+    color: #60a5fa;
     text-decoration: none;
 }
 
