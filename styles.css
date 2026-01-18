@@ -19,7 +19,10 @@
     --bot-message-text: #f1f5f9;
     --error-color: #f87171;
     --success-color: #4ade80;
-    --input-area-height: 104px; /* input padding (40px) + input min-height (44px) + border (2px) + gap (10px) + shadow (8px) */
+    --input-padding: 20px;
+    --input-min-height: 44px;
+    --input-area-height: 104px;
+    --content-max-width: 800px;
 }
 
 body {
@@ -34,7 +37,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: var(--content-max-width);
     margin: 0 auto;
     padding: 0;
     flex: 1;
@@ -70,10 +73,8 @@ header h1 {
     border-radius: 12px;
     padding: 30px;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-    margin: 40px 20px;
+    margin: 40px auto;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .api-key-content h2 {
@@ -217,7 +218,7 @@ header h1 {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
-    max-width: 800px;
+    max-width: var(--content-max-width);
     margin: 0 auto;
     width: 100%;
 }
@@ -228,7 +229,7 @@ header h1 {
     padding: 30px 20px 20px;
     display: flex;
     flex-direction: column;
-    max-width: 800px;
+    max-width: var(--content-max-width);
     margin: 0 auto;
     width: 100%;
 }
@@ -356,13 +357,13 @@ header h1 {
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    padding: 20px;
+    padding: var(--input-padding);
     background: var(--background);
     border-top: 1px solid var(--border);
     display: flex;
     gap: 10px;
     align-items: stretch;
-    max-width: 840px; /* 800px + 2*20px padding */
+    max-width: calc(var(--content-max-width) + 2 * var(--input-padding));
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -376,7 +377,7 @@ header h1 {
     resize: none;
     max-height: 150px;
     overflow-y: auto;
-    min-height: 44px;
+    min-height: var(--input-min-height);
     background: var(--background);
     color: var(--text-primary);
 }
@@ -406,7 +407,7 @@ footer {
     padding: 30px 20px 20px;
     color: var(--text-secondary);
     font-size: 0.85rem;
-    max-width: 800px;
+    max-width: var(--content-max-width);
     margin: 0 auto;
     width: 100%;
 }
