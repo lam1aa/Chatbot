@@ -276,9 +276,9 @@ class ChatbotApp {
                 if (sources.length === 0 && this.knowledgeIndex.length > 0) {
                     sources = this.knowledgeIndex
                         .filter(doc => 
-                            doc.keywords.includes('bafög') ||
-                            doc.name.toLowerCase().includes('bafoeg') ||
-                            doc.name.toLowerCase().includes('bafög')
+                            (doc.keywords && doc.keywords.includes('bafög')) ||
+                            (doc.name && doc.name.toLowerCase().includes('bafoeg')) ||
+                            (doc.name && doc.name.toLowerCase().includes('bafög'))
                         )
                         .slice(0, 2)
                         .map(doc => ({
