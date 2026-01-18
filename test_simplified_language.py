@@ -2,13 +2,19 @@
 Test script to verify simplified language instructions in prompts
 """
 import sys
+import os
+from pathlib import Path
+
+# Get the directory of this script
+SCRIPT_DIR = Path(__file__).parent
 
 
 def test_python_prompt():
     """Test that Python prompt contains simplified language instructions"""
     print("=== Testing Python Prompt (src/rag_chatbot.py) ===\n")
     
-    with open('src/rag_chatbot.py', 'r', encoding='utf-8') as f:
+    file_path = SCRIPT_DIR / 'src' / 'rag_chatbot.py'
+    with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
     
     # Check for simplified language instructions
@@ -40,7 +46,8 @@ def test_javascript_prompt():
     """Test that JavaScript prompt contains simplified language instructions"""
     print("=== Testing JavaScript Prompt (app.js) ===\n")
     
-    with open('app.js', 'r', encoding='utf-8') as f:
+    file_path = SCRIPT_DIR / 'app.js'
+    with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
     
     # Check for simplified language instructions
@@ -72,7 +79,8 @@ def test_flowchart_documentation():
     """Test that flowchart documentation was added"""
     print("=== Testing Flowchart Documentation (IMPLEMENTATION_DETAILS.md) ===\n")
     
-    with open('IMPLEMENTATION_DETAILS.md', 'r', encoding='utf-8') as f:
+    file_path = SCRIPT_DIR / 'IMPLEMENTATION_DETAILS.md'
+    with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
     
     # Check for flowchart sections
