@@ -272,7 +272,22 @@ class ChatbotApp {
                 // Add client-side citations based on keyword matching
                 let sources = this.findRelevantSources(message);
                 
-                // Only add sources if they are actually relevant (don't show default sources)
+                // If no specific sources found, provide general BAföG information sources
+                if (sources.length === 0 && this.knowledgeIndex.length > 0) {
+                    sources = this.knowledgeIndex
+                        .filter(doc => 
+                            (doc.keywords && doc.keywords.includes('bafög')) ||
+                            (doc.name && doc.name.toLowerCase().includes('bafoeg')) ||
+                            (doc.name && doc.name.toLowerCase().includes('bafög'))
+                        )
+                        .slice(0, 2)
+                        .map(doc => ({
+                            name: doc.name,
+                            url: doc.url,
+                            file: doc.file
+                        }));
+                }
+                
                 response.sources = sources;
             }
             this.addMessage(response.answer, 'bot', response.sources);
