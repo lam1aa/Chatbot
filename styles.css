@@ -29,35 +29,38 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-bottom: 120px; /* Space for fixed input at bottom */
 }
 
 .container {
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0;
     flex: 1;
     width: 100%;
 }
 
 header {
     text-align: center;
-    padding: 30px 20px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #4a2556 100%);
-    color: white;
-    border-radius: 16px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    padding: 40px 20px 30px;
+    background: transparent;
+    color: var(--text-primary);
+    border-radius: 0;
+    margin-bottom: 0;
+    box-shadow: none;
+    border-bottom: 1px solid var(--border);
 }
 
 header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 5px;
+    font-weight: 600;
 }
 
 .subtitle {
-    font-size: 1.1rem;
-    opacity: 0.9;
+    font-size: 0.95rem;
+    opacity: 0.7;
+    color: var(--text-secondary);
 }
 
 /* API Key Section */
@@ -66,6 +69,10 @@ header h1 {
     border-radius: 12px;
     padding: 30px;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    margin: 40px 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .api-key-content h2 {
@@ -193,38 +200,43 @@ header h1 {
 
 /* Chat Section */
 .chat-section {
-    background: var(--surface);
-    border-radius: 12px;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-    overflow: hidden;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
     display: flex;
     flex-direction: column;
-    /* 100vh minus header (110px), margins (60px), footer (60px), container padding (40px), spacing (10px) = 280px */
-    height: calc(100vh - 280px);
-    min-height: 400px;
+    min-height: auto;
 }
 
 .settings-bar {
-    padding: 15px 20px;
-    background: var(--background);
+    padding: 10px 20px;
+    background: transparent;
     border-bottom: 1px solid var(--border);
     display: flex;
     gap: 10px;
     justify-content: flex-end;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .chat-container {
     flex: 1;
-    overflow-y: auto;
-    padding: 20px;
+    overflow-y: visible;
+    padding: 30px 20px 20px;
     display: flex;
     flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .messages {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
+    padding-bottom: 20px;
 }
 
 .message {
@@ -338,12 +350,19 @@ header h1 {
 
 /* Input Container */
 .input-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     padding: 20px;
     background: var(--background);
     border-top: 1px solid var(--border);
     display: flex;
     gap: 10px;
     align-items: stretch;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
 }
 
 #user-input {
@@ -383,9 +402,12 @@ header h1 {
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px 20px;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 footer a {
@@ -400,24 +422,21 @@ footer a:hover {
 /* Responsive Design */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .container {
-        padding: 10px;
+        padding: 0;
     }
 
     .api-key-section {
         padding: 20px;
+        margin: 20px;
+        border-radius: 12px;
     }
 
     .api-key-input-group {
         flex-direction: column;
-    }
-
-    .chat-section {
-        /* Adjusted for mobile: less header padding and margins = 240px total */
-        height: calc(100vh - 240px);
     }
 
     .message-content {
@@ -426,6 +445,19 @@ footer a:hover {
 
     .settings-bar {
         flex-wrap: wrap;
+        padding: 10px 15px;
+    }
+
+    .chat-container {
+        padding: 20px 15px;
+    }
+
+    .input-container {
+        padding: 15px;
+    }
+
+    body {
+        padding-bottom: 100px;
     }
 }
 

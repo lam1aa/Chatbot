@@ -483,8 +483,11 @@ When providing information, if you have specific knowledge from documents, menti
         
         this.messagesContainer.appendChild(messageDiv);
         
-        // Scroll to bottom
-        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+        // Scroll to bottom of page
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
     }
     
     addErrorMessage(errorText) {
@@ -498,8 +501,11 @@ When providing information, if you have specific knowledge from documents, menti
         messageDiv.appendChild(contentDiv);
         this.messagesContainer.appendChild(messageDiv);
         
-        // Scroll to bottom
-        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+        // Scroll to bottom of page
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
     }
     
     setProcessing(isProcessing) {
