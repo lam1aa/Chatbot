@@ -229,11 +229,15 @@ class ChatbotApp {
     showApiKeyInterface() {
         this.apiKeySection.style.display = 'block';
         this.chatSection.style.display = 'none';
+        const header = document.getElementById('page-header');
+        if (header) header.style.display = 'block';
     }
     
     showChatInterface() {
         this.apiKeySection.style.display = 'none';
         this.chatSection.style.display = 'flex';
+        const header = document.getElementById('page-header');
+        if (header) header.style.display = 'none';
         this.userInput.focus();
     }
     
