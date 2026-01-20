@@ -239,14 +239,22 @@ class ChatbotApp {
     
     clearChat() {
         this.conversationHistory = [];
-        this.messagesContainer.innerHTML = `
-            <div class="message bot-message">
-                <div class="message-content">
-                    <strong>Welcome!</strong> I'm your BAföG assistant. 
-                    Ask me your questions about BAföG and I'll be happy to help you.
-                </div>
-            </div>
-        `;
+        this.messagesContainer.innerHTML = '';
+        this.showEmptyPlaceholder();
+    }
+    
+    showEmptyPlaceholder() {
+        const placeholder = document.getElementById('empty-chat-placeholder');
+        if (placeholder) {
+            placeholder.style.display = 'flex';
+        }
+    }
+    
+    hideEmptyPlaceholder() {
+        const placeholder = document.getElementById('empty-chat-placeholder');
+        if (placeholder) {
+            placeholder.style.display = 'none';
+        }
     }
     
     isNonBafogResponse(answer) {
@@ -278,6 +286,9 @@ class ChatbotApp {
     async sendMessage() {
         const message = this.userInput.value.trim();
         if (!message || this.isProcessing) return;
+        
+        // Hide empty placeholder when first message is sent
+        this.hideEmptyPlaceholder();
         
         // Add user message to UI
         this.addMessage(message, 'user');
