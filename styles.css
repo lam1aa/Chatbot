@@ -22,6 +22,7 @@
     --input-padding: 20px;
     --input-min-height: 44px;
     --input-area-height: 104px;
+    --footer-height: 60px;
     --content-max-width: 800px;
 }
 
@@ -33,7 +34,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-bottom: var(--input-area-height); /* Space for fixed input at bottom */
+    padding-bottom: calc(var(--input-area-height) + var(--footer-height)); /* Space for fixed input and footer at bottom */
 }
 
 .container {
@@ -53,6 +54,12 @@ header {
     margin-bottom: 0;
     box-shadow: none;
     border-bottom: 1px solid var(--border);
+}
+
+/* Hide header when chat is active to avoid duplication with centered placeholder */
+.chat-section ~ #page-header,
+#chat-section:not([style*="display: none"]) ~ #page-header {
+    display: none;
 }
 
 header h1 {
@@ -232,6 +239,31 @@ header h1 {
     max-width: var(--content-max-width);
     margin: 0 auto;
     width: 100%;
+    position: relative;
+}
+
+/* Empty chat placeholder - ChatGPT style */
+.empty-chat-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 400px;
+    padding: 40px 20px;
+}
+
+.empty-chat-placeholder h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.empty-chat-placeholder p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
 }
 
 .messages {
@@ -353,7 +385,7 @@ header h1 {
 /* Input Container */
 .input-container {
     position: fixed;
-    bottom: 0;
+    bottom: var(--footer-height);
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -402,22 +434,28 @@ header h1 {
 }
 
 /* Footer */
-footer {
+.chat-footer {
     text-align: center;
-    padding: 30px 20px 20px;
+    padding: 15px 20px;
     color: var(--text-secondary);
     font-size: 0.85rem;
     max-width: var(--content-max-width);
     margin: 0 auto;
     width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--background);
+    border-top: 1px solid var(--border);
 }
 
-footer a {
+.chat-footer a {
     color: #60a5fa;
     text-decoration: none;
 }
 
-footer a:hover {
+.chat-footer a:hover {
     text-decoration: underline;
 }
 

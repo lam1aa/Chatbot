@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <header>
+        <header id="page-header">
             <h1>🎓 BAföG Chatbot</h1>
             <p class="subtitle">Your Assistant for BAföG Questions</p>
         </header>
@@ -48,14 +48,11 @@
             </div>
 
             <div id="chat-container" class="chat-container">
-                <div id="messages" class="messages">
-                    <div class="message bot-message">
-                        <div class="message-content">
-                            <strong>Welcome!</strong> I'm your BAföG assistant. 
-                            Ask me your questions about BAföG and I'll be happy to help you.
-                        </div>
-                    </div>
+                <div id="empty-chat-placeholder" class="empty-chat-placeholder">
+                    <h2>🎓 BAföG Chatbot</h2>
+                    <p>Your AI assistant for BAföG questions</p>
                 </div>
+                <div id="messages" class="messages"></div>
             </div>
 
             <div class="input-container">
@@ -69,14 +66,14 @@
                     <span id="loading-spinner" class="spinner" style="display: none;">⌛</span>
                 </button>
             </div>
+            
+            <footer class="chat-footer">
+                <p>
+                    The chatbot can make mistakes. So, double-check it with the responsible BAföG office or student services.
+                </p>
+            </footer>
         </div>
     </div>
-
-    <footer>
-        <p>
-            The chatbot can make mistakes. So, double-check it with the responsible BAföG office or student services.
-        </p>
-    </footer>
 
     <script src="app.js"></script>
 </body>
