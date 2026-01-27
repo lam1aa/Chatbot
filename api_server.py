@@ -5,6 +5,7 @@ Provides RAG-based responses with source citations
 """
 import os
 import sys
+import time
 from pathlib import Path
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -69,11 +70,16 @@ def chat():
         }), 400
     
     try:
+        start_time = time.time()
+        
         # Create chatbot instance with provided API key
         chatbot = RAGChatbot(vectorstore, api_key=api_key)
         
         # Get answer with sources
         result = chatbot.ask(question)
+        
+        # Calculate response time
+        response_time = round(time.time() - start_time, 2)
         
         # Check if this is a non-BAföG question response
         is_non_bafog = chatbot._is_non_bafog_response(result['answer'])
@@ -102,7 +108,8 @@ def chat():
         
         return jsonify({
             'answer': result['answer'],
-            'sources': sources
+            'sources': sources,
+            'token_usage': result.get('token_usage')
         })
     
     except Exception as e:
