@@ -5,6 +5,7 @@ Provides RAG-based responses with source citations
 """
 import os
 import sys
+import time
 from pathlib import Path
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -69,7 +70,6 @@ def chat():
         }), 400
     
     try:
-        import time
         start_time = time.time()
         
         # Create chatbot instance with provided API key

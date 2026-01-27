@@ -74,6 +74,9 @@ Hilfreiche Antwort:"""
     def ask(self, question):
         """Ask a question and get an answer with token usage tracking"""
         try:
+            # Note: get_openai_callback() is designed for OpenAI API and may not work
+            # correctly with OpenRouter's custom base_url. Token usage from the callback
+            # might be zero or incorrect. However, we still try to use it for compatibility.
             with get_openai_callback() as cb:
                 result = self.qa_chain.invoke({"query": question})
                 
@@ -82,7 +85,7 @@ Hilfreiche Antwort:"""
                     "prompt_tokens": cb.prompt_tokens,
                     "completion_tokens": cb.completion_tokens,
                     "total_tokens": cb.total_tokens
-                }
+                } if cb.total_tokens > 0 else None
                 
                 return {
                     "answer": result["result"],
