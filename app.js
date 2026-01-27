@@ -302,6 +302,9 @@ class ChatbotApp {
         // Disable input while processing
         this.setProcessing(true);
         
+        // Start timing the response
+        const startTime = performance.now();
+        
         try {
             let response;
             // Try backend API first if available, otherwise use direct OpenRouter with client-side citations
@@ -332,11 +335,18 @@ class ChatbotApp {
                 response.sources = sources;
             }
             
+            // Calculate response time
+            const responseTime = ((performance.now() - startTime) / 1000).toFixed(2);
+            response.responseTime = responseTime;
+            
             // Check if this is a non-BAföG question response (don't show sources)
             const isNonBafogResponse = this.isNonBafogResponse(response.answer);
             const sourcesToShow = isNonBafogResponse ? [] : response.sources;
             
-            this.addMessage(response.answer, 'bot', sourcesToShow);
+            this.addMessage(response.answer, 'bot', sourcesToShow, {
+                responseTime: response.responseTime,
+                tokenUsage: response.tokenUsage
+            });
         } catch (error) {
             console.error('Error:', error);
             this.addErrorMessage(error.message);
@@ -369,7 +379,8 @@ class ChatbotApp {
             const data = await response.json();
             return {
                 answer: data.answer,
-                sources: data.sources || []
+                sources: data.sources || [],
+                tokenUsage: data.token_usage
             };
         } catch (error) {
             // If backend is unreachable, fall back to direct OpenRouter
@@ -449,6 +460,13 @@ When providing information, if you have specific knowledge from documents, menti
             throw new Error('No response received from server.');
         }
         
+        // Extract token usage from response
+        const tokenUsage = data.usage ? {
+            prompt_tokens: data.usage.prompt_tokens || 0,
+            completion_tokens: data.usage.completion_tokens || 0,
+            total_tokens: data.usage.total_tokens || 0
+        } : null;
+        
         // Update conversation history (keep last 10 messages to avoid token limits)
         this.conversationHistory.push(
             { role: 'user', content: userMessage },
@@ -463,11 +481,12 @@ When providing information, if you have specific knowledge from documents, menti
         // Return answer (sources will be added by sendMessage using client-side matching)
         return {
             answer: assistantMessage,
-            sources: [] // Will be populated by findRelevantSources in sendMessage
+            sources: [], // Will be populated by findRelevantSources in sendMessage
+            tokenUsage: tokenUsage
         };
     }
     
-    addMessage(text, type, sources = []) {
+    addMessage(text, type, sources = [], metadata = {}) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${type}-message`;
         
@@ -494,6 +513,30 @@ When providing information, if you have specific knowledge from documents, menti
             });
             
             messageDiv.appendChild(sourcesDiv);
+        }
+        
+        // Add metadata footer (for bot messages)
+        if (type === 'bot' && (metadata.responseTime || metadata.tokenUsage)) {
+            const metadataDiv = document.createElement('div');
+            metadataDiv.className = 'message-metadata';
+            
+            const metadataParts = [];
+            
+            if (metadata.responseTime) {
+                metadataParts.push(`⏱️ ${metadata.responseTime}s`);
+            }
+            
+            if (metadata.tokenUsage) {
+                const tokens = metadata.tokenUsage;
+                if (tokens.total_tokens) {
+                    metadataParts.push(`🔢 ${tokens.total_tokens} tokens`);
+                }
+            }
+            
+            if (metadataParts.length > 0) {
+                metadataDiv.textContent = metadataParts.join(' • ');
+                messageDiv.appendChild(metadataDiv);
+            }
         }
         
         this.messagesContainer.appendChild(messageDiv);

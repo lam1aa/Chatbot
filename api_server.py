@@ -69,11 +69,17 @@ def chat():
         }), 400
     
     try:
+        import time
+        start_time = time.time()
+        
         # Create chatbot instance with provided API key
         chatbot = RAGChatbot(vectorstore, api_key=api_key)
         
         # Get answer with sources
         result = chatbot.ask(question)
+        
+        # Calculate response time
+        response_time = round(time.time() - start_time, 2)
         
         # Check if this is a non-BAföG question response
         is_non_bafog = chatbot._is_non_bafog_response(result['answer'])
@@ -102,7 +108,8 @@ def chat():
         
         return jsonify({
             'answer': result['answer'],
-            'sources': sources
+            'sources': sources,
+            'token_usage': result.get('token_usage')
         })
     
     except Exception as e:

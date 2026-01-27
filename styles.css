@@ -361,6 +361,20 @@ header h1 {
     text-decoration: underline;
 }
 
+/* Message metadata footer */
+.message-metadata {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    margin-top: 8px;
+    padding-left: 16px;
+    font-family: monospace;
+}
+
+.bot-message .message-metadata {
+    max-width: 80%;
+}
+
 .sources-title {
     font-weight: 600;
     margin-bottom: 5px;
