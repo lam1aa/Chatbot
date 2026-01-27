@@ -433,7 +433,7 @@ When providing information, if you have specific knowledge from documents, menti
                 'X-Title': 'BAföG Chatbot'
             },
             body: JSON.stringify({
-                model: 'openai/gpt-oss-120b',
+                model: 'openai/gpt-oss-20b',
                 messages: messages,
                 temperature: 0.7,
                 max_tokens: 1000
@@ -492,7 +492,19 @@ When providing information, if you have specific knowledge from documents, menti
         
         const contentDiv = document.createElement('div');
         contentDiv.className = 'message-content';
-        contentDiv.textContent = text;
+        
+        // Render markdown for bot messages, plain text for user messages
+        if (type === 'bot' && typeof marked !== 'undefined') {
+            // Aggressively clean up whitespace before parsing
+            let cleanedText = text
+                .replace(/\n{2,}/g, '\n')  // Replace any multiple newlines with single
+                .replace(/^\s+|\s+$/gm, '')  // Trim each line
+                .replace(/\n(\s*[-*•\d]+[.)]?\s)/g, '\n$1')  // Keep list items tight
+                .trim();
+            contentDiv.innerHTML = marked.parse(cleanedText);
+        } else {
+            contentDiv.textContent = text;
+        }
         
         messageDiv.appendChild(contentDiv);
         

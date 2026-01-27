@@ -318,6 +318,89 @@ header h1 {
     border-bottom-left-radius: 4px;
 }
 
+/* Minimal markdown styling - keep it compact */
+.bot-message .message-content h1,
+.bot-message .message-content h2,
+.bot-message .message-content h3,
+.bot-message .message-content h4 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.bot-message .message-content h1:first-child,
+.bot-message .message-content h2:first-child,
+.bot-message .message-content h3:first-child,
+.bot-message .message-content h4:first-child { margin-top: 0; }
+
+.bot-message .message-content h1 { font-size: 1.2em; }
+.bot-message .message-content h2 { font-size: 1.1em; }
+.bot-message .message-content h3 { font-size: 1em; }
+
+.bot-message .message-content p { margin: 0 0 0.3em 0; }
+.bot-message .message-content p:last-child { margin-bottom: 0; }
+
+.bot-message .message-content ul,
+.bot-message .message-content ol {
+    margin: 0 0 0.3em 0;
+    padding-left: 1.2em;
+}
+
+.bot-message .message-content li { margin: 0; }
+.bot-message .message-content li > p { margin: 0; }
+.bot-message .message-content li > ul,
+.bot-message .message-content li > ol { margin: 0; }
+
+.bot-message .message-content table {
+    border-collapse: collapse;
+    margin: 0.3em 0;
+    width: 100%;
+    font-size: 0.9em;
+}
+
+.bot-message .message-content th,
+.bot-message .message-content td {
+    border: 1px solid var(--border);
+    padding: 6px 10px;
+    text-align: left;
+}
+
+.bot-message .message-content th {
+    background: var(--surface);
+    font-weight: 600;
+}
+
+.bot-message .message-content code {
+    background: var(--surface);
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9em;
+}
+
+.bot-message .message-content pre {
+    background: var(--surface);
+    padding: 8px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 0.3em 0;
+}
+
+.bot-message .message-content pre code { padding: 0; background: none; }
+.bot-message .message-content strong { font-weight: 600; }
+
+.bot-message .message-content blockquote {
+    border-left: 2px solid var(--primary-color);
+    padding-left: 0.6em;
+    margin: 0.3em 0;
+    color: var(--text-secondary);
+}
+
+/* Remove all extra spacing */
+.bot-message .message-content > *:first-child { margin-top: 0; }
+.bot-message .message-content > *:last-child { margin-bottom: 0; }
+.bot-message .message-content p:empty { display: none; }
+.bot-message .message-content br { display: none; }
+
 .bot-message .sources {
     max-width: 80%;
     background: var(--surface);
