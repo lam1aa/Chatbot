@@ -433,7 +433,7 @@ When providing information, if you have specific knowledge from documents, menti
                 'X-Title': 'BAföG Chatbot'
             },
             body: JSON.stringify({
-                model: 'openai/gpt-oss-120b:free',
+                model: 'openai/gpt-oss-120b',
                 messages: messages,
                 temperature: 0.7,
                 max_tokens: 1000
