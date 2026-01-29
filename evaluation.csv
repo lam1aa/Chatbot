@@ -1,0 +1,935 @@
+Test prompts,Type,Expected Answer,Meta: Llama 3.1 8B Instruct,Model2: openai gpt oss 20b,Model 3 google gemma,Model 4 mistral
+Can I receive BAföG for an internship abroad?,EN,"Yes, you can receive funding for a mandatory internship abroad. If the internship takes place outside the EU, it must last at least 12 weeks to be eligible. Sources: Leistungsbeschreibung.txt; gibt-es-bafoeg-auch-im-ausland.txt","According to the BAföG regulations, you can receive funding for an internship abroad, but there are some conditions.
+ 
+ First, the internship must be part of your study program or vocational training. This means it should be required by your course or training, and you should have a certificate or confirmation from your school or training provider.
+ 
+ Second, the internship must last for at least 12 weeks. If it's shorter, you might not be eligible for BAföG.
+ 
+ Third, you need to be sure that you won't receive more funding from your internship than from your regular studies. This is because BAföG is based on your study situation, and you shouldn't receive more money for an internship than you would for your regular studies.
+ 
+ You can find more information about internships abroad and BAföG in the BAföG brochure, which you can download from the KIFV Central Office for Federal Student Aid website. Sources:
+ 
+ Gibt Es Bafoeg Auch Im Ausland
+ Antragsformulare
+ Fragen Und Antworten 7.46s, 513 tokens","Yes, you can get BAföG for an internship abroad, but only under certain conditions.
+ Here’s what you need to know:
+ Internship must be part of your study
+  The internship has to be an official part of your university or college program.
+  It must be approved by the institution and listed in your study plan.
+ Apply for BAföG
+  Submit a BAföG application to the student service Studienstützungsamt or the BAföG office of your university.
+  Include the internship contract, confirmation from the host company, and proof that it is part of your curriculum.
+ Living costs, not travel
+  BAföG can help cover your living expenses room, food, transport while abroad.
+  It does not pay for flight tickets or travel costs.
+ If the internship is paid
+  Any salary you receive is treated as income.
+  The amount of BAföG you get may be reduced by the income you earn from the internship.
+ If the internship is unpaid
+  You can receive the full BAföG amount subject to the normal limits for living costs.
+  You still need to prove that the internship is part of your studies.
+ Higher living costs abroad
+  The BAföG calculation uses the “Wohngeld” of the place where you stay.
+  Because living costs abroad are usually higher, the BAföG amount may be lower than if you stayed in Germany.
+ Bottom line:
+ Yes, you can receive BAföG for an internship abroad, but you must apply, show that it’s part of your study, and be aware that a paid internship will reduce the grant. Make sure you submit all required documents to the BAföG office as early as possible.
+ 
+ 
+   Sources:
+ 
+ Gibt Es Bafoeg Auch Im Ausland
+ Antragsformulare
+ Fragen Und Antworten
+   3.57s   1207 tokens","That depends!
+ BAföG can sometimes be granted for internships abroad, but it's not always possible. It depends on a few things, like the purpose of the internship and if it's connected to your studies.
+ It's best to contact your local BAföG office directly. They can give you specific advice based on your situation.
+ 
+ 
+   Sources:
+ 
+ Gibt Es Bafoeg Auch Im Ausland
+ Antragsformulare
+ Fragen Und Antworten
+   0.79s   415 tokens","Generally, BAföG can be received for an internship abroad under certain conditions. However, the specific requirements may vary depending on the country where you plan to do your internship.
+ Here are some general rules for receiving BAföG during an internship abroad:
+ 
+ 
+ 
+ The internship must be part of your studies or training program.
+ 
+ The internship must be approved by your academic institution.
+ 
+ The internship must be a minimum of 6 months in duration.
+ 
+ You must be able to prove that the cost of living in the foreign country is higher than in Germany.
+ It's important to note that the exact requirements and the amount of BAföG you can receive may vary depending on the specific country and the specific circumstances of your internship.
+ For more information, you should contact the responsible student services or BAföG office in your region or visit the official BAföG website.
+ Source: Federal Ministry of Education and Research BMBF :)
+ 
+ 
+   Sources:
+ 
+ Gibt Es Bafoeg Auch Im Ausland
+ Antragsformulare
+ Fragen Und Antworten
+   1.80s   776 tokens"
+What is the monthly housing allowance if I don't live with my parents?,EN,"If you do not live with your parents, the monthly housing allowance included in the BAföG rate is 380 EUR. Sources: Leistungsbeschreibung.txt; ferdinand-19-student-studienstarthilfe.txt","If you don't live with your parents, the monthly housing allowance for BAföG is based on the ""Wohngeldtabelle"" housing allowance table. This table shows the maximum amount you can receive for rent and other living expenses.
+ 
+ For 2022, the maximum monthly housing allowance for students living alone is around € 648. However, this amount can vary depending on the region and the specific costs in your area.
+ 
+ You can check the current housing allowance table on the KIFV website or ask your local student services or BAföG office for the exact amount. They can also help you calculate your individual housing allowance based on your specific situation. Sources:
+ 
+ Elternunabhaengige Foerderung
+ Wann Bleibt Das Einkommen Der Eltern Unberuecksichtigt
+ Antragsformulare 6.13s , 675 tokens","For a student who does not live with parents, the monthly housing allowance Wohnungskosten is part of the “Lebensunterhalt” that you can get from BAföG.
+ 
+ Typical amount 2024: 
+ 
+ About €350 – €380 per month if you live in a private rental or a student apartment. 
+ 
+ The exact figure depends on the “Wohngeld” of the city or town where you stay. In big cities the allowance can be a little higher, in smaller towns a bit lower.
+ 
+ How it works: 
+ 
+ Maximum rate – BAföG sets a maximum monthly amount for living costs. 
+ Your actual costs – If your real rent is lower than the maximum, you only receive the amount you actually pay. 
+ If you rent more – You can claim the higher amount, but it must be supported by a rental contract.
+ 
+ Where to check the exact number: 
+ Your local BAföG office. 
+ The official BAföG website Search “Wohnungskosten BAföG 2024”.
+ So, if you live away from your parents, you can expect around €350–€380 per month for housing, but always confirm the exact amount with your BAföG office.
+ 
+ 
+   Sources:
+ 
+ Elternunabhaengige Foerderung
+ Wann Bleibt Das Einkommen Der Eltern Unberuecksichtigt
+ Antragsformulare
+   4.29s   1372 tokens","The monthly housing allowance for students not living with their parents varies depending on your location in Germany.
+ You can find the exact amount for your city on the BAföG website or by contacting your local BAföG office. They can give you the most accurate information.
+ 
+ 
+   Sources:
+ 
+ Elternunabhaengige Foerderung
+ Wann Bleibt Das Einkommen Der Eltern Unberuecksichtigt
+ Antragsformulare
+   0.97s   498 tokens","The monthly housing allowance for students who do not live with their parents depends on the region in Germany where you live and the type of accommodation you have.
+ Here are the maximum monthly housing allowances for students in Germany who do not live with their parents, as of January 2023:
+ 
+ 
+ 
+ Shared apartment Wohngemeinschaft, WG: €350
+ 
+ Single apartment Einzelwohnung: €385
+ 
+ Room in a single-family home Zimmer in eigenem Haus: €300
+ These amounts are subject to change every year, so it's a good idea to check the official BAföG website for the most up-to-date information.
+ Source: Federal Ministry of Education and Research BMBF :) :) :)
+ 
+ 
+   Sources:
+ 
+ Elternunabhaengige Foerderung
+ Wann Bleibt Das Einkommen Der Eltern Unberuecksichtigt
+ Antragsformulare
+   1.15s   979 tokens"
+What is the maximum amount of BAföG funding for students?,EN,The maximum funding amount has increased to 992 Euros per month. Sources: Fragen_und_Antworten.txt; was-sind-bedarfssaetze-und-wie-hoch-sind-sie.txt,"The maximum amount of BAföG funding varies depending on your living situation. According to the BAföG regulations, the maximum rates for the base funding are:
+ 
+  for students living with their parents: around € 345-€ 397 per month
+  for students in their own apartment or shared accommodation: around € 648-€ 794 per month
+  for students with a dependent child: around € 814-€ 984 per month
+ 
+ These amounts are subject to change, and you can check the current rates on the KIFV website or with your local student services or BAföG office.
+ 
+ Note: These rates are for the base funding, which includes half a grant and half a interest-free loan. The actual amount you receive might be lower, depending on your parental income and other factors.
+   Sources:
+ 
+ Wie Lange Wird Bafoeg Gezahlt
+ Leistungsbeschreibung
+ Fragen Und Antworten
+   2.98s   866 tokens","The maximum BAföG that a student can receive depends on how the student lives.
+ 
+ 
+ Living situation Monthly maximum including grant + interest‑free loan
+ Living alone ≈ 1 488 €
+ Living in a shared flat or with a partner ≈ 1 342 €
+ 
+ These figures are the maximum that can be granted in a month.
+ If you receive BAföG, you get half of the amount as a grant no repayment and the other half as an interest‑free loan. The loan must be paid back a few years after the end of your BAföG period, but the total amount you have to repay is capped.
+ 
+ 
+ Tip – The exact amount you qualify for depends on your parents’ income, your own income, and other personal factors. Check the latest numbers on the official BAföG‑website or ask the student service office at your university.
+ 
+ 
+   Sources:
+ 
+ Wie Lange Wird Bafoeg Gezahlt
+ Leistungsbeschreibung
+ Fragen Und Antworten
+   1.70s   675 tokens","The maximum BAföG funding for students varies depending on whether you live at home with your parents or not.
+ 
+ 
+ 
+ Living at home: The maximum amount is currently €861 per month.
+ 
+ Living independently: The maximum amount is currently €1,067 per month.
+ Remember, this is the maximum. The actual amount you receive will depend on your individual situation and your parents' income.
+ 
+ 
+   Sources:
+ 
+ Wie Lange Wird Bafoeg Gezahlt
+ Leistungsbeschreibung
+ Fragen Und Antworten
+   0.88s   610 tokens","The maximum amount of BAföG funding for students depends on their living situation. As of January 2023, here are the maximum rates for students living in different types of accommodation:
+ 
+ 
+ 
+ Shared apartment Wohngemeinschaft, WG: €770 per month
+ 
+ Single apartment Einzelwohnung: €860 per month
+ 
+ Room in a single-family home Zimmer in eigenem Haus: €680 per month
+ It's important to note that the amount of BAföG you receive is not based solely on the maximum rates listed above. The actual amount you receive depends on your parental income and your personal financial situation.
+ Source: Federal Ministry of Education and Research BMBF :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :) :)
+ 
+ 
+   Sources:
+ 
+ Wie Lange Wird Bafoeg Gezahlt
+ Leistungsbeschreibung
+ Fragen Und Antworten
+   5.37s   1999 tokens"
+Ich studiere im 3. Semester und möchte die Fachrichtung wechseln. Verliere ich mein BAföG?,DE,"Bei einem erstmaligen Fachrichtungswechsel bis zum Beginn des vierten Fachsemesters wird in der Regel vermutet, dass ein wichtiger Grund vorliegt. Sie sollten Ihren Anspruch auf Förderung daher nicht verlieren, wenn Sie den Wechsel jetzt vornehmen. Sources: Fragen_und_Antworten.txt; gibt-es-bafoeg-auch-nach-einem-fachrichtungswechsel.txt","Wenn du im 3. Semester bist und die Fachrichtung wechseln möchtest, kann das einige Auswirkungen auf dein BAföG haben.
+ 
+ In Deutschland gibt es jedoch keine ""Verlust""-Regelung, die bedeutet, dass du dein BAföG automatisch verlierst, wenn du die Fachrichtung wechselst.
+ 
+ Wenn du jedoch eine neue Studienrichtung aufnahmst und das BAföG nicht beantragst, könntest du möglicherweise nicht mehr für die alte Studienrichtung BAföG erhalten.
+ 
+ Es ist jedoch ratsam, vor dem Wechsel der Fachrichtung mit deiner zuständigen Studienfinanzierung oder dem BAföG-Amt zu sprechen, um sicherzustellen, dass du weiterhin das BAföG für deine neue Studienrichtung erhalten kannst.
+   Sources:
+ 
+ Gibt Es Bafoeg Auch Nach Einem Fachrichtungswechsel
+ Was Bedeutet Das Flexibilitätssemester
+ Fragen Und Antworten
+   4.80s   1089 tokens","Ja, in den meisten Fällen hast du beim Wechsel der Fachrichtung nicht automatisch dein BAföG verloren.
+ Doch es gibt ein paar wichtige Punkte:
+ 
+ 
+ Was passiert Was du tun musst
+ Wechsel innerhalb eines anerkannten Studiengangs Informiere deine BAföG‑Beurteilung Studentenwerk oder BAföG‑Dienststelle sofort. Du musst ggf. einen neuen Antrag oder eine Änderung des bestehenden Antrags einreichen.
+ Verlängert sich die Studienzeit Das kann die „maximale Förderdauer“ ändern. Dein BAföG kann weiter gezahlt werden, aber die Gesamtmenge könnte anders aussehen.
+ Wechsel zu einem Programm, das nicht BAföG‑beruflich ist z. B. reinsprachliches Studium ohne Berufsausbildung Dann kann dein BAföG gekürzt oder ganz eingestellt werden, weil das Programm nicht mehr im Förderbereich liegt.
+ 
+ Kurz gesagt: 
+ 
+ 
+ 
+ Wenn die neue Fachrichtung weiterhin ein reguläres Studium ist, bekommst du BAföG weiter, sobald du die Änderung meldest. 
+ 
+ Wenn das neue Studium nicht BAföG‑beruflich ist, kann dein BAföG gekürzt oder beendet werden.
+ 
+ 
+ Empfehlung:
+ Kontaktiere sofort die zuständige BAföG‑Beurteilung oder das Studentenwerk, erkläre deinen Wechsel und frage, welche Unterlagen du einreichen musst. So stellst du sicher, dass dein BAföG nicht unterbrochen wird.
+ 
+ 
+   Sources:
+ 
+ Gibt Es Bafoeg Auch Nach Einem Fachrichtungswechsel
+ Was Bedeutet Das Flexibilitätssemester
+ Fragen Und Antworten
+   2.66s   1063 tokens","Nein, du verlierst nicht automatisch dein BAföG, wenn du im 3. Semester deine Fachrichtung wechselst.
+ Es ist wichtig, dass du dich rechtzeitig an dein Studienamt wendest und die Gründe für den Wechsel erklärst. Manchmal müssen bestimmte Voraussetzungen erfüllt sein, damit das BAföG weiter gewährt wird.
+ Das Studienamt kann dir genau sagen, welche Schritte du unternehmen musst, damit dein BAföG auch weiterhin gewährt wird.
+ 
+ 
+   Sources:
+ 
+ Gibt Es Bafoeg Auch Nach Einem Fachrichtungswechsel
+ Was Bedeutet Das Flexibilitätssemester
+ Fragen Und Antworten
+   1.10s   748 tokens","In your third semester, if you want to change your major, you will not lose your BAföG automatically. However, the amount of funding you receive might change based on your new course of study and the parental income.
+ The BAföG office will re-evaluate your eligibility and funding amount when you submit the application for the new course of study. If your new course of study has a longer duration, you could potentially receive funding for a longer period of time.
+ I found this information in the ""Basic Law on Training Assistance"" BAföG-Gesetz and the ""Guide to the Basic Law on Training Assistance"" BAföG-Leitfaden published by the Federal Ministry of Education and Research Bundesministerium für Bildung und Forschung - BMBF.
+ 
+ 
+   Sources:
+ 
+ Gibt Es Bafoeg Auch Nach Einem Fachrichtungswechsel
+ Was Bedeutet Das Flexibilitätssemester
+ Fragen Und Antworten
+   1.84s   549 tokens"
+Ich bin Studentin und habe ein Kind 3 Jahre alt. Bekomme ich mehr Geld?,DE,"Ja, wenn Sie mit einem eigenen Kind unter 14 Jahren in einem Haushalt leben, erhalten Sie zusätzlich einen Kinderbetreuungszuschlag. Dieser beträgt pauschal 160 Euro pro Kind. Sources: Leistungsbeschreibung.txt; formblatt_4_Kinder_der_auszubildenden_Person.pdf","Ja, als Studentin mit einem Kind kannst du ein Kinderfreibetrag beanspruchen. Dieser Betrag wird direkt vom BAföG abgezogen, aber es bedeutet, dass du mehr Geld für dein Kind erhalten kannst.
+ 
+ Der Kinderfreibetrag ist momentan € 200 pro Monat. Wenn du also € 648 pro Monat BAföG erhältst, bedeutet dies, dass du tatsächlich € 448 pro Monat für dich selbst erhältst € 648 - € 200 = € 448.
+ 
+ Es ist jedoch ratsam, dies mit deiner zuständigen Studienfinanzierung oder dem BAföG-Amt zu besprechen, um sicherzustellen, dass du den Kinderfreibetrag korrekt beantragen kannst.
+   Sources:
+ 
+ Hanna 24 Studentin Auswaerts Wohnend
+ Olga 19 Studentin Mutter Selbstaendig
+ Koennen Mehrere Ausbildungen Mit Bafoeg Gefoerdert Werden
+   0.55s   1312 tokens","Ja, in den meisten Fällen hast du beim Wechsel der Fachrichtung nicht automatisch dein BAföG verloren.
+ Doch es gibt ein paar wichtige Punkte:
+ 
+ 
+ Was passiert Was du tun musst
+ Wechsel innerhalb eines anerkannten Studiengangs Informiere deine BAföG‑Beurteilung Studentenwerk oder BAföG‑Dienststelle sofort. Du musst ggf. einen neuen Antrag oder eine Änderung des bestehenden Antrags einreichen.
+ Verlängert sich die Studienzeit Das kann die „maximale Förderdauer“ ändern. Dein BAföG kann weiter gezahlt werden, aber die Gesamtmenge könnte anders aussehen.
+ Wechsel zu einem Programm, das nicht BAföG‑beruflich ist z. B. reinsprachliches Studium ohne Berufsausbildung Dann kann dein BAföG gekürzt oder ganz eingestellt werden, weil das Programm nicht mehr im Förderbereich liegt.
+ 
+ Kurz gesagt: 
+ 
+ 
+ 
+ Wenn die neue Fachrichtung weiterhin ein reguläres Studium ist, bekommst du BAföG weiter, sobald du die Änderung meldest. 
+ 
+ Wenn das neue Studium nicht BAföG‑beruflich ist, kann dein BAföG gekürzt oder beendet werden.
+ 
+ 
+ Empfehlung:
+ Kontaktiere sofort die zuständige BAföG‑Beurteilung oder das Studentenwerk, erkläre deinen Wechsel und frage, welche Unterlagen du einreichen musst. So stellst du sicher, dass dein BAföG nicht unterbrochen wird.
+ 
+ 
+   Sources:
+ 
+ Gibt Es Bafoeg Auch Nach Einem Fachrichtungswechsel
+ Was Bedeutet Das Flexibilitätssemester
+ Fragen Und Antworten
+   2.66s   1063 tokens
+ Ich bin Studentin und habe ein Kind 3 Jahre alt. Bekomme ich mehr Geld?
+ Kurzantwort:
+ Nein, BAföG selbst wird nicht höher, weil du ein Kind hast.
+ Doch wenn du alleinerziehend bist und die Voraussetzungen erfüllst, kannst du zusätzlich einen Kinderzuschlag beantragen. 
+ 
+ 
+ 
+ Was bedeutet das genau?
+ 
+ Thema Was du bekommst Voraussetzungen
+ BAföG Der Betrag richtet sich nach deinem und deiner Eltern‑Einkommen. Das Alter oder die Anzahl deiner Kinder spielt keine Rolle. –
+ Kinderzuschlag Extra Geld max. 1.200 € pro Jahr für alleinerziehende Studierende mit einem Kind unter 18 Jahren. 1. Alleinerziehend keine Lebenspartnerin oder Partner. 
+ 2. Das Kind ist nicht selbstständig und hat kein eigenes Einkommen. 
+ 3. Dein Einkommen inkl. BAföG liegt unter der Einkommensgrenze ca. 9.000 € pro Jahr für Alleinerziehende. 
+ 4. Du hast BAföG beantragt.
+ Kindergeld Ein monatlicher Betrag von 219 € für das erste Kind unabhängig vom Studium. Du bist gesetzlich verpflichtet, Kindergeld zu beantragen.
+ 
+ 
+ Was musst du tun?
+ 
+ 
+ BAföG beantragen – das bleibt dein Hauptanspruch.
+ 
+ Kinderzuschlag beantragen – du kannst das Formular zusammen mit dem BAföG‑Antrag einreichen oder separat beim Studentenwerk/BAföG‑Dienst stellen.
+ 
+ Kindergeld beantragen – falls noch nicht geschehen, melde dich bei der Familienkasse.
+ 
+ 
+ 
+ Wichtige Hinweise
+ 
+ 
+ Der Kinderzuschlag ist nur für Alleinerziehende. Wenn du in einer Partnerschaft bist, kannst du ihn nicht bekommen.
+ 
+ Die Einkommensgrenze kann sich ändern – prüfe die aktuelle Zahl beim Studentenwerk.
+ 
+ Wenn du mehr als ein Kind hast, bekommst du für jedes Kind einen Kinderzuschlag, solange die Voraussetzungen erfüllt sind.
+ 
+ 
+ Falls du unsicher bist, ruf bei deinem Studentenwerk an. Dort helfen dir die Mitarbeiter gern bei der Antragstellung.
+ 
+ 
+   Sources:
+ 
+ Hanna 24 Studentin Auswaerts Wohnend
+ Olga 19 Studentin Mutter Selbstaendig
+ Koennen Mehrere Ausbildungen Mit Bafoeg Gefoerdert Werden
+   1.29s   1573 tokens","Ja, wenn du Studentin bist und ein Kind hast, kannst du Anspruch auf mehr BAföG haben.
+ Die sogenannte Kinderermäßigung berücksichtigt deine Erziehungskosten. Das bedeutet, du bekommst höhere BAföG-Beträge.
+ Informiere dich am besten bei deinem BAföG-Amt oder dem Studentenwerk, welche Unterlagen du benötigst, um diese Kinderermäßigung zu beantragen.
+ 
+ 
+   Sources:
+ 
+ Hanna 24 Studentin Auswaerts Wohnend
+ Olga 19 Studentin Mutter Selbstaendig
+ Koennen Mehrere Ausbildungen Mit Bafoeg Gefoerdert Werden
+   0.93s   863 tokens","Als Studentin mit einem Kind, das 3 Jahre alt ist, erhältet du zusätzliche Unterstützung von BAföG. Dazu erhältst du eine Kinderzuschlag, der deinen gesamten BAföG-Betrag erhöht. Die Höhe der Kinderzuschläge hängt von deinen Elternsteuerklasse und dem Alter des Kindes ab.
+ Ich empfehle dich, dich bei deiner zuständigen Studentenwerk oder BAföG-Stelle zu melden und darüber zu sprechen, wie du deine Antragspapiere in Ordnung bringen kannst.
+ Ich habe diese Information in den Regelungen zur BAföG-Finanzierung für Studenten mit Kindern BAföG-Kinderzuschläge gefunden.
+ 
+ 
+   Sources:
+ 
+ Hanna 24 Studentin Auswaerts Wohnend
+ Olga 19 Studentin Mutter Selbstaendig
+ Koennen Mehrere Ausbildungen Mit Bafoeg Gefoerdert Werden
+   1.32s   758 tokens"
+Muss ich als Schüler mein BAföG zurückzahlen?,DE,"Nein, Schülerinnen und Schüler erhalten das BAföG als vollen Zuschuss. Sie müssen das Geld später nicht zurückzahlen und haben keine Schulden. Sources: Fragen_und_Antworten.txt; wie-funktioniert-die-rueckzahlung.txt","Als Schüler erhältst du BAföG in Form von Zuschuss und Kredit. Der Kreditanteil wird erst nach dem Ende deiner Schullaufzeit fällig.
+ 
+ Wenn du deine Schullaufzeit beendest und ein Studium beginnst, wirst du wahrscheinlich nicht mehr BAföG als Schüler erhalten. Der Kreditanteil, den du als Schüler erhalten hast, wird jedoch erst nach einem bestimmten Zeitraum in der Regel 5-10 Jahre fällig.
+ 
+ Es ist also nicht unbedingt so, dass du als Schüler dein BAföG zurückzahlen musst. Der Kreditanteil wird erst nach dem Ende deiner Schullaufzeit und einer bestimmten Wartezeit fällig.
+   Sources:
+ 
+ Antragsformulare
+ Fragen Und Antworten
+ Gibt Es Bafoeg Auch Im Ausland
+   0.60s   1482 tokens","Nein, als Schülerin musst du dein BAföG nicht zurückzahlen. 
+ 
+ 
+ 
+ Für Schüler Gymnasium, Realschule, Hauptschule usw. ist BAföG nur ein Zuschuss – es gibt keinen Kreditanteil und keinen Rückzahlungs‑Pflicht. 
+ 
+ Wenn du später Studentin wirst, gilt die Regel: Du bekommst BAföG halber Zuschuss, halber zinsfreier Kredit. Der Kredit‑Teil wird nach dem Ende des Förderzeitraums einige Jahre nach dem Abschluss zurückgezahlt.
+ 
+ 
+ Also: 
+ 
+ 
+ 
+ Schüler → kein Rückzahlen. 
+ 
+ Student → Rückzahlung nach Abschluss, aber nur der Kreditanteil.
+ 
+ 
+   Sources:
+ 
+ Antragsformulare
+ Fragen Und Antworten
+ Gibt Es Bafoeg Auch Im Ausland
+   2.98s   1744 tokens","Ja, als Schüler musst du BAföG zurückzahlen, aber es gibt ein paar wichtige Dinge zu beachten:
+ 
+ 
+ 
+ Teilweise als Darlehen: BAföG besteht aus einer Hälfte Zuschuss nicht zurückzuzahlen und einer Hälfte Darlehen muss zurückbezahlt werden.
+ 
+ Rückzahlungsbeginn: Die Rückzahlung beginnt einige Jahre nach Ende deines Studiums oder deiner Ausbildung.
+ 
+ Rückzahlungslimit: Es gibt ein Limit, bis zu welchem du BAföG zurückzahlen musst.
+ Wichtig: Es gibt auch Möglichkeiten, die Rückzahlung zu erleichtern, z.B. durch einen niedrigeren monatlichen Beitrag.
+ Die genauen Bedingungen und die Höhe der Rückzahlung hängen von deinem individuellen Fall ab. Am besten du informierst dich direkt bei deinem BAföG-Amt.
+ 
+ 
+   Sources:
+ 
+ Antragsformulare
+ Fragen Und Antworten
+ Gibt Es Bafoeg Auch Im Ausland
+   1.53s   1062 tokens","Als Schüler erhältst du BAföG nicht als Schuld, sondern als Unterstützung. Du musst also keine Rückzahlungen vornehmen.
+ Ich habe diese Information in den Regelungen zur BAföG-Finanzierung für Schüler gefunden. șișteați-vă de unde am găsit informația: Regelungen zur BAföG-Finanzierung für Schüler
+ 
+ 
+   Sources:
+ 
+ Antragsformulare
+ Fragen Und Antworten
+ Gibt Es Bafoeg Auch Im Ausland
+   1.26s   886 tokens"
+"Wie viel darf ich im Studium dazuverdienen, ohne dass mein BAföG gekürzt wird?",DE,"Seit dem Wintersemester 2024/2025 dürfen Sie im Studium bis zur Minijob-Grenze von 556 Euro pro Monat dazuverdienen, ohne dass dies auf Ihren BAföG-Bedarf angerechnet wird. Sources: Fragen_und_Antworten.txt; Leistungsbeschreibung.txt","Wenn du im Studium dazuverdienst, kann dies Auswirkungen auf dein BAföG haben. In Deutschland gibt es ein sogenanntes ""Dritterverdienst"" -Regelwerk.
+ 
+ Im Allgemeinen kannst du bis zu 300 Euro im Monat ohne Einschränkung des BAföG verdienen. Wenn du mehr als 300 Euro pro Monat verdienst, kann dein BAföG gekürzt werden.
+ 
+ Es ist jedoch wichtig, dass du mit deiner zuständigen Studienfinanzierung oder dem BAföG-Amt sprichst, um sicherzustellen, dass du die genauen Regeln und Ausnahmen kennst. Diese können je nach Bundesland variieren.
+   Sources:
+ 
+ Wie Wird Die Hoehe Des Bafoeg Berechnet
+ Wie Lange Wird Bafoeg Gezahlt
+ Was Sind Bedarfssaetze Und Wie Hoch Sind Sie
+   9.68s   1464 tokens","Wie viel darfst du im Studium dazuverdienen, ohne dass dein BAföG gekürzt wird?
+ 
+ 
+ Wer Einkommensgrenze netto, pro Jahr Was passiert, wenn du übersteigst
+ Studierende ohne Eltern ≈ 8.400 € Für jeden Euro, den du über die Grenze verdienst, wird dein BAföG um den gleichen Betrag gekürzt.
+ Studierende, die bei ihren Eltern wohnen ≈ 8.000 € Gleiche Regel wie oben.
+ Studierende mit Kindern Alleinerziehend ≈ 9.000 € Bei Alleinerziehenden liegt die Grenze etwas höher.
+ Studierende, die in einer Wohngemeinschaft wohnen ≈ 8.400 € Gleich wie bei Studierenden ohne Eltern.
+ 
+ 
+ Kurz gesagt: Du kannst bis zu dieser Grenze verdienen und bekommst dein BAföG wie geplant. Sobald du mehr verdienst, wird das BAföG entsprechend reduziert – 1 € Einkommen = 1 € Kürzung.
+ 
+ 
+ 
+ 
+ Was zählt als „Einkommen“?
+ 
+ Art der Tätigkeit Wird gezählt? Hinweis
+ Studenten‑Job z. B. 450‑Euro‑Job Ja Auch wenn du nur 20 h pro Woche arbeitest.
+ Praktikum, das bezahlt wird Ja Auch unvergütete Praktikanten werden mit einem Lohn angesetzt.
+ Aushilfstätigkeit im eigenen Unternehmen Ja Einkommen wird ebenfalls einbezogen.
+ Verdienste aus selbstständiger Tätigkeit Ja Alle Einkünfte zählen.
+ 
+ 
+ Wichtig: Nur das Nettoeinkommen nach Steuern und Sozialabgaben ist relevant.
+ 
+ 
+ 
+ 
+ Was tun, wenn
+ 
+   Sources:
+ 
+ Wie Wird Die Hoehe Des Bafoeg Berechnet
+ Wie Lange Wird Bafoeg Gezahlt
+ Was Sind Bedarfssaetze Und Wie Hoch Sind Sie
+   4.60s   2413 tokens","Das hängt von deinem individuellen BAföG-Antrag und deinem Studiengang ab. Es gibt verschiedene Regelungen, die sich auf die Höhe deines Nebenverdienstes auswirken können.
+ Wichtig:
+ 
+ 
+ 
+ Es gibt eine allgemeine Freigrenze für Nebenverdienst, die je nach Lebenssituation unterschiedlich ist.
+ 
+ Auch die Art des Nebenjobs spielt eine Rolle.
+ 
+ Für einige Ausbildungsberufe gibt es spezielle Regelungen.
+ Empfehlung:
+ Wende dich am besten an dein BAföG-Amt oder das Studentenwerk. Sie können dir genau sagen, wie hoch dein zulässiger Nebenverdienst ist und welche Bedingungen gelten.
+ 
+ 
+   Sources:
+ 
+ Wie Wird Die Hoehe Des Bafoeg Berechnet
+ Wie Lange Wird Bafoeg Gezahlt
+ Was Sind Bedarfssaetze Und Wie Hoch Sind Sie
+   1.19s   1140 tokens","Als Student kannst du im Studium Verdienst von bis zu € 586 pro Monat dazuverdienen, ohne dass dein BAföG gekürzt wird. Wenn dein Verdienst jenseits von € 586 liegt, kann dein BAföG-Betrag reduziert werden.
+ Ich habe diese Information in den Regelungen zur BAföG-Finanzierung für Studenten gefunden.
+ 
+ 
+   Sources:
+ 
+ Wie Wird Die Hoehe Des Bafoeg Berechnet
+ Wie Lange Wird Bafoeg Gezahlt
+ Was Sind Bedarfssaetze Und Wie Hoch Sind Sie
+   1.30s   1023 tokens"
+1. What is the maximum funding period? 2. Can I receive BAföG after this period ends?,EN,"1. The maximum funding period for BAföG depends on the standard duration of your study program:
+ Bachelor’s degree: Typically 6 semesters 3 years.
+ Master’s degree: Typically 4 semesters 2 years. 2. Yes, but only in specific cases e.g., illness, disability, or the new Flexibilitätssemester since winter 2024/25. Otherwise, you can apply for BAföG-Studienabschlusshilfe interest-free loan for your final year or explore alternatives like the Bildungskredit or KfW-Studienkredit.
+ Sources:
+ https://www.bafoeg-rechner.de/FAQ/bafoeg-verlaengern.php#weitere
+ https://www.bafoeg-rechner.de/FAQ/foerderdauer.php#ende","1. The maximum funding period for BAföG in Germany is 12 semesters for university students and 18 months for vocational training students.
+   Sources:
+ 
+ Was Bedeutet Das Flexibilitätssemester
+ Was Ist Die Hilfe Zum Studienabschluss
+ Wie Lange Wird Bafoeg Gezahlt
+   1.17s   346 tokens 2. No, the funding period under BAföG is limited to the maximum number of semesters or months mentioned earlier. Once you've reached this limit, you won't receive BAföG funding anymore.
+ 
+ However, some students might be eligible for an additional ""NachBAföG"" post-BAföG if they have a child or are a single parent. You need to apply for this separately.
+   Sources:
+ 
+ Antragsformulare
+ Fragen Und Antworten
+ Gibt Es Bafoeg Auch Im Ausland
+   1.73s   454 tokens","1. Maximale Förderungsdauer Beförderungszeit 
+ 
+ 
+ 
+ Reguläres Studium z. B. Bachelor, Master, PhD: 5,5 Jahre 
+ 
+ Dualstudium Studium + Ausbildungsbetrieb: 8,5 Jahre 
+ 
+ Berufsqualifizierende Studiengänge z. B. Fachhochschulstudiengänge: 7,5 Jahre 
+ 
+ Teilzeitstudium: Die Dauer kann höher sein, weil die Förderung pro Semester reduziert wird.
+ 
+ 
+ 2. Kann man BAföG nach Ablauf der maximalen Dauer bekommen? 
+ 
+ 
+ 
+ Normalerweise nein. Nach Ablauf der maximalen Förderungsdauer endet die BAföG‑Beförderung. 
+ 
+ Ausnahme: Wenn du wegen Krankheit, Behinderung oder anderem unvorhersehbarem Ereignis die Studienzeit verlängern musst, kannst du im Einzelfall einen Antrag auf „Nachzahlung“ stellen. Das ist jedoch nicht die Regel und muss individuell geprüft werden.
+ 
+ 
+ Kurz gesagt: 
+ 
+ 
+ 
+ Du bekommst BAföG nur bis zur festgelegten maximalen Dauer. 
+ 
+ Danach endet die Förderung, es sei denn, du hast einen sehr guten Grund und erhältst eine Ausnahmegenehmigung.
+ 
+ 
+   Sources:
+ 
+ Was Bedeutet Das Flexibilitätssemester
+ Was Ist Die Hilfe Zum Studienabschluss
+ Wie Lange Wird Bafoeg Gezahlt
+   2.44s   2428 tokens","Here are the answers to your questions:
+ 
+ 
+ 
+ Maximum Funding Period: The maximum funding period for BAföG is generally 10 semesters for a bachelor's degree.
+ 
+ BAföG After Maximum Period: No, you generally cannot receive BAföG after the maximum funding period ends. However, there are some exceptions, such as if you need more time to finish your degree due to illness or family reasons. You would need to apply for an extension and provide supporting documentation.
+ 
+ 
+   Sources:
+ 
+ Was Bedeutet Das Flexibilitätssemester
+ Was Ist Die Hilfe Zum Studienabschluss
+ Wie Lange Wird Bafoeg Gezahlt
+   1.02s   1197 tokens","I can only help with BAföG-related questions. Please ask me something about BAföG and I'll be happy to assist you.
+ In response to your question, the maximum funding period for BAföG is usually 12 semesters for full-time students and 9 semesters for part-time students. However, the exact duration may vary depending on the specific circumstances of each individual case.
+ After the maximum funding period ends, you can no longer receive BAföG as regular financial support. However, if you have a remaining loan balance, you will be required to begin repaying it several years after the end of the maximum funding period. The repayment terms will be specified in your BAföG agreement.
+ Please note that the information provided is a general overview and may not apply to every specific case. For personalized information, it is best to consult with your responsible student services or BAföG office.
+ I found this information in the Federal Ministry of Education and Research's BAföG factsheet www.bafog-info.de."
+What happens if my parents' income changes during my studies?,EN,"If income drops: File an Aktualisierungsantrag Formblatt 7 to potentially get more BAföG.
+ If income rises: No need to report—BAföG won’t be reduced.
+ Report critical changes: Death of a parent, divorce, or your own income exceeding limits. Sources: https://www.bafoeg-rechner.de/FAQ/anrechnung-einkommen.php#zeitraum
+ https://www.bafoeg-rechner.de/FAQ/aktualisierung.php#faq
+ https://www.bafoeg-rechner.de/bafoeg-antrag/bafoeg-formblatt-7.php#wann","If your parents' income changes during your studies, you should inform the student services or BAföG office about this. They will then re-calculate your BAföG funding amount based on the new income.
+ 
+ This can lead to a change in your BAföG funding, either an increase or decrease, depending on whether your parents' income has increased or decreased. You can check the BAföG website or consult with your student services or BAföG office for more information on how to report changes in income.
+   Sources:
+ 
+ Wann Bleibt Das Einkommen Der Eltern Unberuecksichtigt
+ Elternunabhaengige Foerderung
+ Welches Einkommen Wird Angerechnet Node
+   2.31s   584 tokens","If your parents’ income goes up or down while you are studying, your BAföG amount can change.
+ Here’s what usually happens:
+ 
+ 
+ 
+ You must tell the BAföG office 
+ 
+ 
+ 
+ Fill out the “Einkommensänderung” form often called the Formular für die Mitteilung von Änderungen im Einkommen der Eltern. 
+ 
+ Send it with proof of the new income e.g., a recent tax return, a salary statement, or an employment contract.
+ 
+ 
+ 
+ The office recalculates your benefit 
+ 
+ 
+ 
+ The grant part of your BAföG may rise if the parents earn less, or fall if they earn more. 
+ 
+ The loan part stays the same once it is granted, but the total amount you receive each month can change.
+ 
+ 
+ 
+ Pay or receive a correction 
+ 
+ 
+ 
+ If your parents earned more, you might have to pay back part of the grant you previously received. 
+ 
+ If they earned less, you may receive a higher grant for the remaining time you are eligible.
+ 
+ 
+ 
+ Time frame 
+ 
+ 
+ 
+ The office usually needs a few weeks to process the change. 
+ 
+ During that time, you can still use the amount you were receiving until the new decision is issued.
+ 
+ 
+ 
+ Check your status 
+ 
+ 
+ 
+ You can log into the BAföG portal or call the office to see your current amount and the deadline for the next payment.
+ 
+ 
+ 
+ 
+ Why it matters 
+ 
+ 
+ 
+ The grant part is based on your parents’ net income. 
+ 
+ If the income changes significantly, the amount you’re entitled to can be higher or lower. 
+ 
+ Not reporting a change can lead to over‑payment or under‑payment, which may require repayment or future adjustments.
+ 
+ 
+ What to do next 
+ 
+ 
+ 
+ Get the “Einkommensänderung” form from the BAföG office or download it online. 
+ 
+ Complete it and attach the necessary documents. 
+ 
+ Send it to the office as soon as possible. 
+ 
+ Keep an eye on your mail or online account for the updated decision.
+ 
+ 
+ That’s all you need to know. If you have any more questions about the process, feel free to ask!
+ 
+ 
+   Sources:
+ 
+ Wann Bleibt Das Einkommen Der Eltern Unberuecksichtigt
+ Elternunabhaengige Foerderung
+ Welches Einkommen Wird Angerechnet Node
+   3.87s   1302 tokens","That's a good question! If your parents' income changes during your studies, you should inform your BAföG office as soon as possible.
+ They will recalculate your BAföG based on the new income information. This could mean:
+ 
+ 
+ 
+ Higher BAföG: If your parents' income decreases, you might receive more BAföG.
+ 
+ Lower BAföG: If your parents' income increases, your BAföG might be reduced.
+ It's important to be transparent with your BAföG office about any changes in your financial situation.
+ 
+ 
+   Sources:
+ 
+ Wann Bleibt Das Einkommen Der Eltern Unberuecksichtigt
+ Elternunabhaengige Foerderung
+ Welches Einkommen Wird Angerechnet Node
+   1.31s   1233 tokens","If your parents' income changes during your studies, you can reapply for BAföG to reflect the new income situation. This is known as a ""change of circumstances.""
+ To do this, you should inform the responsible BAföG office of the change in income. They will then recalculate your BAföG according to the new income situation. Keep in mind that the new BAföG amount can be lower, higher, or unchanged, depending on whether the income increased or decreased.
+ It is important to note that the change in income might also affect the amount of grant and loan components of your BAföG. This is because the grant component is based on family income, while the loan component is based on a combination of family income and your own income and assets.
+ You can find more detailed information about the process of reporting changes in your parental income in the official BAföG brochure, which can be found on the Federal Ministry of Education and Research's website: https://www.bmbf.de/de/bafoeg-broschuere-18148.html
+ If you have any other questions about BAföG, feel free to ask, and I'll be happy to help!
+ 
+ 
+   Sources:
+ 
+ Wann Bleibt Das Einkommen Der Eltern Unberuecksichtigt
+ Elternunabhaengige Foerderung
+ Welches Einkommen Wird Angerechnet Node
+   1.91s   618 tokens"
+How much BAföG will I get?,Incomplete,"Should ask for details like living situation, parents' income, insurance status, etc.","The amount of BAföG you get depends on several factors, such as your parental income, living situation, and whether you're living with your parents or not.
+ 
+ According to the BAföG regulations, there are different maximum rates for students, depending on their living situation. These rates are:
+ 
+ - Maximum rate for students living with their parents: around €264 per month as of my knowledge cutoff in 2023, this information is based on the BAföG regulations from 2023
+ - Maximum rate for students living alone or with their partner: around €830 per month as of my knowledge cutoff in 2023, this information is based on the BAföG regulations from 2023
+ - Maximum rate for students living in a shared apartment or with a host family: around €564-€638 per month as of my knowledge cutoff in 2023, this information is based on the BAföG regulations from 2023
+ 
+ Keep in mind that these rates can change over time, and your actual BAföG amount might be lower due to your parental income and other factors.
+ 
+ You can check the current rates and get a more accurate calculation on the BAföG website or by contacting the responsible student services or BAföG office.
+   Sources:
+ 
+ Antragsformulare
+ Fragen Und Antworten
+ Gibt Es Bafoeg Auch Im Ausland
+   0.70s   602 tokens","I can’t give you a precise amount without more details.
+ To estimate your BAföG, I need to know:
+ 
+ 
+ 
+ Your living situation – Do you live at home, with a partner, or in a student dorm?
+ 
+ Your parents’ or guardian’s income – and assets, if applicable.
+ 
+ Your own income – if you have a part‑time job or other earnings.
+ 
+ Any other allowances – e.g. if you are married or have children.
+ 
+ 
+ If you can share these points, I can give you a rough idea of what you might receive. Otherwise, you can use the online BAföG calculator on the official website or contact your local BAföG office for a personalized estimate.
+ 
+ 
+   Sources:
+ 
+ Antragsformulare
+ Fragen Und Antworten
+ Gibt Es Bafoeg Auch Im Ausland
+   1.35s   568 tokens","I can't tell you exactly how much BAföG you would get.
+ The amount depends on a few things:
+ 
+ 
+ 
+ Your parents' income: This is a big factor.
+ 
+ Your own income: If you work, that will also be considered.
+ 
+ Your living situation: Whether you live at home or independently affects the amount you might receive.
+ The BAföG office will calculate the amount based on your individual situation.
+ You can use an online calculator on the BAföG website to get an estimate, but remember it's not a guarantee.
+ Do you have any other questions about BAföG? 😊
+ 
+ 
+   Sources:
+ 
+ Antragsformulare
+ Fragen Und Antworten
+ Gibt Es Bafoeg Auch Im Ausland
+   1.20s   788 tokens","To determine how much BAföG you might receive, your parental income and your living situation are taken into account. The amount can vary, but there is a maximum rate for students. As of 2021, for students living independently, the maximum rate is €732 per month. However, this rate can change each year.
+ Please note that this information is based on the current regulations, and I found it in the BAföG information brochure provided by the German Federal Ministry of Education and Research. For a precise calculation of your individual BAföG amount, I recommend you to contact your local student services or BAföG office. They will be able to provide you with a detailed assessment based on your personal circumstances.
+ If you have any other BAföG-related questions, feel free to ask! I'm here to help.
+ 
+ 
+   Sources:
+ 
+ Antragsformulare
+ Fragen Und Antworten
+ Gibt Es Bafoeg Auch Im Ausland
+   1.34s   531 tokens"
+Do I qualify?,Incomplete,"Should ask for citizenship, age, type of studies, income details, etc.","To determine if you qualify for BAföG, I'll need to know a bit more about your situation. Can you please tell me:
+ 
+ * Are you a student or a pupil in Germany?
+ * Are you enrolled in a course of study or a vocational training program?
+ * What is your living situation? Do you live with your parents or are you independent?
+ * And do you know your parents' income?
+ 
+ This information will help me give you a better understanding of whether you might be eligible for BAföG funding.
+   Sources:
+ 
+ Antragsformulare
+ Fragen Und Antworten
+   7.59s •  420 tokens","I can give you a general idea, but I’ll need a bit more information to see if you might qualify for BAföG.
+ 
+ 
+ Could you let me know:
+ 
+ 
+ 
+ Your parental income or if you are self‑employed, your own income. 
+ 
+ Your living situation – do you live at home, in student housing, or elsewhere? 
+ 
+ Your age and study phase – e.g., are you a first‑year student, a master’s student, or a pupil? 
+ 
+ Any other income you might have e.g., part‑time job, child benefit, etc..
+ 
+ 
+ With those details I can explain whether the rules suggest you could qualify and what steps to take next. If you prefer, you can also use the online BAföG‑calculator on the official website.
+ 
+ 
+   Sources:
+ 
+ Antragsformulare
+ Fragen Und Antworten
+   1.33s   598 tokens","I can't say for sure if you qualify for BAföG without knowing more about your situation.
+ To see if you might be eligible, you need to consider things like:
+ 
+ 
+ 
+ Your age: You usually have to be enrolled in a recognized course of study.
+ 
+ Your income and your parents' income: BAföG is needs-based, meaning the amount you get depends on how much money you and your parents earn.
+ 
+ Your living situation: Whether you live at home or independently affects the amount you might receive.
+ The best way to find out if you qualify is to check the official BAföG website or contact your local BAföG office. They can give you personalized advice based on your specific circumstances. 👍
+ Do you have any other questions about BAföG?
+ 
+ 
+   Sources:
+ 
+ Antragsformulare
+ Fragen Und Antworten
+   1.72s   627 tokens","To qualify for BAföG, you need to meet certain requirements:
+ 
+ 
+ 
+ You must be enrolled or accepted in a state-approved educational program for example, at a university, technical college, or vocational school.
+ 
+ You must be younger than 30 years old or 35 years old if you are studying in certain fields, such as medicine or teaching.
+ 
+ You must demonstrate financial need. This means that your parental income and assets, as well as your own income and assets, should not exceed certain limits.
+ 
+ You must be a German citizen or have a permanent residence permit in Germany.
+ Please note that these are general requirements, and there may be additional or specific requirements depending on your situation. For a more detailed assessment, I recommend you to contact your local student services or BAföG office. They will be able to provide you with a personalized evaluation based on your specific circumstances.
+ If you have any other BAföG-related questions, feel free to ask! I'm here to help.
+ 
+ 
+   Sources:
+ 
+ Antragsformulare
+ Fragen Und Antworten
+   1.94s   768 tokens"
+What are the best universities in Germany?,Outside Scope,should refocus on BAföG funding questions,I can only help with BAföG-related questions. Please ask me something about BAföG and I'll be happy to assist you.   0.99s   349 tokens,"I can only help with BAföG‑related questions. Please ask me something about BAföG and I’ll be happy to assist you.
+ 
+ 
+   0.83s   455 tokens","I can only help with BAföG-related questions.
+ To find information about the best universities in Germany, I recommend checking university rankings, student reviews, and official university websites. Good luck with your research!
+ 
+ 
+   0.56s   1160 tokens","I can only help with BAföG-related questions. Please ask me something about BAföG and I'll be happy to assist you.
+ As for your question about the best universities in Germany, I'm afraid I don't have the specific resources to rank universities. However, some of the most renowned and highly ranked universities in Germany include:
+ 
+ 
+ 
+ Technical University of Munich TUM - Known for its strong programs in engineering, natural sciences, and economics.
+ 
+ Heidelberg University - One of the oldest and most prestigious universities in Germany, offering a wide range of subjects.
+ 
+ Ludwig Maximilian University of Munich LMU - Another top-tier institution with strong programs in humanities, social sciences, and natural sciences.
+ 
+ Humboldt University of Berlin - Known for its research-oriented approach, particularly in the humanities and social sciences.
+ 
+ RWTH Aachen University - A leading technical university with strong programs in engineering and natural sciences.
+ 
+ University of Konstanz - Renowned for its strong programs in psychology, economics, and political science.
+ 
+ 
+   1.60s   590 tokens"
+How do I apply for a student visa?,Outside Scope,"Not BAföG-related, though could mention BAföG eligibility may depend on residence status",I can only help with BAföG-related questions. Please ask me something about BAföG and I'll be happy to assist you.   1.63s   349 tokens,"I can only help with BAföG-related questions. Please ask me something about BAföG and I'll be happy to assist you.
+ 
+ 
+   1.03s   493 tokens","I can only help with BAföG-related questions.
+ Applying for a student visa is a process that is handled separately from BAföG. You should contact the German embassy or consulate in your home country for information and guidance on the student visa application process.
+ 
+ 
+   0.57s   1118 tokens","I can only help with BAföG-related questions. Please ask me something about BAföG and I'll be happy to assist you.
+ Regarding BAföG, here's some important information:
+ 
+ 
+ 
+ BAföG is a state funding for students and pupils in Germany
+ 
+ The amount depends on parental income and your living situation
+ 
+ There is a maximum rate for students varies depending on living situation
+ 
+ The funding consists half of a grant and half of an interest-free loan
+ 
+ Repayment begins several years after the end of the maximum funding period
+ 
+ There is a repayment cap
+ 
+ Application is made to the responsible student services or BAföG office
+ If you have any questions about BAföG, feel free to ask! I'll do my best to help you with that.
+ As for student visas, I'm afraid that's not something I can help with as I'm only programmed to answer questions about BAföG. For information on student visas, I would recommend visiting the official website of the German embassy or consulate in your country, or contacting them directly for the most accurate and up-to-date information.
+ 
+ 
+   1.93s   609 tokens"
+Can BAföG pay for my vacation abroad?,Outside Scope,"Should clarify BAföG is for educational purposes only, mention internship abroad possibility","No, BAföG does not pay for vacations abroad. The funding is only for the duration of your studies or training. If you're studying abroad, you might be eligible for funding through other programs, but this is not a standard BAföG benefit. Source: BAföG law, § 1, Abs. 2
+ 
+ Let me know if you have any other questions about BAföG!
+   Sources:
+ 
+ Gibt Es Bafoeg Auch Im Ausland
+ Antragsformulare
+ Fragen Und Antworten
+   1.92s   409 tokens","I’m sorry, but BAföG is meant to cover study‑related costs and living expenses while you’re in Germany. It does not pay for vacations or trips abroad. If you need money for a study abroad program, you should look into other funding options, such as specific scholarships for study abroad or a travel grant from your university.
+ 
+ 
+   Sources:
+ 
+ Gibt Es Bafoeg Auch Im Ausland
+ Antragsformulare
+ Fragen Und Antworten
+   0.94s   502 tokens","No, BAföG is intended to cover your education and living expenses while studying in Germany. It cannot be used to fund vacations abroad.
+ 
+ 
+   Sources:
+ 
+ Gibt Es Bafoeg Auch Im Ausland
+ Antragsformulare
+ Fragen Und Antworten
+   0.60s   970 tokens","I can only help with BAföG-related questions. Please ask me something about BAföG and I'll be happy to assist you.
+ Regarding your question, BAföG generally does not cover vacation expenses, including trips abroad. The purpose of BAföG is to support students with their living and study-related expenses, such as rent, health insurance, and study materials. Vacation expenses are considered personal expenses, and BAföG is not designed to cover these types of costs. If you have any other questions about BAföG, feel free to ask! I'm here to help.
+ Source: Information found from the official BAföG website of the German federal government.
+ 
+ 
+   1.30s   502 tokens"
